@@ -5,6 +5,9 @@ export interface Event {
   title: string;
   subtitle: string;
   image: SanityImageSource;
+  altText: string;
   href: string;
+  dateText: string;
+  time: string;
   publishDate: Date;
 }

@@ -5,8 +5,11 @@ const eventFields = groq`
   title,
   subtitle,
   image,
+  altText,
   href,
   publishDate,
+  dateText,
+  time,
 `;
 
 export const eventsQuery = groq`

@@ -16,18 +16,12 @@ export default async function EventsPage() {
           <div key={event._id} className="border p-4 rounded">
             <h2 className="text-xl font-semibold">{event.title}</h2>
             <p className="text-gray-600">{event.subtitle}</p>
-            <p>
-              Publish Date:{" "}
-              {new Date(event.publishDate).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </p>
+            <p>Date: {event.dateText}</p>
+            <p>Time: {event.time}</p>
             {event.image && (
               <Image
                 src={urlFor(event.image).width(400).url()}
-                alt={event.title}
+                alt={event.altText}
                 width={400}
                 height={300}
               />
