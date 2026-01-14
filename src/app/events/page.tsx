@@ -18,12 +18,10 @@ export default async function EventsPage() {
             <p className="text-gray-600">{event.subtitle}</p>
             <p>
               Publish Date:{" "}
-              {event.publishDate.toLocaleString("en-US", {
+              {new Date(event.publishDate).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
-                hour: "2-digit",
-                minute: "2-digit",
               })}
             </p>
             {event.image && (

@@ -9,5 +9,5 @@ export const eventsType = defineType({
   title: "Events",
   type: "document",
   icon: CalendarIcon,
-  fields: [title, subtitle, image, href, publishDate],
+  fields: [title, subtitle, image, href, dateText, time, publishDate],
 });
