@@ -9,7 +9,7 @@ export default function Navigation({
 }: NavigationProps) {
   return (
     <nav
-      className={`flex justify-between items-center mt-8 mx-11 uppercase ${color === LogoColor.light ? "text-white" : "text-blue-500"}`}
+      className={`flex justify-between items-center mt-8 mx-11 uppercase ${color === LogoColor.light ? "text-white" : "text-dark-blue"}`}
     >
       <Link href="/">
         <OrlsLogo color={color} />
