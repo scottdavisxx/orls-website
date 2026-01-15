@@ -28,20 +28,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <nav className="flex justify-between items-center p-4">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/contact">Academics</Link>
-          <Link href="/about">Early Education</Link>
-          <Link href="/blog">Elementary School</Link>
-          <Link href="/portfolio">Middle School</Link>
-          <Link href="/services">Student Life</Link>
-          <Link href="/testimonials">Family Home</Link>
-          <Link href="/contact">Clubs</Link>
-          <Link href="/about">Athletics</Link>
-          <Link href="/blog">Admissions</Link>
-          <Link href="/blog">Tuition</Link>
-        </nav>
         {children}
       </body>
     </html>
