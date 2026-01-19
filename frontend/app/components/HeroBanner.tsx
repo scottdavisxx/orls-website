@@ -22,12 +22,11 @@ export default function HeroBanner({ block }: HeroBannerProps) {
           width={1000}
           height={1000}
           crop={image.crop}
-          mode="cover"
           className="absolute w-full h-full object-cover top-0 -z-10"
         />
       )}
       <div className="flex flex-col gap-8 ml-16 mb-16">
-        <h1 className="text-7xl font-bold relative">
+        <h1 className="text-7xl font-bold relative text-white">
           {block?.titleOne && block.titleOne}
           {block?.titleTwo && <><br />{block.titleTwo}</>}
         </h1>
