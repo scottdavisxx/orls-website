@@ -1,6 +1,6 @@
 import NewCta from "./NewCta";
 import Image from "@/app/components/SanityImage";
-import { HeroBanner } from '@/sanity.types'
+import type { HeroBanner } from '@/sanity.types'
 
 type HeroBannerProps = {
   block: HeroBanner

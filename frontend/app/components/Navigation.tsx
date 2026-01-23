@@ -1,6 +1,6 @@
 import Link from "next/link";
 import OrlsLogo, { LogoColor } from "./icons/orls-logo";
-import { Navigation } from "@/sanity.types";
+import type { Navigation } from "@/sanity.types";
 
 interface NavigationProps {
   block: Navigation;
