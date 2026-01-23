@@ -1,0 +1,9 @@
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Exclude public Sanity environment variables from secrets scanning
+  # These are intentionally public values that Next.js bundles into client-side code
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SANITY_API_VERSION,NEXT_PUBLIC_SANITY_DATASET,NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_STUDIO_URL"
