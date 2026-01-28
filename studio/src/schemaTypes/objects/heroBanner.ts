@@ -16,5 +16,18 @@ export const heroBanner = defineType({
     titleTwo,
     cta,
     imageAndAltText
-  ]
+  ],
+  preview: {
+    select: {
+      titleOne: 'titleOne',
+      media: 'imageAndAltText.image'
+    },
+    prepare({ titleOne, media }) {
+      return {
+        title: 'Hero Banner',
+        subtitle: titleOne || 'No title set',
+        media: media
+      }
+    }
+  }
 })
