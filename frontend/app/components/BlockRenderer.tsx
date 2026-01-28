@@ -1,5 +1,6 @@
 import React from 'react'
 import Hero from '@/app/components/HeroBanner'
+import Subnav from '@/app/components/Subnav'
 import { dataAttr } from '@/sanity/lib/utils'
 import { PageBuilderSection } from '@/sanity/lib/types'
 import Navigation from './Navigation'
@@ -18,6 +19,7 @@ type BlocksType = {
 const Blocks = {
   heroBanner: Hero,
   navigation: Navigation,
+  subnav: Subnav,
 } as BlocksType
 
 /**
