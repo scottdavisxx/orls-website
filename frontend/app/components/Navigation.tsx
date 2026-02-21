@@ -15,7 +15,7 @@ export default function Navigation({
 
   return (
     <nav
-      className={`flex justify-between items-center mt-8 mx-11 uppercase fixed top-0 left-0 right-0 z-50 font-bold ${block?.color === LogoColor.light ? "text-white ho" : "text-dark-blue"}`}
+      className={`px-11 py-6 flex justify-between items-center uppercase fixed top-0 left-0 right-0 z-50 font-bold ${block?.color === LogoColor.light ? "text-white ho" : "text-dark-blue"}`}
     >
       <Link href="/">
         <OrlsLogo color={block?.color && block.color === 'white' ? LogoColor.light : LogoColor.dark} />
