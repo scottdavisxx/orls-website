@@ -32,7 +32,7 @@ export default function Navigation({
       <Link href="/admissions" className={`${block?.color === LogoColor.light ? "hover:text-dark-blue" : "hover:text-white"}`}>Admissions</Link>
       <Link href="/academics" className={`${block?.color === LogoColor.light ? "hover:text-dark-blue" : "hover:text-white"}`}>Academics</Link>
       <Link href="/student-life" className={`${block?.color === LogoColor.light ? "hover:text-dark-blue" : "hover:text-white"}`}>Student Life</Link>
-      <Link href="/support" className={`${block?.color === LogoColor.light ? "hover:text-dark-blue" : "hover:text-white"}`}>Support ORLS</Link>
+      <Link href="/support-orls" className={`${block?.color === LogoColor.light ? "hover:text-dark-blue" : "hover:text-white"}`}>Support ORLS</Link>
       <Link href="/alumni" className={`${block?.color === LogoColor.light ? "hover:text-dark-blue" : "hover:text-white"}`}>Alumni</Link>
     </nav>
   );
