@@ -7,6 +7,7 @@ import StatisticsTwoCol from './components/StatisticsTwoCol'
 import Subnav from './components/Subnav'
 import TextWithLogo from './components/TextWithLogo'
 import ThreeColCards from './components/ThreeColCards'
+import ThreeColCircleImage from './components/ThreeColCircleImage'
 
 const tempNavigationContent = {
   "_key": "9cb3816cfaf4",
@@ -56,6 +57,7 @@ export default async function Page() {
       <StatisticsTwoCol />
       <FeaturedEvents />
       <CtaWithCard />
+      <ThreeColCircleImage />
     </>
   )
 }
