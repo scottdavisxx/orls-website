@@ -1,4 +1,4 @@
-import Cta from "./NewCta";
+import Cta from "./ui/Cta";
 
 export default function CtaCardWithImage() {
   return (
