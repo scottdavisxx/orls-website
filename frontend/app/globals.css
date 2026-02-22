@@ -23,7 +23,8 @@
 @theme inline {
   --font-sans: var(--font-albert-sans);
   --color-dark-blue: #242d65;
-  --color-medium-blue: #355BA5;
-  --color-light-blue: #E3E8F2;
-  --color-gray: #4C4C4C;
+  --color-medium-blue: #355ba5;
+  --color-light-blue: #e3e8f2;
+  --color-gray: #4c4c4c;
+  --color-yellow: #ffcf06;
 }

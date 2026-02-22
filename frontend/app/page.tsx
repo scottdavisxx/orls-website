@@ -1,4 +1,5 @@
 import CtaCardWithImage from './components/CtaCardWithImage'
+import CtaWithCard from './components/CtaWithCard'
 import FeaturedEvents from './components/FeaturedEvents'
 import HeroBanner from './components/HeroBanner'
 import Navigation from './components/Navigation'
@@ -54,6 +55,7 @@ export default async function Page() {
       <ThreeColCards />
       <StatisticsTwoCol />
       <FeaturedEvents />
+      <CtaWithCard />
     </>
   )
 }
