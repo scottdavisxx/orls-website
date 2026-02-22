@@ -13,8 +13,8 @@ export default function FeaturedEvents() {
         <Link href="#" className="flex flex-col justify-end w-2/3 rounded-2xl text-white relative overflow-visible h-[500px] group">
           <Image src="/fpo-event-1.jpg" alt="Event Image" width={765} height={506} className="absolute top-0 left-0 object-cover h-full w-full rounded-2xl z-10" />
           {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black/44 hover:bg-black/64 transition-all duration-300 rounded-2xl z-20" />
-          <div className="flex flex-col gap-4 p-8 w-3/5 z-30">
+          <div className="absolute inset-0 bg-black/44 group-hover:bg-black/64 transition-all duration-300 rounded-2xl z-20" />
+          <div className="flex flex-col gap-4 p-8 w-3/5 z-30 group">
             <span className="z-10 text-5xl font-bold">Event Name</span>
             <span className="z-10 text-xl">Degreed, certified teachers deliver rigorous, individualized instruction so every student is known, challenged, and supported to grow.</span>
             <FakeCta buttonText="View Calendar" className="" />
@@ -28,7 +28,7 @@ export default function FeaturedEvents() {
             <Image src="/fpo-event-2.jpg" alt="Event Image" width={765} height={506}
               className="absolute top-0 left-0 object-cover h-full w-full rounded-2xl z-10" />
             {/* Dark overlay */}
-            <div className="absolute inset-0 bg-black/44 hover:bg-black/64 transition-all duration-300 rounded-2xl z-20" />
+            <div className="absolute inset-0 bg-black/44 group-hover:bg-black/64 transition-all duration-300 rounded-2xl z-20" />
             {/* Offset Border */}
             <div className="absolute top-0 left-0 w-full h-full border-2 border-black rounded-2xl group-hover:translate-x-4 group-hover:translate-y-4 transition-all duration-300" />
             <span className="text-xl font-bold p-4 z-30">Event Name</span>
@@ -38,7 +38,7 @@ export default function FeaturedEvents() {
             <Image src="/fpo-event-3.jpg" alt="Event Image" width={765} height={506}
               className="absolute top-0 left-0 object-cover h-full w-full rounded-2xl z-10" />
             {/* Dark overlay */}
-            <div className="absolute inset-0 bg-black/44 hover:bg-black/64 transition-all duration-300 rounded-2xl z-20" />
+            <div className="absolute inset-0 bg-black/44 group-hover:bg-black/64 transition-all duration-300 rounded-2xl z-20" />
             {/* Offset Border */}
             <div className="absolute top-0 left-0 w-full h-full border-2 border-black rounded-2xl group-hover:translate-x-4 group-hover:translate-y-4 transition-all duration-300" />
             <span className="text-xl font-bold p-4 z-30">Event Name</span>
