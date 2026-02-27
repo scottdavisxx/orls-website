@@ -1,5 +1,6 @@
 import Cta, { CtaProps } from "./ui/Cta";
 import OrlsIcon from "./icons/orls-icon";
+import Image from "next/image";
 
 export interface BulletPoint {
     text: string;
@@ -36,10 +37,13 @@ export default function TwoColBulletsWithCTAs({
                         <div className="flex flex-col gap-8 max-md:pb-8">
                             {leftBullets.map((bullet, index) => (
                                 <div key={index} className="flex gap-4 items-start">
-                                    <div className="flex-shrink-0 w-8 h-8 rounded-full border-2 border-white flex items-center justify-center mt-1">
-                                        <div className="w-4 h-0.5 bg-white"></div>
-                                        <div className="w-0.5 h-4 bg-white absolute"></div>
-                                    </div>
+                                    <Image
+                                        src="/whiteCross.svg"
+                                        alt=""
+                                        width={20}
+                                        height={20}
+                                        className="flex-shrink-0 mt-1 pt-2"
+                                    />
                                     <p className="text-2xl leading-relaxed">{bullet.text}</p>
                                 </div>
                             ))}
@@ -49,10 +53,13 @@ export default function TwoColBulletsWithCTAs({
                         <div className="flex flex-col gap-8">
                             {rightBullets.map((bullet, index) => (
                                 <div key={index} className="flex gap-4 items-start">
-                                    <div className="flex-shrink-0 w-8 h-8 rounded-full border-2 border-white flex items-center justify-center mt-1">
-                                        <div className="w-4 h-0.5 bg-white"></div>
-                                        <div className="w-0.5 h-4 bg-white absolute"></div>
-                                    </div>
+                                    <Image
+                                        src="/whiteCross.svg"
+                                        alt=""
+                                        width={20}
+                                        height={20}
+                                        className="flex-shrink-0 mt-1 pt-2"
+                                    />
                                     <p className="text-2xl leading-relaxed">{bullet.text}</p>
                                 </div>
                             ))}
