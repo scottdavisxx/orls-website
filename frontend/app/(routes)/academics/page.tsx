@@ -5,6 +5,7 @@ import Intro from "@/app/components/IntroBlade";
 import ImageWithText from "@/app/components/ImageWithText";
 import TwoColBulletsWithCTAs from "@/app/components/TwoColBulletsWithCTAs";
 import ThreeColCardsTall from "@/app/components/ThreeColCardsTall";
+import ThreeColToggle from "@/app/components/ThreeColToggle";
 
 const tempNavigationContent = {
   "_key": "9cb3816cfaf4",
@@ -87,6 +88,49 @@ const twoColBulletsWithCTAsProps = {
     cta2: { href: "/volunteer", buttonText: "Family Volunteer Hours" , font: "small" }
 }
 
+const threeColToggleBlock = {
+    _key: "threeColToggle",
+    _type: "threeColToggle",
+    cards: [
+        {
+            title: "Academic Excellence",
+            description: "Degreed, certified teachers deliver rigorous, individualized instruction so every student is known, challenged, and supported to grow.",
+            imageAndAltText: {
+                image: {
+                    asset: {
+                        _ref: "academic.png"
+                    }
+                },
+                altText: "Academic Excellence"
+            }
+        },
+        {
+            title: "Faith Formation",
+            description: "Students grow in their understanding of God's love and are encouraged to live out their faith with confidence and integrity.",
+            imageAndAltText: {
+                image: {
+                    asset: {
+                        _ref: "faith.png"
+                    }
+                },
+                altText: "Faith Formation"
+            }
+        },
+        {
+            title: "Purpose & Belonging",
+            description: "Through our house system and community culture, students build meaningful relationships and discover their unique purpose.",
+            imageAndAltText: {
+                image: {
+                    asset: {
+                        _ref: "purpose.png"
+                    }
+                },
+                altText: "Purpose & Belonging"
+            }
+        }
+    ]
+}
+
 
 
 
@@ -101,6 +145,8 @@ export default function AcademicsPage() {
       <Intro {...intro} />
       <ImageWithText {...imageWithText}/>
       <TwoColBulletsWithCTAs {...twoColBulletsWithCTAsProps} />
+      {/* @ts-ignore */}
+      <ThreeColToggle block={threeColToggleBlock} />
       <ThreeColCardsTall />
     </>
   )
