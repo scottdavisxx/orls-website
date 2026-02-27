@@ -51,13 +51,24 @@ export default function ThreeColToggle({ block }: ThreeColToggleProps) {
                 flex: isActive ? '7 7 0%' : '2.5 2.5 0%',
                 transition: 'all 0.3s ease-in-out'
               }}
-              className={`relative overflow-hidden bg-white rounded-[20px] flex flex-col justify-end min-h-[400px] ${
-                isActive
-                  ? 'border-4 border-[#242d65] p-8 lg:p-10'
-                  : 'border-0 p-6 lg:p-8 cursor-pointer group hover:scale-[1.02] transition-transform duration-300'
-              }`}
-              onClick={() => !isActive && setActiveIndex(index)}
+              className="relative"
             >
+              {/* Gradient border box behind active card */}
+              {isActive && (
+                <div
+                  className="absolute border-4 shadow-lg rounded-[20px] top-[15px] left-[15px] right-[-15px] bottom-[-15px]"
+                  style={{ borderColor: '#242D65' }}
+                />
+              )}
+
+              <div
+                className={`relative overflow-hidden bg-white rounded-[20px] flex flex-col justify-end min-h-[400px] ${
+                  isActive
+                    ? ' p-8 lg:p-10'
+                    : 'border-0 p-6 lg:p-8 cursor-pointer group hover:scale-[1.02] transition-transform duration-300'
+                }`}
+                onClick={() => !isActive && setActiveIndex(index)}
+              >
               {card.imageAndAltText.image?.asset?._ref && (
                 <Image
                   src={`/${card.imageAndAltText.image.asset._ref}`}
@@ -135,6 +146,7 @@ export default function ThreeColToggle({ block }: ThreeColToggleProps) {
                   {card.title}
                 </h4>
               )}
+              </div>
             </div>
           )
         })}
