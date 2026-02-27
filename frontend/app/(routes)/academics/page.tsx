@@ -4,6 +4,7 @@ import Subnav from "@/app/components/Subnav";
 import Intro from "@/app/components/IntroBlade";
 import ImageWithText from "@/app/components/ImageWithText";
 import TwoColBulletsWithCTAs from "@/app/components/TwoColBulletsWithCTAs";
+import ThreeColCardsTall from "@/app/components/ThreeColCardsTall";
 
 const tempNavigationContent = {
   "_key": "9cb3816cfaf4",
@@ -100,6 +101,7 @@ export default function AcademicsPage() {
       <Intro {...intro} />
       <ImageWithText {...imageWithText}/>
       <TwoColBulletsWithCTAs {...twoColBulletsWithCTAsProps} />
+      <ThreeColCardsTall />
     </>
   )
 }

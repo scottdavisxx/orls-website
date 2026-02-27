@@ -66,7 +66,7 @@ export default function TwoColBulletsWithCTAs({
                         </div>
                     </div>
 
-                    <div className="flex gap-6 max-md:justify-center max-md:flex-col">
+                    <div className="flex gap-6 max-md:justify-center max-md:flex-col max-md:items-center">
                         {cta1 && <Cta {...cta1} />}
                         {cta2 && <Cta {...cta2} />}
                     </div>
