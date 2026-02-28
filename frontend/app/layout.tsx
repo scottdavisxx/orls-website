@@ -13,7 +13,8 @@ import { sanityFetch, SanityLive } from '@/sanity/lib/live'
 import { settingsQuery } from '@/sanity/lib/queries'
 import { resolveOpenGraphImage } from '@/sanity/lib/utils'
 import { handleError } from '@/app/client-utils'
-import Footer from './components/Footer';
+import Footer from './components/Footer'
+import DevRouteNav from './components/DevRouteNav'
 
 /**
  * Generate metadata for the page.
@@ -75,6 +76,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en">
       <body className={albertSans.variable}  >
         <section className="min-h-screen">
+          <DevRouteNav />
           {/* The <Toaster> component is responsible for rendering toast notifications used in /app/client-utils.ts and /app/components/DraftModeToast.tsx */}
           <Toaster />
           {isDraftMode && (
