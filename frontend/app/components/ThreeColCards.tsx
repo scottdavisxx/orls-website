@@ -24,11 +24,13 @@ export default function ThreeColCards() {
     }
   ]
 
-
   return (
-    <div className="flex px-6 py-8 gap-2 justify-between h-[478px]">
+    <div className="flex flex-col px-6 py-8 gap-2 justify-between
+    md:flex-row md:h-[478px]">
       {cards.map((card) => (
-        <Link href={card.href} key={card.title} className="group flex flex-col gap-2 border border-gray rounded-xl relative w-1/3 items-center justify-center text-black text-4xl font-bold hover:-translate-y-2 transition-all duration-300">
+        <Link href={card.href} key={card.title} className="group flex flex-col gap-2 border border-gray rounded-xl relative items-center justify-center text-black text-4xl font-bold py-20
+        hover:-translate-y-2 transition-all duration-300
+        md:w-1/3 md:h-auto md:py-0">
           <Image
             src={card.image}
             alt={card.altText}
