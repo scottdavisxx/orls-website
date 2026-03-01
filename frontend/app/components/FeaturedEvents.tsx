@@ -28,7 +28,9 @@ export default function FeaturedEvents() {
           {/* Offset Border */}
           <div className="absolute top-0 left-0 w-full h-full border-2 border-black rounded-2xl group-hover:translate-x-4 group-hover:translate-y-4 transition-all duration-300" />
         </Link>
-        <div className="flex justify-between text-white w-1/3 gap-4">
+        {/* Temp fix to make this look ok on mobile - Scott */}
+        <div className="justify-between text-white w-1/3 gap-4 hidden 
+        md:flex">
           {/* Small Card 1 */}
           <Link href="#" className="flex rounded-2xl items-end relative w-1/2 group overflow-visible">
             <Image src="/fpo-event-2.jpg" alt="Event Image" width={765} height={506}

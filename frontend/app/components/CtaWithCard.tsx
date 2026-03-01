@@ -14,9 +14,10 @@ export interface CtaWithCardProps {
 
 export default function CtaWithCard({ title, blurb, cta, image, altText, bgImage, icon }: CtaWithCardProps) {
   return (
-    <div className="flex items-center justify-center py-16 px-24 relative">
+    <div className="flex items-center justify-center py-8 px-2 relative
+    md:px-24 md:py-16">
       {/* Card */}
-      <div className="border-2 border-dark-blue rounded-4xl absolute left-24 bg-white z-10">
+      <div className="border-2 border-dark-blue rounded-4xl absolute left-24 bg-white z-10 hidden md:block">
         <Image
           src={image}
           alt={altText}
@@ -28,10 +29,11 @@ export default function CtaWithCard({ title, blurb, cta, image, altText, bgImage
         )}
       </div>
       {/* Content */}
-      <div className=" border-2 border-dark-blue rounded-4xl w-full my-12 relative">
+      <div className=" border-2 border-dark-blue rounded-4xl w-full relative
+      md:my-12">
         {/* BG Image */}
         {bgImage && (
-          <Image src={bgImage} alt="CTA Card" width={1000} height={1000} className="absolute top-0 left-0 w-full h-full object-cover rounded-4xl" />
+          <Image src={bgImage} alt="CTA Card" width={1000} height={1000} className="absolute top-0 left-0 w-full h-full object-cover rounded-4xl opacity-10" />
         )}
         {/* Icon */}
         {icon && (
@@ -39,8 +41,10 @@ export default function CtaWithCard({ title, blurb, cta, image, altText, bgImage
             <OrlsIcon color="whisper-blue" width={419} height={419} />
           </div>
         )}
-        <div className="flex flex-col gap-4 pl-120 pr-20 py-8 relative z-10">
-          <h2 className="text-7xl font-bold text-dark-blue leading-tight">{title}</h2>
+        <div className="flex flex-col gap-4 py-8 relative z-10 px-4 items-center
+        md:pl-120 md:pr-20 md:py-8 md:items-start">
+          <h2 className="text-4xl font-bold text-dark-blue leading-tight
+          md:text-7xl">{title}</h2>
           <p className="text-lg whitespace-pre-line">{blurb}</p>
           {cta && (
             <Cta {...cta} />

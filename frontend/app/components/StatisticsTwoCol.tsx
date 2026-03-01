@@ -14,15 +14,15 @@ export default function StatisticsTwoCol() {
           <div className="flex gap-4">
             <AbacusIcon />
             <div className="flex flex-col max-w-40">
-              <span className="text-5xl">43</span>
-              <span className="text-2xl">Enrichment Options</span>
+              <span className="text-3xl md:text-5xl">43</span>
+              <span className="text-xl md:text-2xl">Enrichment Options</span>
             </div>
           </div>
           <div className="flex gap-4">
             <CalendarIcon />
             <div className="flex flex-col max-w-40">
-              <span className="text-5xl">64</span>
-              <span className="text-2xl">Years Serving in Dallas</span>
+              <span className="text-3xl md:text-5xl">64</span>
+              <span className="text-xl md:text-2xl">Years Serving in Dallas</span>
             </div>
           </div>
         </div>
@@ -32,15 +32,15 @@ export default function StatisticsTwoCol() {
           <div className="flex gap-4">
             <ChildIcon />
             <div className="flex flex-col max-w-40">
-              <span className="text-5xl">230</span>
-              <span className="text-2xl">Total Students</span>
+              <span className="text-3xl md:text-5xl">230</span>
+              <span className="text-xl md:text-2xl">Total Students</span>
             </div>
           </div>
           <div className="flex gap-4">
             <ColumnIcon />
             <div className="flex flex-col max-w-40">
-              <span className="text-5xl">55</span>
-              <span className="text-2xl">Teachers & Faculty</span>
+              <span className="text-3xl md:text-5xl">55</span>
+              <span className="text-xl md:text-2xl">Teachers & Faculty</span>
             </div>
           </div>
         </div>
