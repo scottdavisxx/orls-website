@@ -52,53 +52,55 @@ export default function FilteredThreeColCards() {
   const filteredClubs = clubs.filter((c) => c.category === activeCategory)
 
   return (
-    <section className="bg-dark-blue px-6 py-10 md:px-16 md:py-14 lg:px-[94px] lg:py-[50px]">
-      <h2 className="font-bold text-4xl md:text-5xl lg:text-[64px] text-white text-center">
-        Student Clubs
-      </h2>
+    <section className="bg-dark-blue px-6 py-10 md:px-16 md:py-14 lg:px-24 lg:py-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-24">
+        <h2 className="font-bold text-4xl md:text-5xl lg:text-6xl text-white text-center">
+          Student Clubs
+        </h2>
 
-      <div className="flex flex-row flex-wrap justify-center gap-x-8 gap-y-2 mt-8 lg:mt-10">
-        {CATEGORIES.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={
-              cat === activeCategory
-                ? 'text-[#f7d149] font-bold text-base lg:text-[20px]'
-                : 'text-[#94d8ed] font-bold text-base lg:text-[20px]'
-            }
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+        <div className="flex flex-row flex-wrap justify-center gap-x-8 gap-y-2 mt-8 lg:mt-10">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={
+                cat === activeCategory
+                  ? 'text-gold font-bold text-base lg:text-xl'
+                  : 'text-sky-blue font-bold text-base lg:text-xl'
+              }
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
 
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        {filteredClubs.length > 0 ? (
-          filteredClubs.map((club) => (
-            <div key={club.name} className="bg-white rounded-[33px] overflow-hidden flex flex-col">
-              <div className="flex flex-col items-center text-center gap-3 px-6 pt-7 pb-6">
-                <p className="font-bold text-lg md:text-xl lg:text-[24px] text-black">{club.name}</p>
-                <div className="bg-[#94d8ed] rounded-[14.5px] px-4 h-[35px] flex items-center justify-center">
-                  <span className="font-bold italic text-white text-sm lg:text-[22px]">{club.grades}</span>
+        <div className="mt-10 flex flex-wrap justify-center gap-6 lg:gap-8">
+          {filteredClubs.length > 0 ? (
+            filteredClubs.map((club) => (
+              <div key={club.name} className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-22px)] bg-white rounded-3xl overflow-hidden flex flex-col justify-between">
+                <div className="flex flex-col items-center text-center gap-3 px-6 pt-7 pb-6">
+                  <p className="font-bold text-lg md:text-xl lg:text-2xl text-black">{club.name}</p>
+                  <div className="bg-sky-blue rounded-2xl px-4 h-9 flex items-center justify-center">
+                    <span className="font-bold italic text-white text-sm lg:text-xl">{club.grades}</span>
+                  </div>
+                  <p className="text-sm md:text-base lg:text-xl text-black leading-snug">{club.description}</p>
                 </div>
-                <p className="text-sm md:text-base lg:text-[20px] text-black leading-snug">{club.description}</p>
+                <div className="relative flex-1 min-h-[200px] max-h-[200px] md:min-h-[240px] md:max-h-[240px] lg:min-h-[291px] lg:max-h-[291px] border-2 border-sky-blue rounded-3xl mx-0 overflow-hidden">
+                  <Image
+                    src={club.image}
+                    alt={club.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               </div>
-              <div className="relative flex-1 min-h-[200px] md:min-h-[240px] lg:min-h-[291px] border-2 border-[#94d8ed] rounded-[33px] mx-0 overflow-hidden">
-                <Image
-                  src={club.image}
-                  alt={club.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          ))
-        ) : (
-          <p className="col-span-full text-white text-center text-lg mt-8">
-            No clubs in this category yet.
-          </p>
-        )}
+            ))
+          ) : (
+            <p className="w-full text-white text-center text-lg mt-8">
+              No clubs in this category yet.
+            </p>
+          )}
+        </div>
       </div>
     </section>
   )

@@ -56,6 +56,69 @@ const howHousesWorkItems: { number?: number; heading: string; body: ReactNode }[
   },
 ]
 
+const housesItems = [
+  {
+    id: 'luther',
+    expanded: {
+      name: 'Luther House',
+      tagline: 'Courage In Truth',
+      description: 'Luther House represents bold faith, integrity, and the courage to do what is right.',
+      icon: '/houses/luther-icon.svg',
+    },
+    collapsed: {
+      name: 'Luther House',
+      icon: '/houses/luther-icon.svg',
+    },
+  },
+  {
+    id: 'melanchton',
+    expanded: {
+      name: 'Melanchton House',
+      tagline: 'TODO: Tagline',
+      description: 'TODO: Description for Melanchton House.',
+      icon: '/houses/melanchton-icon.svg',
+    },
+    collapsed: {
+      name: 'Melanchton House',
+      icon: '/houses/melanchton-icon.svg',
+    },
+  },
+  {
+    id: 'chemnitz',
+    expanded: {
+      name: 'Chemnitz House',
+      tagline: 'TODO: Tagline',
+      description: 'TODO: Description for Chemnitz House.',
+      icon: '/houses/chemnitz-icon.svg',
+    },
+    collapsed: {
+      name: 'Chemnitz House',
+      icon: '/houses/chemnitz-icon.svg',
+    },
+  },
+  {
+    id: 'walther',
+    expanded: {
+      name: 'Walther House',
+      tagline: 'TODO: Tagline',
+      description: 'TODO: Description for Walther House.',
+      icon: '/houses/walther-icon.svg',
+    },
+    collapsed: {
+      name: 'Walther House',
+      icon: '/houses/walther-icon.svg',
+    },
+  },
+]
+
+const housesSectionProps = {
+  heading: 'Our Four Houses',
+  subtitle: 'Each House is named for a faithful Lutheran leader whose life reflects learning, conviction, and service.',
+  footnote: '*Siblings are placed in the same House, and students remain in their House throughout their ORLS journey.',
+  arrowLabel: 'Scroll for next steps',
+  sectionBgImage: '/beyond-classroom/section-bg.png',
+}
+
 const tempNavigationContent = {
   "_key": "9cb3816cfaf4",
   "_type": "navigation",
@@ -92,10 +155,21 @@ export default function TuitionPage() {
       <TwoColInfo />
       <FilteredThreeColCards />
       <NumberedList title="How Houses Work" items={howHousesWorkItems} />
-      <ThreeColExpandingCards />
+      <ThreeColExpandingCards {...housesSectionProps} items={housesItems} />
       <TwoColInfoWithCard />
       <TwoColInfoWithImage />
-      <ThreeColEventCards />
+      <ThreeColEventCards
+        heading="Beyond The Classroom"
+        bgTexture
+        cards={[
+          { title: 'Character & Leadership', image: '/beyond-classroom/card-placeholder.png', cta: { label: 'Learn More', href: '#' } },
+          { title: 'Athletics',              image: '/beyond-classroom/card-placeholder.png', cta: { label: 'Learn More', href: '#' } },
+          { title: 'Clubs',                  image: '/beyond-classroom/card-placeholder.png', cta: { label: 'Learn More', href: '#' } },
+          { title: 'Traditions',             image: '/beyond-classroom/card-placeholder.png', cta: { label: 'Learn More', href: '#' } },
+          { title: 'School Trips',           image: '/beyond-classroom/card-placeholder.png', cta: { label: 'Learn More', href: '#' } },
+          { title: 'Family Partnership',     image: '/beyond-classroom/card-placeholder.png', cta: { label: 'Learn More', href: '#' } },
+        ]}
+      />
     </>
   )
 }
