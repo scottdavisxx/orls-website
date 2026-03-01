@@ -15,6 +15,8 @@ export interface OrlsIconProps {
   height?: number;
   /** Additional Tailwind classes (e.g. for custom colors) */
   className?: string;
+  /** When true, uses fill="currentColor" so parent text-* / group-hover:text-* classes control the icon color */
+  useCurrentColor?: boolean;
 }
 
 const colorToCssVar: Record<OrlsIconColor, string> = {
@@ -32,8 +34,9 @@ export default function OrlsIcon({
   width = 56,
   height = 56,
   className,
+  useCurrentColor,
 }: OrlsIconProps) {
-  const fillColor = colorToCssVar[color];
+  const fillColor = useCurrentColor ? "currentColor" : colorToCssVar[color];
 
   return (
     <span className={className} style={{ display: "inline-block", width, height }}>

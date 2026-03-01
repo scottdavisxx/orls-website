@@ -5,9 +5,10 @@ export enum LogoColor {
 
 interface OrlsLogoProps {
   color?: LogoColor;
+  className?: string;
 }
 
-export default function OrlsLogo({ color = LogoColor.light }: OrlsLogoProps) {
+export default function OrlsLogo({ color = LogoColor.light, className }: OrlsLogoProps) {
   return (
     <svg
       width="370"
@@ -15,6 +16,7 @@ export default function OrlsLogo({ color = LogoColor.light }: OrlsLogoProps) {
       viewBox="0 0 370 64"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       <g clipPath="url(#clip0_120_3678)">
         <path

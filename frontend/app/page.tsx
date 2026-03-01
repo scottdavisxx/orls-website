@@ -2,7 +2,6 @@ import CtaCardWithImage from './components/CtaCardWithImage'
 import CtaWithCard from './components/CtaWithCard'
 import FeaturedEvents from './components/FeaturedEvents'
 import HeroBanner from './components/HeroBanner'
-import Navigation from './components/Navigation'
 import StatisticsTwoCol from './components/StatisticsTwoCol'
 import Subnav from './components/Subnav'
 import TextWithLogo from './components/TextWithLogo'
@@ -33,8 +32,8 @@ const tempHeroContent = {
       }
     }
   },
-  "titleOne": "Test Title One .",
-  "titleTwo": "Test Title Two"
+  "titleOne": "Rooted in Christ.",
+  "titleTwo": "Ready for Life."
 }
 
 const tempTextWithLogoContent = {
@@ -49,7 +48,7 @@ const ctaWithCardContent = {
   OR Dallas is also accredited through National Lutheran School Accreditation (NLSA), reflecting our commitment to educational quality and continuous improvement.`,
   ctaText: "Meet Our Pastors",
   ctaLink: "#",
-  bgImage: "/bg-pattern.png",
+  bgImage: "/beyond-classroom/section-bg.png",
   image: "/church.png",
   altText: "Church",
   cta: {
@@ -64,8 +63,6 @@ export default async function Page() {
 
   return (
     <>
-      {/* @ts-ignore */}
-      <Navigation block={tempNavigationContent} />
       {/* @ts-ignore */}
       <HeroBanner block={tempHeroContent} />
       <Subnav />

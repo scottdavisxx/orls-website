@@ -13,7 +13,9 @@ import { sanityFetch, SanityLive } from '@/sanity/lib/live'
 import { settingsQuery } from '@/sanity/lib/queries'
 import { resolveOpenGraphImage } from '@/sanity/lib/utils'
 import { handleError } from '@/app/client-utils'
-import Footer from './components/Footer';
+import Footer from './components/Footer'
+import DevRouteNav from './components/DevRouteNav'
+import Navigation from './components/Navigation'
 
 /**
  * Generate metadata for the page.
@@ -75,6 +77,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en">
       <body className={albertSans.variable}  >
         <section className="min-h-screen">
+          {/* <DevRouteNav /> */}
           {/* The <Toaster> component is responsible for rendering toast notifications used in /app/client-utils.ts and /app/components/DraftModeToast.tsx */}
           <Toaster />
           {isDraftMode && (
@@ -86,8 +89,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           )}
           {/* The <SanityLive> component is responsible for making all sanityFetch calls in your application live, so should always be rendered. */}
           <SanityLive onError={handleError} />
-          <main className="">{children}</main>
-          <Footer />
+          <main className="">
+            <Navigation />
+            {children}
+            <Footer />
+          </main>
         </section>
         {/* <SpeedInsights /> */}
       </body>

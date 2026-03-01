@@ -3,9 +3,11 @@ import Link from "next/link"
 
 export default function Footer() {
   return (
-    <footer className="flex items-center justify-between gap-6 bg-dark-blue text-white py-4 px-24">
+    <footer className="flex flex-col items-center justify-between gap-6 bg-dark-blue text-white py-4 px-6 pb-10
+    md:flex-row md:px-24 md:mb-0 md:pb-0">
       <Image src="/logo-2.png" alt="Logo" width={424} height={239} />
-      <div className="flex justify-between gap-8 w-8/12 ">
+      <div className="flex flex-col justify-between gap-8
+       md:flex-row md:w-8/12">
         <div>
           <h3 className="text-2xl font-bold">Contact Us</h3>
           <p>Phone: <a href="tel:217-368-1465">217-368-1465</a></p>
