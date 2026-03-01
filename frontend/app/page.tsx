@@ -33,8 +33,8 @@ const tempHeroContent = {
       }
     }
   },
-  "titleOne": "Test Title One .",
-  "titleTwo": "Test Title Two"
+  "titleOne": "Rooted in Christ.",
+  "titleTwo": "Ready for Life."
 }
 
 const tempTextWithLogoContent = {
