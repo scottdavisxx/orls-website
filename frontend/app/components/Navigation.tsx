@@ -62,7 +62,7 @@ export default function Navigation() {
     >
       <div className={`flex flex-col justify-between w-full items-start
       md:flex-row md:container md:items-center md:gap-0 ${isOpen ? "gap-6" : ""}`}>
-        <Link href="/">
+        <Link href="/" onClick={() => setIsOpen(false)}>
           <OrlsLogo
             color={LogoColor.light}
             className="w-9/12 md:w-auto"
@@ -76,6 +76,7 @@ export default function Navigation() {
               key={item.href}
               href={item.href}
               className={`${item.href === "/" ? "md:hidden" : ""} hover:text-white`}
+              onClick={() => setIsOpen(false)}
             >
               {item.label}
             </Link>
