@@ -6,6 +6,7 @@ import ImageWithText from "@/app/components/ImageWithText";
 import TwoColBulletsWithCTAs from "@/app/components/TwoColBulletsWithCTAs";
 import ThreeColCardsTall from "@/app/components/ThreeColCardsTall";
 import ThreeColToggle from "@/app/components/ThreeColToggle";
+import CardGrid from "@/app/components/CardGrid";
 
 const tempNavigationContent = {
   "_key": "9cb3816cfaf4",
@@ -131,8 +132,68 @@ const threeColToggleBlock = {
     ]
 }
 
-
-
+const cardGridProps = {
+  heading: "Courses and Pathways",
+  cards: [
+    {
+      title: 'Math',
+      description: 'On-level and honors options in grades 6 through 8. Grade 8 honors includes Algebra I.',
+      image: '/early_education.png',
+      altText: 'Students working on math',
+      href: '/academics/math',
+    },
+    {
+      title: 'English Language Arts',
+      description: 'On-level and honors options focused on reading, writing, and discussion.',
+      image: '/early_education.png',
+      altText: 'Teacher working with students',
+      href: '/academics/english',
+    },
+    {
+      title: 'Science',
+      description: 'Discovery-focused science supported by hands-on learning and SMART Lab integration.',
+      image: '/early_education.png',
+      altText: 'Student doing science experiment',
+      href: '/academics/science',
+    },
+    {
+      title: 'Social Studies',
+      description: 'World history, Texas history, and U.S. history aligned with TEKS.',
+      image: '/early_education.png',
+      altText: 'Students in social studies class',
+      href: '/academics/social-studies',
+    },
+    {
+      title: 'World Languages',
+      description: 'Spanish and Latin offered, with additional options evaluated.',
+      image: '/early_education.png',
+      altText: 'Language learning classroom',
+      href: '/academics/languages',
+      fullWidth: true,
+    },
+    {
+      title: 'Fine Arts',
+      description: 'Choir, band, theater, and visual art with performances and showcases.',
+      image: '/early_education.png',
+      altText: 'Students in fine arts class',
+      href: '/academics/fine-arts',
+    },
+    {
+      title: 'Health Education',
+      description: 'PE and athletics, plus health options in grades 7 and 8.',
+      image: '/early_education.png',
+      altText: 'Students in PE class',
+      href: '/academics/health',
+    },
+    {
+      title: 'Religion',
+      description: 'Theology rooted in biblical truth, designed for each grade’s spiritual development.',
+      image: '/early_education.png',
+      altText: 'Religion class',
+      href: '/academics/religion',
+    },
+  ]
+}
 
 export default function AcademicsPage() {
   return (
@@ -148,6 +209,7 @@ export default function AcademicsPage() {
       <TwoColBulletsWithCTAs {...twoColBulletsWithCTAsProps} />
       {/* @ts-ignore */}
       <ThreeColCardsTall />
+      <CardGrid {...cardGridProps} />
     </>
   )
 }
