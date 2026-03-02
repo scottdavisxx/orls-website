@@ -49,7 +49,7 @@ export default function CtaWithCard({ title, blurb, cta, image, altText, bgImage
           md:text-7xl">{title}</h2>
             <p className="text-lg whitespace-pre-line">{blurb}</p>
             {cta && (
-              <Cta {...cta} />
+              <Cta className="md:mb-6 md:mt-4" {...cta} />
             )}
           </div>
         </div>

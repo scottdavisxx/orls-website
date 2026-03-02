@@ -1,6 +1,6 @@
-import CtaCardWithImage from './components/CtaCardWithImage'
+// import CtaCardWithImage from './components/CtaCardWithImage'
 import CtaWithCard from './components/CtaWithCard'
-import FeaturedEvents from './components/FeaturedEvents'
+// import FeaturedEvents from './components/FeaturedEvents'
 import HeroBanner from './components/HeroBanner'
 import StatisticsTwoCol from './components/StatisticsTwoCol'
 import Subnav from './components/Subnav'

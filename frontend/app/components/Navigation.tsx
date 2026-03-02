@@ -68,7 +68,7 @@ export default function Navigation() {
             className="w-9/12 xl:w-auto"
           />
         </Link>
-        <div className={`flex flex-col justify-between gap-8 text-center
+        <div className={`flex flex-col justify-between gap-10 text-center
         lg:flex-row lg:items-center lg:pl-0
         ${isOpen ? "h-full" : "h-0 overflow-hidden hidden lg:flex lg:h-auto lg:overflow-visible"}`}>
           {navigationItems.map((item) => (
