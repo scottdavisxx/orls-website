@@ -18,7 +18,7 @@ export default function CtaWithCard({ title, blurb, cta, image, altText, bgImage
     md:py-16">
       <div className="container flex items-center justify-center py-8 px-2 relative">
         {/* Card */}
-        <div className="border-2 border-dark-blue rounded-4xl absolute left-0 bg-white z-10 hidden md:block">
+        <div className="border-2 border-dark-blue rounded-4xl absolute left-8 bg-white z-10 hidden md:block">
           <Image
             src={image}
             alt={altText}
@@ -49,7 +49,7 @@ export default function CtaWithCard({ title, blurb, cta, image, altText, bgImage
           md:text-7xl">{title}</h2>
             <p className="text-lg whitespace-pre-line">{blurb}</p>
             {cta && (
-              <Cta {...cta} />
+              <Cta className="md:mb-6 md:mt-4" {...cta} />
             )}
           </div>
         </div>

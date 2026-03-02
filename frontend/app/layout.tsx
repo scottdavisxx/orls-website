@@ -76,7 +76,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className={albertSans.variable}  >
-        <section className="min-h-screen">
+        <section className="min-h-screen relative">
           {/* <DevRouteNav /> */}
           {/* The <Toaster> component is responsible for rendering toast notifications used in /app/client-utils.ts and /app/components/DraftModeToast.tsx */}
           <Toaster />
@@ -89,11 +89,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           )}
           {/* The <SanityLive> component is responsible for making all sanityFetch calls in your application live, so should always be rendered. */}
           <SanityLive onError={handleError} />
-          <main className="">
-            <Navigation />
-            {children}
-            <Footer />
-          </main>
+          <Navigation />
+          <main className="">{children}</main>
+          <Footer />
         </section>
         {/* <SpeedInsights /> */}
       </body>

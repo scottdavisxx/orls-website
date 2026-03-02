@@ -1,18 +1,14 @@
-import CtaCardWithImage from './components/CtaCardWithImage'
+// import CtaCardWithImage from './components/CtaCardWithImage'
 import CtaWithCard from './components/CtaWithCard'
-import FeaturedEvents from './components/FeaturedEvents'
+// import FeaturedEvents from './components/FeaturedEvents'
 import HeroBanner from './components/HeroBanner'
 import StatisticsTwoCol from './components/StatisticsTwoCol'
 import Subnav from './components/Subnav'
 import TextWithLogo from './components/TextWithLogo'
 import ThreeColCards from './components/ThreeColCards'
 import ThreeColCircleImage from './components/ThreeColCircleImage'
-
-const tempNavigationContent = {
-  "_key": "9cb3816cfaf4",
-  "_type": "navigation",
-  "color": "white"
-}
+import ThreeColToggle from './components/ThreeColToggle'
+import TitleAndSubtitle from './components/TitleAndSubtitle'
 
 const tempHeroContent = {
   "_key": "48df50bb7cf9",
@@ -34,6 +30,49 @@ const tempHeroContent = {
   },
   "titleOne": "Rooted in Christ.",
   "titleTwo": "Ready for Life."
+}
+
+const threeColToggleBlock = {
+  _key: "threeColToggle",
+  _type: "threeColToggle",
+  cards: [
+    {
+      title: "Academic Excellence",
+      description: "Degreed, certified teachers deliver rigorous, individualized instruction so every student is known, challenged, and supported to grow.",
+      imageAndAltText: {
+        image: {
+          asset: {
+            _ref: "academic.png"
+          }
+        },
+        altText: "Academic Excellence"
+      }
+    },
+    {
+      title: "Faith Formation",
+      description: "Students grow in their understanding of God's love and are encouraged to live out their faith with confidence and integrity.",
+      imageAndAltText: {
+        image: {
+          asset: {
+            _ref: "faith.png"
+          }
+        },
+        altText: "Faith Formation"
+      }
+    },
+    {
+      title: "Purpose & Belonging",
+      description: "Through our house system and community culture, students build meaningful relationships and discover their unique purpose.",
+      imageAndAltText: {
+        image: {
+          asset: {
+            _ref: "purpose.png"
+          }
+        },
+        altText: "Purpose & Belonging"
+      }
+    }
+  ]
 }
 
 const tempTextWithLogoContent = {
@@ -58,20 +97,21 @@ const ctaWithCardContent = {
   }
 }
 
-
 export default async function Page() {
 
   return (
-    <>
+    <div className="relative overflow-hidden">
       {/* @ts-ignore */}
       <HeroBanner block={tempHeroContent} />
       <Subnav />
       <TextWithLogo {...tempTextWithLogoContent} />
       <ThreeColCards />
       <StatisticsTwoCol />
-      <FeaturedEvents />
+      <TitleAndSubtitle />
+      {/* <FeaturedEvents /> */}
+      <ThreeColToggle block={threeColToggleBlock} />
       <CtaWithCard {...ctaWithCardContent} />
       <ThreeColCircleImage />
-    </>
+    </div>
   )
 }

@@ -8,7 +8,7 @@ export default function Leadership() {
           <h2 className="text-4xl font-bold text-white
         md:text-6xl">OR Dallas Leadership Team</h2>
           {/* People container */}
-          <div className="flex flex-col gap-8 items-center justify-between px-8 text-2xl font-bold
+          <div className="flex flex-col gap-8 items-center justify-between text-2xl font-bold
         md:flex-row">
             <div className="flex flex-col gap-2">
               <Image src="/tobaben-2.jpg" alt="Person" width={266} height={333} className="rounded-full" />

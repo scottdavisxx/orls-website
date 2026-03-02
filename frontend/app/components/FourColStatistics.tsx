@@ -2,8 +2,8 @@ export default function FourColStatistics() {
   return (
     <div className="bg-dark-blue">
       <div className="text-white container">
-        <div className="flex flex-col justify-between bg-dark-blue px-6 py-8 items-center
-      md:flex-row md:px-16 md:py-20">
+        <div className="flex flex-col justify-between bg-dark-blue py-8 items-center
+      md:flex-row md:py-20">
           <div className="flex flex-col justify-between text-center
         md:w-8/12 md:flex-row">
             <div className="flex flex-col gap-1 py-4 px-3 border-white

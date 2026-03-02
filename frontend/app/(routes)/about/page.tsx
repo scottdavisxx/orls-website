@@ -55,6 +55,21 @@ const ctaWithMediaCardContent = {
   altText: "About Card",
 }
 
+const ctaWithCardContentTwo = {
+  title: "What We Believe",
+  blurb: `Our school is a ministry of Our Redeemer Lutheran Church in Dallas, a proud member of the Lutheran Church Missouri Synod (LCMS). Our faith is grounded in the same Bible-based teachings that shaped the Reformation and continue to guide Lutheran believers today.
+
+  We hold to three core truths: Grace Alone, Faith Alone, and Scripture Alone. These principles shape our classrooms, our community, and the way we nurture each child’s spiritual growth.`,
+  bgImage: "/beyond-classroom/section-bg.png",
+  image: "/church.png",
+  altText: "Church",
+  cta: {
+    buttonText: "Learn About Lutheran Education",
+    href: "#",
+    dark: true,
+  }
+}
+
 export default function AboutPage() {
   return (
     <>
@@ -69,6 +84,7 @@ export default function AboutPage() {
       <ThreeColCtas />
       <CtaWithMediaCard {...ctaWithMediaCardContent} />
       <Leadership />
+      <CtaWithCard {...ctaWithCardContentTwo} />
     </>
   )
 }
