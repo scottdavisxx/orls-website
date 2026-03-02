@@ -8,6 +8,7 @@ import TextWithLogo from './components/TextWithLogo'
 import ThreeColCards from './components/ThreeColCards'
 import ThreeColCircleImage from './components/ThreeColCircleImage'
 import ThreeColToggle from './components/ThreeColToggle'
+import TitleAndSubtitle from './components/TitleAndSubtitle'
 
 const tempHeroContent = {
   "_key": "48df50bb7cf9",
@@ -106,6 +107,7 @@ export default async function Page() {
       <TextWithLogo {...tempTextWithLogoContent} />
       <ThreeColCards />
       <StatisticsTwoCol />
+      <TitleAndSubtitle />
       {/* <FeaturedEvents /> */}
       <ThreeColToggle block={threeColToggleBlock} />
       <CtaWithCard {...ctaWithCardContent} />
