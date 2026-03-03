@@ -2,10 +2,7 @@ import {UserIcon} from '@sanity/icons'
 import {defineField, defineType} from 'sanity'
 import {blurb} from '../sharedFields'
 
-/**
- * Person schema.  Define and edit the fields for the 'person' content type.
- * Learn more: https://www.sanity.io/docs/studio/schema-types
- */
+// I removed the alt text field. In the UI we will just concatenate the title, first name, and last name.
 
 export const person = defineType({
   name: 'person',
@@ -25,34 +22,20 @@ export const person = defineType({
       type: 'string',
       validation: (rule) => rule.required(),
     }),
-
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
     }),
     defineField({
+      name: 'role',
+      title: 'Role',
+      type: 'string',
+    }),
+    defineField({
       name: 'picture',
       title: 'Picture',
       type: 'image',
-
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-          description: 'Important for SEO and accessibility.',
-          validation: (rule) => {
-            // Custom validation to ensure alt text is provided if the image is present. https://www.sanity.io/docs/validation
-            return rule.custom((alt, context) => {
-              if ((context.document?.picture as any)?.asset?._ref && !alt) {
-                return 'Required'
-              }
-              return true
-            })
-          },
-        }),
-      ],
       options: {
         hotspot: true,
         aiAssist: {
@@ -69,13 +52,14 @@ export const person = defineType({
   // List preview configuration. https://www.sanity.io/docs/previews-list-views
   preview: {
     select: {
-      fullName: 'fullName',
+      firstName: 'firstName',
+      lastName: 'lastName',
       title: 'title',
       picture: 'picture',
     },
     prepare(selection) {
       return {
-        title: selection.fullName,
+        title: `${selection.title ? `${selection.title} ` : ''}${selection.firstName} ${selection.lastName}`,
         subtitle: 'Person',
         media: selection.picture,
       }
