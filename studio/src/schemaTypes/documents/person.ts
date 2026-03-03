@@ -1,5 +1,6 @@
 import {UserIcon} from '@sanity/icons'
 import {defineField, defineType} from 'sanity'
+import {blurb} from '../sharedFields'
 
 /**
  * Person schema.  Define and edit the fields for the 'person' content type.
@@ -24,10 +25,17 @@ export const person = defineType({
       type: 'string',
       validation: (rule) => rule.required(),
     }),
+
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
     defineField({
       name: 'picture',
       title: 'Picture',
       type: 'image',
+
       fields: [
         defineField({
           name: 'alt',
@@ -53,17 +61,21 @@ export const person = defineType({
       },
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      ...blurb,
+      title: 'Bio',
+    }),
   ],
   // List preview configuration. https://www.sanity.io/docs/previews-list-views
   preview: {
     select: {
-      firstName: 'firstName',
-      lastName: 'lastName',
+      fullName: 'fullName',
+      title: 'title',
       picture: 'picture',
     },
     prepare(selection) {
       return {
-        title: `${selection.firstName} ${selection.lastName}`,
+        title: selection.fullName,
         subtitle: 'Person',
         media: selection.picture,
       }
