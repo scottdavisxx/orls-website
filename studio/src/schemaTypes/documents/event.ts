@@ -1,16 +1,16 @@
-import {DocumentTextIcon} from '@sanity/icons'
+import {CalendarIcon} from '@sanity/icons'
 import {format, parseISO} from 'date-fns'
 import {defineField, defineType} from 'sanity'
 
 /**
- * Post schema.  Define and edit the fields for the 'post' content type.
+ * Event schema. Define and edit the fields for the 'event' content type.
  * Learn more: https://www.sanity.io/docs/schema-types
  */
 
-export const post = defineType({
-  name: 'post',
-  title: 'Post',
-  icon: DocumentTextIcon,
+export const event = defineType({
+  name: 'event',
+  title: 'Event',
+  icon: CalendarIcon,
   type: 'document',
   fields: [
     defineField({
@@ -23,7 +23,7 @@ export const post = defineType({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      description: 'A slug is required for the post to show up in the preview',
+      description: 'A slug is required for the event to show up in the preview',
       options: {
         source: 'title',
         maxLength: 96,
