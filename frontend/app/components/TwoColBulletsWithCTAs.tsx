@@ -1,28 +1,22 @@
-import Cta, { CtaProps } from "./ui/Cta";
-import OrlsIcon from "./icons/orls-icon";
-import Image from "next/image";
+import Cta from './ui/Cta'
+import OrlsIcon from './icons/orls-icon'
+import Image from 'next/image'
+import type { ExtractPageBuilderType } from '@/sanity/lib/types'
 
-export interface BulletPoint {
-    text: string;
+type TwoColBulletsWithCTAsProps = {
+  block: ExtractPageBuilderType<'twoColBulletsWithCTAs'>
+  index: number
+  pageId: string
+  pageType: string
 }
 
-export interface TwoColBulletsWithCTAsProps {
-    title: string;
-    leftBullets: BulletPoint[];
-    rightBullets: BulletPoint[];
-    cta1?: CtaProps;
-    cta2?: CtaProps;
-    showIcon?: boolean;
-}
-
-export default function TwoColBulletsWithCTAs({
-    title,
-    leftBullets,
-    rightBullets,
-    cta1,
-    cta2,
-    showIcon = true,
-}: TwoColBulletsWithCTAsProps) {
+export default function TwoColBulletsWithCTAs({ block }: TwoColBulletsWithCTAsProps) {
+  const title = block?.title
+  const leftBullets = block?.leftBullets ?? []
+  const rightBullets = block?.rightBullets ?? []
+  const cta1 = block?.cta
+  const cta2 = block?.cta2
+  const showIcon = block?.showIcon ?? true
     return (
         <div className="bg-dark-blue text-white py-16 px-24 relative overflow-hidden">
 
@@ -37,13 +31,7 @@ export default function TwoColBulletsWithCTAs({
                         <div className="flex flex-col gap-8 max-md:pb-8">
                             {leftBullets.map((bullet, index) => (
                                 <div key={index} className="flex gap-4 items-start">
-                                    <Image
-                                        src="/whiteCross.svg"
-                                        alt=""
-                                        width={20}
-                                        height={20}
-                                        className="flex-shrink-0 mt-1 pt-2"
-                                    />
+                                    <Image src="/whiteCross.svg" alt="" width={20} height={20} className="flex-shrink-0 mt-1 pt-2" />
                                     <p className="text-2xl leading-relaxed">{bullet.text}</p>
                                 </div>
                             ))}
@@ -67,8 +55,8 @@ export default function TwoColBulletsWithCTAs({
                     </div>
 
                     <div className="flex gap-6 max-md:justify-center max-md:flex-col max-md:items-center">
-                        {cta1 && <Cta {...cta1} />}
-                        {cta2 && <Cta {...cta2} />}
+                        {cta1?.href && cta1?.buttonText && <Cta href={cta1.href} buttonText={cta1.buttonText} newTab={cta1.newTab} />}
+                        {cta2?.href && cta2?.buttonText && <Cta href={cta2.href} buttonText={cta2.buttonText} newTab={cta2.newTab} />}
                     </div>
                 </div>
 

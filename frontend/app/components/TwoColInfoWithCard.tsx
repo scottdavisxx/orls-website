@@ -1,22 +1,24 @@
-import Image from 'next/image'
+import Image from '@/app/components/SanityImage'
+import { PortableText } from 'next-sanity'
+import type { ExtractPageBuilderType } from '@/sanity/lib/types'
 
-type Props = {
-  bg?: 'white' | 'dark-blue'
-  photoSide?: 'left' | 'right'
-  heading: string
-  subtitle?: string
-  bio: string[]
-  photo: { src: string; alt: string }
+type TwoColInfoWithCardProps = {
+  block: ExtractPageBuilderType<'twoColInfoWithCard'>
+  index: number
+  pageId: string
+  pageType: string
 }
 
-export default function TwoColInfoWithCard({
-  bg = 'white',
-  photoSide = 'right',
-  heading,
-  subtitle,
-  bio,
-  photo,
-}: Props) {
+export default function TwoColInfoWithCard({ block }: TwoColInfoWithCardProps) {
+  const bg = (block?.bg === 'dark-blue' ? 'dark-blue' : 'white') as 'white' | 'dark-blue'
+  const photoSide = (block?.photoSide === 'left' ? 'left' : 'right') as 'left' | 'right'
+  const heading = block?.heading ?? ''
+  const subtitle = block?.subtitle
+  const bio = block?.bio
+  const image = block?.imageAndAltText?.image
+  const imageSrc = block?.imageSrc
+  const altText = block?.imageAndAltText?.altText || ''
+  const hasSanityImage = image?.asset?._ref
   const isDark = bg === 'dark-blue'
   const photoOnRight = photoSide === 'right'
   const borderColor = isDark ? 'border-white' : 'border-black'
@@ -35,34 +37,31 @@ export default function TwoColInfoWithCard({
           </p>
         )}
 
-        {/* Mobile photo — between subtitle and bio card, no absolute positioning */}
-        <div className={`lg:hidden mt-6 rounded-[26px] border-2 ${borderColor} overflow-hidden`}>
-          <div className="relative w-full" style={{ aspectRatio: '443 / 571' }}>
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              fill
-              className="object-cover object-top"
-            />
+        {/* Mobile photo */}
+        {(hasSanityImage || imageSrc) && (
+          <div className={`lg:hidden mt-6 rounded-[26px] border-2 ${borderColor} overflow-hidden`}>
+            <div className="relative w-full" style={{ aspectRatio: '443 / 571' }}>
+              {hasSanityImage ? (
+                <Image id={image!.asset!._ref} alt={altText} width={443} height={571} mode="cover" className="w-full h-full object-cover object-top" />
+              ) : imageSrc ? (
+                <img src={imageSrc} alt={altText} className="w-full h-full object-cover object-top" />
+              ) : null}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Row: full-width bio card + absolutely positioned photo card */}
         {/* pb-10 (40px) extends row below bio card bottom — photo card bottom anchors here */}
         <div className="relative mt-6 lg:mt-8 lg:pb-10">
 
-          {/* Bio card — full section content width */}
+          {/* Bio card */}
           <div className={`border-2 ${borderColor} rounded-[12px] p-6 lg:p-8`}>
-            {/* Text constrained away from the photo side */}
             <div className={photoOnRight ? 'lg:pr-[43%]' : 'lg:pl-[43%]'}>
-              {bio.map((paragraph, i) => (
-                <p
-                  key={i}
-                  className={`text-sm md:text-base lg:text-[20px] leading-relaxed ${isDark ? 'text-white' : 'text-black'} ${i > 0 ? 'mt-4' : ''}`}
-                >
-                  {paragraph}
-                </p>
-              ))}
+              {Array.isArray(bio) && bio.length > 0 ? (
+                <div className={`text-sm md:text-base lg:text-[20px] leading-relaxed prose max-w-none ${isDark ? 'prose-invert' : ''}`}>
+                  <PortableText value={bio} />
+                </div>
+              ) : null}
             </div>
           </div>
 
@@ -84,17 +83,18 @@ export default function TwoColInfoWithCard({
               />
             </div>
 
-            {/* Photo — fills outer wrapper, bordered and rounded */}
-            <div className="absolute inset-0 z-20 rounded-[26px] overflow-hidden">
-              <div className="relative w-full h-full">
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  className="object-cover object-top"
-                />
+            {/* Photo */}
+            {(hasSanityImage || imageSrc) && (
+              <div className="absolute inset-0 z-20 rounded-[26px] overflow-hidden">
+                <div className="relative w-full h-full">
+                  {hasSanityImage ? (
+                    <Image id={image!.asset!._ref} alt={altText} width={443} height={571} mode="cover" className="w-full h-full object-cover object-top" />
+                  ) : imageSrc ? (
+                    <img src={imageSrc} alt={altText} className="w-full h-full object-cover object-top" />
+                  ) : null}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
         </div>

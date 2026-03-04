@@ -1,9 +1,32 @@
 import React from 'react'
 import Hero from '@/app/components/HeroBanner'
 import Subnav from '@/app/components/Subnav'
+import TitleAndSubtitle from '@/app/components/TitleAndSubtitle'
+import TextWithLogo from '@/app/components/TextWithLogo'
+import ImageWithText from '@/app/components/ImageWithText'
+import TwoColInfo from '@/app/components/TwoColInfo'
+import TwoColInfoWithImage from '@/app/components/TwoColInfoWithImage'
+import TwoColInfoWithCard from '@/app/components/TwoColInfoWithCard'
+import TwoColBulletsWithCTAs from '@/app/components/TwoColBulletsWithCTAs'
+import ThreeColToggle from '@/app/components/ThreeColToggle'
+import ThreeColExpandingCards from '@/app/components/ThreeColExpandingCards'
+import ThreeColEventCards from '@/app/components/ThreeColEventCards'
+import ThreeColCtas from '@/app/components/ThreeColCtas'
+import ThreeColCircleImage from '@/app/components/ThreeColCircleImage'
+import ThreeColCards from '@/app/components/ThreeColCards'
+import ThreeColCardsTall from '@/app/components/ThreeColCardsTall'
+import StatisticsTwoCol from '@/app/components/StatisticsTwoCol'
+import FourColStatistics from '@/app/components/FourColStatistics'
+import OneColInfo from '@/app/components/OneColInfo'
+import NumberedList from '@/app/components/NumberedList'
+import Leadership from '@/app/components/Leadership'
+import IntroBlade from '@/app/components/IntroBlade'
+import CtaWithMediaCard from '@/app/components/CtaWithMediaCard'
+import CtaWithCard from '@/app/components/CtaWithCard'
+import CardGrid from '@/app/components/CardGrid'
+import Calendar from '@/app/components/Calendar'
 import { dataAttr } from '@/sanity/lib/utils'
 import { PageBuilderSection } from '@/sanity/lib/types'
-import Navigation from './Navigation'
 
 type BlockProps = {
   index: number
@@ -18,8 +41,31 @@ type BlocksType = {
 
 const Blocks = {
   heroBanner: Hero,
-  navigation: Navigation,
   subnav: Subnav,
+  titleAndSubtitle: TitleAndSubtitle,
+  textWithLogo: TextWithLogo,
+  imageWithText: ImageWithText,
+  twoColInfo: TwoColInfo,
+  twoColInfoWithImage: TwoColInfoWithImage,
+  twoColInfoWithCard: TwoColInfoWithCard,
+  twoColBulletsWithCTAs: TwoColBulletsWithCTAs,
+  threeColToggle: ThreeColToggle,
+  threeColExpandingCards: ThreeColExpandingCards,
+  threeColEventCards: ThreeColEventCards,
+  threeColCtas: ThreeColCtas,
+  threeColCircleImage: ThreeColCircleImage,
+  threeColCards: ThreeColCards,
+  threeColCardsTall: ThreeColCardsTall,
+  statisticsTwoCol: StatisticsTwoCol,
+  fourColStatistics: FourColStatistics,
+  oneColInfo: OneColInfo,
+  numberedList: NumberedList,
+  leadership: Leadership,
+  introBlade: IntroBlade,
+  ctaWithMediaCard: CtaWithMediaCard,
+  ctaWithCard: CtaWithCard,
+  cardGrid: CardGrid,
+  calendar: Calendar,
 } as BlocksType
 
 /**
@@ -39,10 +85,10 @@ export default function BlockRenderer({ block, index, pageId, pageType }: BlockP
       >
         {React.createElement(Blocks[block._type], {
           key: block._key,
-          block: block,
-          index: index,
-          pageId: pageId,
-          pageType: pageType,
+          block,
+          index,
+          pageId,
+          pageType,
         })}
       </div>
     )

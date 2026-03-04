@@ -1,0 +1,62 @@
+import {defineField, defineType} from 'sanity'
+import {title, imageAndAltText} from '../sharedFields'
+import {ComponentIcon} from '@sanity/icons'
+
+export const cardGrid = defineType({
+  name: 'cardGrid',
+  title: 'Card Grid',
+  type: 'object',
+  icon: ComponentIcon,
+  fields: [
+    defineField({
+      name: 'heading',
+      title: 'Heading',
+      type: 'string',
+    }),
+    defineField({
+      name: 'cards',
+      title: 'Cards',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Title',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'description',
+              title: 'Description',
+              type: 'string',
+            }),
+            imageAndAltText,
+            defineField({
+              name: 'href',
+              title: 'Link URL',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'fullWidth',
+              title: 'Full Width',
+              type: 'boolean',
+              initialValue: false,
+            }),
+          ],
+        },
+      ],
+    }),
+  ],
+  preview: {
+    select: {heading: 'heading'},
+    prepare({heading}) {
+      return {
+        title: 'Card Grid',
+        subtitle: heading || 'No heading set',
+      }
+    },
+  },
+})

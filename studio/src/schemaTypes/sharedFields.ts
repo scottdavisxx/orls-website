@@ -41,6 +41,7 @@ export const image = defineField({
   name: 'image',
   title: 'Image',
   type: 'image',
+  options: {hotspot: true},
 })
 
 export const altText = defineField({
@@ -120,27 +121,36 @@ export const publishDate = defineField({
   validation: (Rule) => Rule.required().error('Event date is required'),
 })
 
+const ctaFields = [
+  defineField({
+    name: 'href',
+    title: 'Link URL',
+    type: 'string',
+    validation: (Rule) => Rule.required().error('Link URL is required'),
+  }),
+  defineField({
+    name: 'buttonText',
+    title: 'Button Text',
+    type: 'string',
+    validation: (Rule) => Rule.required().error('Button Text is required'),
+  }),
+  defineField({
+    name: 'newTab',
+    title: 'Open in new Tab?',
+    type: 'boolean',
+  }),
+]
+
 export const cta = defineField({
   name: 'cta',
   title: 'CTA',
   type: 'object',
-  fields: [
-    defineField({
-      name: 'href',
-      title: 'Link URL',
-      type: 'string',
-      validation: (Rule) => Rule.required().error('Link URL is required'),
-    }),
-    defineField({
-      name: 'buttonText',
-      title: 'Button Text',
-      type: 'string',
-      validation: (Rule) => Rule.required().error('Button Text is required'),
-    }),
-    defineField({
-      name: 'newTab',
-      title: 'Open in new Tab?',
-      type: 'boolean',
-    }),
-  ],
+  fields: ctaFields,
+})
+
+export const ctaButtons = defineField({
+  name: 'ctaButtons',
+  title: 'CTA Buttons',
+  type: 'array',
+  of: [{type: 'object', fields: ctaFields}],
 })

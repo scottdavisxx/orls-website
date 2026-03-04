@@ -1,0 +1,113 @@
+import {defineField, defineType} from 'sanity'
+import {title, subtitle} from '../sharedFields'
+import {ComponentIcon} from '@sanity/icons'
+
+export const threeColExpandingCards = defineType({
+  name: 'threeColExpandingCards',
+  title: 'Three Column Expanding Cards',
+  type: 'object',
+  icon: ComponentIcon,
+  fields: [
+    defineField({
+      name: 'heading',
+      title: 'Heading',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    subtitle,
+    defineField({
+      name: 'footnote',
+      title: 'Footnote',
+      type: 'string',
+    }),
+    defineField({
+      name: 'arrowLabel',
+      title: 'Arrow Label',
+      type: 'string',
+    }),
+    defineField({
+      name: 'sectionBgImage',
+      title: 'Section Background Image',
+      type: 'image',
+      description: 'Decorative background (optional)',
+    }),
+    defineField({
+      name: 'items',
+      title: 'Cards',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'expanded',
+              title: 'Expanded State',
+              type: 'object',
+              fields: [
+                defineField({name: 'name', title: 'Name', type: 'string'}),
+                defineField({name: 'tagline', title: 'Tagline', type: 'string'}),
+                defineField({name: 'description', title: 'Description', type: 'text'}),
+                defineField({
+                  name: 'bgImage',
+                  title: 'Background Image',
+                  type: 'image',
+                }),
+                defineField({
+                  name: 'icon',
+                  title: 'Icon Image',
+                  type: 'image',
+                  description: 'Optional icon/illustration',
+                }),
+                defineField({
+                  name: 'cta',
+                  title: 'CTA',
+                  type: 'object',
+                  fields: [
+                    {name: 'label', title: 'Label', type: 'string'},
+                    {name: 'href', title: 'URL', type: 'string'},
+                  ],
+                }),
+              ],
+            }),
+            defineField({
+              name: 'collapsed',
+              title: 'Collapsed State',
+              type: 'object',
+              fields: [
+                defineField({name: 'name', title: 'Name', type: 'string'}),
+                defineField({
+                  name: 'bgImage',
+                  title: 'Background Image',
+                  type: 'image',
+                }),
+                defineField({
+                  name: 'icon',
+                  title: 'Icon Image',
+                  type: 'image',
+                }),
+                defineField({
+                  name: 'cta',
+                  title: 'CTA',
+                  type: 'object',
+                  fields: [
+                    {name: 'label', title: 'Label', type: 'string'},
+                    {name: 'href', title: 'URL', type: 'string'},
+                  ],
+                }),
+              ],
+            }),
+          ],
+        },
+      ],
+    }),
+  ],
+  preview: {
+    select: {heading: 'heading'},
+    prepare({heading}) {
+      return {
+        title: 'Three Column Expanding Cards',
+        subtitle: heading || 'No heading set',
+      }
+    },
+  },
+})

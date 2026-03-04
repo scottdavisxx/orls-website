@@ -1,24 +1,20 @@
 'use client'
 
 import { useState } from 'react'
-import Image from "next/image"
-import Cta from "./ui/Cta"
+import Image from '@/app/components/SanityImage'
+import Cta from './ui/Cta'
+import type { ExtractPageBuilderType } from '@/sanity/lib/types'
 
-interface Card {
-  title: string
-  description: string
-  image: string
-  altText: string
-  href: string
-  fullWidth?: boolean
+type CardGridProps = {
+  block: ExtractPageBuilderType<'cardGrid'>
+  index: number
+  pageId: string
+  pageType: string
 }
 
-interface CardGridProps {
-  heading?: string
-  cards: Card[]
-}
-
-export default function CardGrid({ heading = "Courses and Pathways", cards }: CardGridProps) {
+export default function CardGrid({ block }: CardGridProps) {
+  const heading = block?.heading ?? 'Courses and Pathways'
+  const cards = block?.cards ?? []
   const [activeIndex, setActiveIndex] = useState(0)
 
   const prev = () => setActiveIndex((i) => (i - 1 + cards.length) % cards.length)
@@ -34,19 +30,23 @@ export default function CardGrid({ heading = "Courses and Pathways", cards }: Ca
         )}
 
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {cards.map((card) => (
+          {cards.map((card, i) => (
             <div
-              key={card.title}
+              key={i}
               className={`relative overflow-visible rounded-3xl group min-h-[500px] w-full ${
                 card.fullWidth ? 'md:col-span-2 lg:col-span-2' : ''
               }`}
             >
-              <Image
-                src={card.image}
-                alt={card.altText}
-                fill
-                className="object-cover rounded-3xl z-10"
-              />
+              {card.imageAndAltText?.image?.asset?._ref && (
+                <Image
+                  id={card.imageAndAltText.image.asset._ref}
+                  alt={card.imageAndAltText.altText || card.title || ''}
+                  width={800}
+                  height={600}
+                  mode="cover"
+                  className="absolute inset-0 w-full h-full object-cover rounded-3xl z-10"
+                />
+              )}
 
               <div className="absolute inset-0 bg-black/44 group-hover:bg-black/64 transition-all duration-300 rounded-3xl z-20" />
 
@@ -56,12 +56,9 @@ export default function CardGrid({ heading = "Courses and Pathways", cards }: Ca
                   {card.description}
                 </p>
 
-                <Cta
-                  href={card.href}
-                  buttonText="Learn More"
-                  buttonColor="brand-white"
-                  font="small"
-                />
+                {card.href && (
+                  <Cta href={card.href} buttonText="Learn More" buttonColor="brand-white" font="small" />
+                )}
               </div>
 
               <div className="absolute top-0 left-0 w-full h-full border-2 border-black rounded-3xl group-hover:translate-x-4 group-hover:translate-y-4 transition-all duration-300" />
@@ -71,12 +68,16 @@ export default function CardGrid({ heading = "Courses and Pathways", cards }: Ca
 
         <div className="md:hidden relative">
           <div className="relative overflow-visible rounded-3xl min-h-[500px] w-full">
-            <Image
-              src={cards[activeIndex].image}
-              alt={cards[activeIndex].altText}
-              fill
-              className="object-cover rounded-3xl z-10"
-            />
+            {cards[activeIndex]?.imageAndAltText?.image?.asset?._ref && (
+              <Image
+                id={cards[activeIndex].imageAndAltText.image.asset._ref}
+                alt={cards[activeIndex].imageAndAltText.altText || cards[activeIndex].title || ''}
+                width={800}
+                height={600}
+                mode="cover"
+                className="absolute inset-0 w-full h-full object-cover rounded-3xl z-10"
+              />
+            )}
 
             <div className="absolute inset-0 bg-black/44 rounded-3xl z-20" />
 
@@ -86,12 +87,14 @@ export default function CardGrid({ heading = "Courses and Pathways", cards }: Ca
                 {cards[activeIndex].description}
               </p>
 
-              <Cta
-                href={cards[activeIndex].href}
-                buttonText="Learn More"
-                buttonColor="brand-white"
-                font="small"
-              />
+              {cards[activeIndex]?.href && (
+                <Cta
+                  href={cards[activeIndex].href}
+                  buttonText="Learn More"
+                  buttonColor="brand-white"
+                  font="small"
+                />
+              )}
 
               <div className="flex gap-3 mt-4">
                 <button

@@ -1,38 +1,20 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
+import Image from '@/app/components/SanityImage'
 
-interface Card {
-  title: string
-  description: string
-  imageAndAltText: {
-    image: {
-      asset?: {
-        _ref: string
-      }
-      crop?: {
-        top: number
-        bottom: number
-        left: number
-        right: number
-      }
-    }
-    altText: string
-  }
-}
+import type { ExtractPageBuilderType } from '@/sanity/lib/types'
 
-interface ThreeColToggleProps {
-  block: {
-    _key: string
-    _type: string
-    cards: Card[]
-  }
+type ThreeColToggleProps = {
+  block: ExtractPageBuilderType<'threeColToggle'>
+  index: number
+  pageId: string
+  pageType: string
 }
 
 export default function ThreeColToggle({ block }: ThreeColToggleProps) {
   const [activeIndex, setActiveIndex] = useState(0)
-  const { cards } = block
+  const cards = block?.cards ?? []
 
   const prev = () => setActiveIndex((i) => (i - 1 + cards.length) % cards.length)
   const next = () => setActiveIndex((i) => (i + 1) % cards.length)
@@ -66,12 +48,14 @@ export default function ThreeColToggle({ block }: ThreeColToggleProps) {
                 }`}
                 onClick={() => !isActive && setActiveIndex(index)}
               >
-              {card.imageAndAltText.image?.asset?._ref && (
+              {card.imageAndAltText?.image?.asset?._ref && (
                 <Image
-                  src={`/${card.imageAndAltText.image.asset._ref}`}
-                  alt={card.imageAndAltText.altText}
-                  fill
-                  className="object-cover"
+                  id={card.imageAndAltText.image.asset._ref}
+                  alt={card.imageAndAltText.altText || ''}
+                  width={800}
+                  height={500}
+                  mode="cover"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
               )}
               <div className={`absolute inset-0 ${
@@ -151,12 +135,14 @@ export default function ThreeColToggle({ block }: ThreeColToggleProps) {
 
       <div className="relative flex min-[769px]:hidden">
         <div className="w-full overflow-hidden bg-white border-4 border-[#242d65] rounded-[20px] flex flex-col justify-end p-6 min-h-[400px]">
-          {cards[activeIndex].imageAndAltText.image?.asset?._ref && (
+          {cards[activeIndex]?.imageAndAltText?.image?.asset?._ref && (
             <Image
-              src={`/${cards[activeIndex].imageAndAltText.image.asset._ref}`}
-              alt={cards[activeIndex].imageAndAltText.altText}
-              fill
-              className="object-cover rounded-[20px]"
+              id={cards[activeIndex].imageAndAltText.image.asset._ref}
+              alt={cards[activeIndex].imageAndAltText.altText || ''}
+              width={800}
+              height={500}
+              mode="cover"
+              className="absolute inset-0 w-full h-full object-cover rounded-[20px]"
             />
           )}
           <div className="absolute inset-0 bg-black/20 rounded-[20px] " />

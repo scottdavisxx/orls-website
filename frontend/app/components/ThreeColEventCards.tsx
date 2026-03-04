@@ -1,27 +1,53 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
+import Image from '@/app/components/SanityImage'
+import type { ExtractPageBuilderType } from '@/sanity/lib/types'
 
-export interface EventCardItem {
-  title: string
-  image: string
+type ThreeColEventCardsProps = {
+  block: ExtractPageBuilderType<'threeColEventCards'>
+  index: number
+  pageId: string
+  pageType: string
+}
+
+function SliderCard({
+  title,
+  imageAndAltText,
+  imageSrc,
+  subtitle,
+  body,
+  cta,
+}: {
+  title?: string
+  imageAndAltText?: { image?: { asset?: { _ref: string } }; altText?: string }
+  imageSrc?: string
   subtitle?: string
   body?: string
-  cta?: { label: string; href: string }
-}
-
-interface Props {
-  heading?: string
-  bgTexture?: boolean
-  cards: EventCardItem[]
-}
-
-function SliderCard({ title, image, subtitle, body, cta }: EventCardItem) {
+  cta?: { label?: string; href?: string }
+}) {
+  const image = imageAndAltText?.image
+  const hasSanityImage = image?.asset?._ref
   return (
     <div className="relative overflow-hidden rounded-xl" style={{ height: '274px' }}>
       <div className="absolute inset-0 border-2 border-dark-blue rounded-xl overflow-hidden">
-        <Image src={image} alt={title} fill className="object-cover" />
+        {hasSanityImage && (
+          <Image
+            id={image!.asset!._ref}
+            alt={imageAndAltText?.altText || title || ''}
+            width={400}
+            height={274}
+            mode="cover"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
+        {!hasSanityImage && imageSrc && (
+          <img
+            src={imageSrc}
+            alt={imageAndAltText?.altText || title || ''}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
       </div>
 
       <div className="absolute right-0 top-0 h-full w-[47%] bg-white border-2 border-dark-blue rounded-xl z-10 flex flex-col overflow-hidden px-6 pt-15 pb-7.5">
@@ -49,7 +75,10 @@ function SliderCard({ title, image, subtitle, body, cta }: EventCardItem) {
   )
 }
 
-export default function ThreeColEventCards({ heading, bgTexture = false, cards }: Props) {
+export default function ThreeColEventCards({ block }: ThreeColEventCardsProps) {
+  const heading = block?.heading
+  const bgTexture = block?.bgTexture ?? false
+  const cards = block?.cards ?? []
   const trackRef = useRef<HTMLDivElement>(null)
   const [canPrev, setCanPrev] = useState(false)
   const [canNext, setCanNext] = useState(false)
@@ -126,7 +155,14 @@ export default function ThreeColEventCards({ heading, bgTexture = false, cards }
         <div ref={trackRef} className={trackClasses}>
           {cards.map((card, i) => (
             <div key={i} className="flex-none w-full md:w-[calc((100%-28px)/2)] lg:w-[calc((100%-56px)/3)]">
-              <SliderCard {...card} />
+              <SliderCard
+                title={card.title}
+                imageAndAltText={card.imageAndAltText}
+                imageSrc={card.imageSrc}
+                subtitle={card.subtitle}
+                body={card.body}
+                cta={card.cta}
+              />
             </div>
           ))}
         </div>
