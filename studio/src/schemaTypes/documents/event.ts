@@ -1,6 +1,7 @@
 import {CalendarIcon} from '@sanity/icons'
 import {format, parseISO} from 'date-fns'
 import {defineField, defineType} from 'sanity'
+import {dateText, time, place} from '../sharedFields'
 
 /**
  * Event schema. Define and edit the fields for the 'event' content type.
@@ -15,7 +16,7 @@ export const event = defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Event Title',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
@@ -23,7 +24,7 @@ export const event = defineType({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      description: 'A slug is required for the event to show up in the preview',
+      description: 'This will be the URL for the event. /events/[slug]',
       options: {
         source: 'title',
         maxLength: 96,
@@ -32,14 +33,33 @@ export const event = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'content',
-      title: 'Content',
+      name: 'eventType',
+      title: 'Event Type',
+      description: 'Not sure if we need this or not. If so let me know the event types.',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Athletic Event', value: 'athleticEvent'},
+          {title: 'Academic Event', value: 'academicEvent'},
+          {title: 'Other Event', value: 'otherEvent'},
+        ],
+      },
+    }),
+    dateText,
+    time,
+    place,
+    defineField({
+      name: 'description',
+      title: 'Description',
       type: 'blockContent',
     }),
     defineField({
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'text',
+      name: 'featured',
+      title: 'Featured',
+      type: 'boolean',
+      initialValue: false,
+      description:
+        'If the event is featured, it will be displayed in first in the event carousels.',
     }),
     defineField({
       name: 'coverImage',
@@ -69,18 +89,18 @@ export const event = defineType({
         },
       ],
     }),
-    defineField({
-      name: 'date',
-      title: 'Date',
-      type: 'datetime',
-      initialValue: () => new Date().toISOString(),
-    }),
-    defineField({
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: [{type: 'person'}],
-    }),
+    // defineField({
+    //   name: 'date',
+    //   title: 'Date',
+    //   type: 'datetime',
+    //   initialValue: () => new Date().toISOString(),
+    // }),
+    // defineField({
+    //   name: 'author',
+    //   title: 'Author',
+    //   type: 'reference',
+    //   to: [{type: 'person'}],
+    // }),
   ],
   // List preview configuration. https://www.sanity.io/docs/previews-list-views
   preview: {
