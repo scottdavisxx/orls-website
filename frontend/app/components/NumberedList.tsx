@@ -1,18 +1,17 @@
-import { ReactNode } from 'react'
 import Image from 'next/image'
+import { PortableText } from 'next-sanity'
+import type { ExtractPageBuilderType } from '@/sanity/lib/types'
 
-interface ListItem {
-  number?: number
-  heading: string
-  body: ReactNode
+type NumberedListProps = {
+  block: ExtractPageBuilderType<'numberedList'>
+  index: number
+  pageId: string
+  pageType: string
 }
 
-interface NumberedListProps {
-  title: string
-  items: ListItem[]
-}
-
-export default function NumberedList({ title, items }: NumberedListProps) {
+export default function NumberedList({ block }: NumberedListProps) {
+  const title = block?.title
+  const items = block?.items ?? []
   return (
     <section className="bg-white relative overflow-hidden px-6 py-12 md:px-16 md:py-16 lg:px-[94px] lg:py-[60px]">
       <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-24">
@@ -49,8 +48,8 @@ export default function NumberedList({ title, items }: NumberedListProps) {
                     <p className="font-bold text-lg md:text-2xl lg:text-[35px] text-black">
                       {item.heading}
                     </p>
-                    <div className="mt-2 text-base md:text-xl lg:text-[32px] text-black leading-snug">
-                      {item.body}
+                    <div className="mt-2 text-base md:text-xl lg:text-[32px] text-black leading-snug prose max-w-none">
+                      {Array.isArray(item.body) ? <PortableText value={item.body} /> : item.body}
                     </div>
                   </div>
                 </div>

@@ -1,38 +1,46 @@
-import Image from "next/image"
+import Image from '@/app/components/SanityImage'
+import { PortableText } from 'next-sanity'
+import type { ExtractPageBuilderType } from '@/sanity/lib/types'
 
-export interface ImageWithTextProps {
-  imageSrc: string;
-  imageAlt: string;
-  title: string;
-  blurb: string;
-  letterWatermark?: string;
+type ImageWithTextProps = {
+  block: ExtractPageBuilderType<'imageWithText'>
+  index: number
+  pageId: string
+  pageType: string
 }
 
-export default function ImageWithText({
-  imageSrc,
-  imageAlt,
-  title,
-  blurb,
-}: ImageWithTextProps) {
+export default function ImageWithText({ block }: ImageWithTextProps) {
+  const image = block?.imageAndAltText?.image
+  const altText = block?.imageAndAltText?.altText || ''
+  const title = block?.title
+  const blurb = block?.blurb
+  const imageSrc = (block as {imageSrc?: string})?.imageSrc
 
-
-    console.log(imageSrc)
   return (
     <div className="flex flex-col items-center px-6 py-12 max-w-7xl mx-auto">
-
       <div className="flex w-full mb-12 justify-center">
+        {image?.asset?._ref ? (
           <Image
-            src={imageSrc}
-            alt={imageAlt}
+            id={image.asset._ref}
+            alt={altText}
             width={1100}
             height={556}
+            className="w-full"
           />
+        ) : imageSrc ? (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img src={imageSrc} alt={altText} width={1100} height={556} className="w-full" />
+        ) : null}
       </div>
-
-
       <div className="text-center max-w-5xl">
         <h2 className="text-[4.375rem] font-bold mb-6">{title}</h2>
-        <p className="text-[1.25rem]">{blurb}</p>
+        {Array.isArray(blurb) ? (
+          <div className="text-[1.25rem] prose prose-lg max-w-none">
+            <PortableText value={blurb} />
+          </div>
+        ) : (
+          <p className="text-[1.25rem]">{blurb}</p>
+        )}
       </div>
     </div>
   )

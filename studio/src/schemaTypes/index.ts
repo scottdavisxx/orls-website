@@ -7,28 +7,67 @@ import {link} from './objects/link'
 import {blockContent} from './objects/blockContent'
 import button from './objects/button'
 import {blockContentTextOnly} from './objects/blockContentTextOnly'
-// Added by Scott, everything above is from the template
 import {heroBanner} from './objects/heroBanner'
-import {navigation} from './objects/navigation'
 import {subnav} from './objects/subnav'
-
-// Export an array of all the schema types.  This is used in the Sanity Studio configuration. https://www.sanity.io/docs/studio/schema-types
+import {titleAndSubtitle} from './objects/titleAndSubtitle'
+import {textWithLogo} from './objects/textWithLogo'
+import {imageWithText} from './objects/imageWithText'
+import {twoColInfo} from './objects/twoColInfo'
+import {twoColInfoWithImage} from './objects/twoColInfoWithImage'
+import {twoColInfoWithCard} from './objects/twoColInfoWithCard'
+import {twoColBulletsWithCTAs} from './objects/twoColBulletsWithCTAs'
+import {threeColToggle} from './objects/threeColToggle'
+import {threeColExpandingCards} from './objects/threeColExpandingCards'
+import {threeColEventCards} from './objects/threeColEventCards'
+import {threeColCtas} from './objects/threeColCtas'
+import {threeColCircleImage} from './objects/threeColCircleImage'
+import {threeColCards} from './objects/threeColCards'
+import {threeColCardsTall} from './objects/threeColCardsTall'
+import {statisticsTwoCol} from './objects/statisticsTwoCol'
+import {fourColStatistics} from './objects/fourColStatistics'
+import {oneColInfo} from './objects/oneColInfo'
+import {numberedList} from './objects/numberedList'
+import {leadership} from './objects/leadership'
+import {introBlade} from './objects/introBlade'
+import {ctaWithMediaCard} from './objects/ctaWithMediaCard'
+import {ctaWithCard} from './objects/ctaWithCard'
+import {cardGrid} from './objects/cardGrid'
+import {calendar} from './objects/calendar'
 
 export const schemaTypes = [
-  // Singletons
   settings,
-  // Documents
   page,
   event,
   person,
-  // Objects
   button,
   blockContent,
   blockContentTextOnly,
   infoSection,
   heroBanner,
   link,
-  // Added by Scott
-  navigation,
   subnav,
+  titleAndSubtitle,
+  textWithLogo,
+  imageWithText,
+  twoColInfo,
+  twoColInfoWithImage,
+  twoColInfoWithCard,
+  twoColBulletsWithCTAs,
+  threeColToggle,
+  threeColExpandingCards,
+  threeColEventCards,
+  threeColCtas,
+  threeColCircleImage,
+  threeColCards,
+  threeColCardsTall,
+  statisticsTwoCol,
+  fourColStatistics,
+  oneColInfo,
+  numberedList,
+  leadership,
+  introBlade,
+  ctaWithMediaCard,
+  ctaWithCard,
+  cardGrid,
+  calendar,
 ]

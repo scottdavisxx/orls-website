@@ -18,8 +18,8 @@ interface ExpandedCard {
 
 interface CollapsedCard {
   name?: string
-  bgImage?: string
-  icon?: string
+  bgImage?: string | {asset?: {_ref: string}}
+  icon?: string | {asset?: {_ref: string}}
   cta?: Cta
 }
 
@@ -29,32 +29,38 @@ export interface CardItem {
   collapsed: CollapsedCard
 }
 
-interface Props {
-  heading: string
-  subtitle?: string
-  footnote?: string
-  arrowLabel?: string
-  sectionBgImage?: string
-  items: CardItem[]
+import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
+import { getImageUrl } from '@/sanity/lib/utils'
+
+type ThreeColExpandingCardsProps = {
+  block: ExtractPageBuilderType<'threeColExpandingCards'>
+  index: number
+  pageId: string
+  pageType: string
 }
 
 // group-hover classes work here because the outer card wrapper (in the parent) carries the `group` class.
 function CollapsedCardInner({ card }: { card: CollapsedCard }) {
-  const hasBg = !!card.bgImage
+  const bgUrl = getImageUrl(card.bgImage as SanityImageSource | string | undefined)
+  const iconUrl = getImageUrl(card.icon as SanityImageSource | string | undefined)
+  const hasBg = !!bgUrl
   const textColor = hasBg ? 'text-white' : 'text-dark-blue'
 
   return (
     <div className={`absolute inset-0 rounded-2xl overflow-hidden isolate border-2 border-dark-blue ${!hasBg ? 'bg-white' : ''}`}>
       {hasBg && (
         <>
-          <img src={card.bgImage} alt={card.name ?? ''} className="absolute inset-0 w-full h-full object-cover z-10" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={bgUrl} alt={card.name ?? ''} className="absolute inset-0 w-full h-full object-cover z-10" />
           <div className="absolute inset-0 bg-black/45 group-hover:bg-black/65 transition-all duration-300 z-20" />
         </>
       )}
 
-      {card.icon && (
+      {iconUrl && (
         <div className="absolute inset-0 z-30 flex items-center justify-center pb-14">
-          <img src={card.icon} alt="" className="w-[65%] max-h-[200px] object-contain" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={iconUrl} alt="" className="w-[65%] max-h-[200px] object-contain" />
         </div>
       )}
 
@@ -75,14 +81,13 @@ function CollapsedCardInner({ card }: { card: CollapsedCard }) {
   )
 }
 
-export default function ThreeColExpandingCards({
-  heading,
-  subtitle,
-  footnote,
-  arrowLabel,
-  sectionBgImage,
-  items,
-}: Props) {
+export default function ThreeColExpandingCards({ block }: ThreeColExpandingCardsProps) {
+  const heading = block?.heading ?? ''
+  const subtitle = block?.subtitle
+  const footnote = block?.footnote
+  const arrowLabel = block?.arrowLabel
+  const sectionBgImage = block?.sectionBgImage
+  const items = block?.items ?? []
   const [activeIndex, setActiveIndex] = useState(0)
 
   const prev = () => setActiveIndex((i) => (i - 1 + items.length) % items.length)
@@ -92,10 +97,12 @@ export default function ThreeColExpandingCards({
   const collapsed1 = items[(activeIndex + 1) % items.length]
   const collapsed2 = items[(activeIndex + 2) % items.length]
 
-  const exp = active.expanded
-  const hasBg = !!exp.bgImage
-  const hasIcon = !!exp.icon
-  const hasText = !!(exp.name || exp.tagline || exp.description || exp.cta)
+  const exp = active?.expanded
+  const expBgUrl = getImageUrl(exp?.bgImage as SanityImageSource | string | undefined)
+  const expIconUrl = getImageUrl(exp?.icon as SanityImageSource | string | undefined)
+  const hasBg = !!expBgUrl
+  const hasIcon = !!expIconUrl
+  const hasText = !!(exp?.name || exp?.tagline || exp?.description || exp?.cta)
   const textColor = hasBg ? 'text-white' : 'text-black'
   const accentColor = hasBg ? 'text-white/80' : 'text-medium-blue'
   const ctaStyle = hasBg ? 'bg-white text-dark-blue' : 'bg-dark-blue text-white'
@@ -103,17 +110,18 @@ export default function ThreeColExpandingCards({
   return (
     <section className="relative overflow-hidden bg-white py-12 md:py-16 lg:py-9">
       <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-24">
-        {sectionBgImage && (
+        {sectionBgImage ? (
           <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               alt=""
               aria-hidden="true"
-              src={sectionBgImage}
+              src={getImageUrl(sectionBgImage as SanityImageSource | string | undefined)}
               className="absolute h-full max-w-none top-0 object-cover"
               style={{ left: '-4.83%', width: '109.8%' }}
             />
           </div>
-        )}
+        ) : null}
 
         <h2 className="relative font-bold text-4xl md:text-5xl lg:text-7xl text-black">{heading}</h2>
         {subtitle && (
@@ -128,7 +136,8 @@ export default function ThreeColExpandingCards({
             <div className={`absolute inset-0 rounded-2xl overflow-hidden isolate border-2 border-dark-blue ${!hasBg ? 'bg-white' : ''}`}>
               {hasBg && (
                 <>
-                  <img src={exp.bgImage} alt={exp.name ?? ''} className="absolute inset-0 w-full h-full object-cover z-10" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={expBgUrl} alt={exp?.name ?? ''} className="absolute inset-0 w-full h-full object-cover z-10" />
                   <div className="absolute inset-0 bg-black/45 group-hover:bg-black/65 transition-all duration-300 z-20" />
                 </>
               )}
@@ -136,16 +145,16 @@ export default function ThreeColExpandingCards({
               {hasText && (
                 <div className={`absolute inset-0 z-30 flex flex-col p-8 ${hasBg ? 'justify-end' : 'justify-start'}`}>
                   <div className={hasIcon ? 'max-w-[55%]' : ''}>
-                    {exp.name && (
+                    {exp?.name && (
                       <p className={`font-bold text-xl lg:text-3xl ${textColor}`}>{exp.name}</p>
                     )}
-                    {exp.tagline && (
+                    {exp?.tagline && (
                       <p className={`font-medium italic text-base lg:text-2xl mt-1 ${accentColor}`}>{exp.tagline}</p>
                     )}
-                    {exp.description && (
+                    {exp?.description && (
                       <p className={`text-sm lg:text-2xl mt-4 leading-snug ${textColor}`}>{exp.description}</p>
                     )}
-                    {exp.cta && (
+                    {exp?.cta?.href && (
                       <a href={exp.cta.href} className={`inline-block mt-5 px-6 py-2.5 rounded-md font-semibold text-sm lg:text-base ${ctaStyle}`}>
                         {exp.cta.label}
                       </a>
@@ -155,12 +164,15 @@ export default function ThreeColExpandingCards({
               )}
 
               {/* Icon — always shown at z-40 (above overlay + text) when present */}
-              {hasIcon && (
-                <img
-                  src={exp.icon}
-                  alt={exp.name ?? ''}
+              {hasIcon && expIconUrl && (
+                <>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                  src={expIconUrl}
+                  alt={exp?.name ?? ''}
                   className="absolute right-4 top-1/2 -translate-y-1/2 w-[200px] lg:w-[240px] h-[280px] lg:h-[318px] object-contain z-40"
                 />
+                </>
               )}
             </div>
 
@@ -174,7 +186,7 @@ export default function ThreeColExpandingCards({
             className="relative h-full overflow-visible group cursor-pointer isolate"
             onClick={() => setActiveIndex((activeIndex + 1) % items.length)}
           >
-            <CollapsedCardInner card={collapsed1.collapsed} />
+            {collapsed1?.collapsed && <CollapsedCardInner card={collapsed1.collapsed as CollapsedCard} />}
             <div className="absolute top-0 left-0 w-full h-full border-2 border-dark-blue rounded-2xl group-hover:translate-x-4 group-hover:translate-y-4 transition-all duration-300 pointer-events-none -z-10" />
           </div>
 
@@ -184,7 +196,7 @@ export default function ThreeColExpandingCards({
             className="relative h-full overflow-visible group cursor-pointer isolate"
             onClick={() => setActiveIndex((activeIndex + 2) % items.length)}
           >
-            <CollapsedCardInner card={collapsed2.collapsed} />
+            {collapsed2?.collapsed && <CollapsedCardInner card={collapsed2.collapsed as CollapsedCard} />}
             <div className="absolute top-0 left-0 w-full h-full border-2 border-dark-blue rounded-2xl group-hover:translate-x-4 group-hover:translate-y-4 transition-all duration-300 pointer-events-none -z-10" />
           </div>
         </div>
@@ -210,26 +222,28 @@ export default function ThreeColExpandingCards({
             <div className={`absolute inset-0 rounded-2xl overflow-hidden isolate border-2 border-dark-blue ${!hasBg ? 'bg-white' : ''}`}>
               {hasBg && (
                 <>
-                  <img src={exp.bgImage} alt={exp.name ?? ''} className="absolute inset-0 w-full h-full object-cover z-10" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={expBgUrl} alt={exp?.name ?? ''} className="absolute inset-0 w-full h-full object-cover z-10" />
                   <div className="absolute inset-0 bg-black/45 z-20" />
                 </>
               )}
               <div className={`absolute inset-0 z-30 flex flex-col p-6 ${hasBg ? 'justify-end' : 'justify-start'}`}>
-                {exp.name && (
+                {exp?.name && (
                   <p className={`font-bold text-2xl ${textColor}`}>{exp.name}</p>
                 )}
-                {exp.tagline && (
+                {exp?.tagline && (
                   <p className={`font-medium italic text-base mt-1 ${accentColor}`}>{exp.tagline}</p>
                 )}
-                {exp.description && (
+                {exp?.description && (
                   <p className={`text-sm mt-4 leading-snug ${textColor}`}>{exp.description}</p>
                 )}
-                {!hasBg && exp.icon && (
+                {!hasBg && expIconUrl && (
                   <div className="mt-auto flex items-center justify-center">
-                    <img src={exp.icon} alt={exp.name ?? ''} className="h-[150px] object-contain" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={expIconUrl} alt={exp?.name ?? ''} className="h-[150px] object-contain" />
                   </div>
                 )}
-                {exp.cta && (
+                {exp?.cta?.href && (
                   <a href={exp.cta.href} className={`inline-block mt-4 px-6 py-2.5 rounded-md font-semibold text-sm ${ctaStyle}`}>
                     {exp.cta.label}
                   </a>

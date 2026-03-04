@@ -1,21 +1,18 @@
-import Image from 'next/image'
+import Image from '@/app/components/SanityImage'
 import OrlsIcon from '@/app/components/icons/orls-icon'
+import { PortableText } from 'next-sanity'
+import type { ExtractPageBuilderType } from '@/sanity/lib/types'
 
-interface OneColInfoProps {
-  variant: 'text' | 'image'
+type OneColInfoProps = {
+  block: ExtractPageBuilderType<'oneColInfo'>
+  index: number
+  pageId: string
+  pageType: string
 }
 
-const content = {
-  text: {
-    title: '26-27 Enrollment Commitment',
-  },
-  image: {
-    title: 'School Choice',
-  },
-}
-
-export default function OneColInfo({ variant }: OneColInfoProps) {
-  const { title } = content[variant]
+export default function OneColInfo({ block }: OneColInfoProps) {
+  const variant = (block?.variant === 'image' ? 'image' : 'text') as 'text' | 'image'
+  const title = block?.title
 
   return (
     <section className="w-full bg-white py-10 md:py-14 lg:py-16">
@@ -36,45 +33,26 @@ export default function OneColInfo({ variant }: OneColInfoProps) {
             </h2>
           </div>
 
-          {/* Body content */}
-          {variant === 'text' && (
-            <div className="flex flex-col items-center gap-4 w-full max-w-3xl">
-              <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                Because ORLS uses Continuous Enrollment Contracts, your original contract keeps your
-                child enrolled through graduation. No forms needed to hold your spot! Simply allow
-                the system to process your Comprehensive Fee payment in January. If your plans have
-                changed (moving outside the Dallas area or attending another school), please email{' '}
-                <a href="mailto:admissions@ordallas.org" className="underline">
-                  admissions@ordallas.org
-                </a>{' '}
-                as soon as possible, as many grades are expected to have waitlists.
-              </p>
-
-              <p className="font-bold text-lg md:text-2xl">Important Dates</p>
-
-              <p className="text-base md:text-lg">
-                <strong>February 27, 2026:</strong> Comprehensive Fee becomes non-refundable
-              </p>
-              <p className="text-base md:text-lg">
-                <strong>March 31, 2026:</strong> Families are financially committed to 2026–27 tuition
-              </p>
+          {variant === 'text' && block?.bodyContent && (
+            <div className="flex flex-col items-center gap-4 w-full max-w-3xl prose max-w-none">
+              <PortableText value={block.bodyContent} />
             </div>
           )}
 
-          {variant === 'image' && (
+          {variant === 'image' && block?.imageAndAltText?.image?.asset?._ref && (
             <div className="flex flex-col items-center gap-6 w-full max-w-3xl">
               <div className="max-w-sm mx-auto w-full">
                 <Image
-                  src="/early-education/teacher-rachel.png"
-                  alt="Rachel Schultz, Early Childhood Education Director"
+                  id={block.imageAndAltText.image.asset._ref}
+                  alt={block.imageAndAltText.altText || ''}
                   width={400}
                   height={300}
                   className="rounded-lg object-cover w-full"
                 />
               </div>
-              <p className="font-bold text-lg md:text-2xl">
-                Our Redeemer Lutheran School (ORLS) is proud to be an eligible private school provider in the Texas Education Freedom Account (TEFA) program!.
-              </p>
+              {block.imageBlurb && (
+                <p className="font-bold text-lg md:text-2xl">{block.imageBlurb}</p>
+              )}
             </div>
           )}
         </div>
