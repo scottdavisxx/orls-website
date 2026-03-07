@@ -1,5 +1,5 @@
 import {defineField, defineType} from 'sanity'
-import {title} from '../sharedFields'
+import {title, imageAndAltText} from '../sharedFields'
 import {BarChartIcon} from '@sanity/icons'
 
 export const statisticsTwoCol = defineType({
@@ -13,10 +13,12 @@ export const statisticsTwoCol = defineType({
       name: 'stats',
       title: 'Statistics',
       type: 'array',
+      // @ts-expect-error - Sanity array field 'of' is valid; type inference can miss it
       of: [
         {
           type: 'object',
           fields: [
+            imageAndAltText,
             defineField({
               name: 'number',
               title: 'Number',
