@@ -3,7 +3,6 @@
 @plugin "@tailwindcss/typography";
 
 @layer base {
-
   h1,
   h2,
   h3,
@@ -19,25 +18,11 @@
   padding: 0 2rem;
 }
 
-
-.container {
-  width: 100%;
-  @media (width >= 1440px) {
-    max-width: 1440px;
-  }
-}
-
-/* I added this so that the content is full width on 1440 - Scott */
-.container {
-  margin: 0 auto;
-  padding: 0 2rem /* 32px */;
-}
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --font-sans: var(--font-albert-sans);
-  --font-serif: var(--font-alegreya);
+  --shadow-layer: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+
   --color-dark-blue: #242d65;
   --color-medium-blue: #355ba5;
   --color-light-blue: #e3e8f2;
@@ -46,21 +31,33 @@
   --color-gold: #f7d149;
   --color-sky-blue: #94d8ed;
   --color-whisper-blue: #e3e8f2;
+
+  --default-transition-duration: 250ms;
 }
 
-
-.crossSize svg , .crossSize {
-
-
+.crossSize svg, 
+.crossSize {
   @media (max-width: 1024px) {
-      width: 400px !important;
-      height: 400px !important;
+    width: 400px !important;
+    height: 400px !important;
   }
 
   @media (max-width: 784px) {
-      width: 200px !important;
-      height: 200px !important;
+    width: 200px !important;
+    height: 200px !important;
   }
-
 }
 
+/* ThreeColExpandingCards: ensure Swiper and slides fill height so cards are visible */
+.three-col-expanding-swiper .swiper,
+.three-col-expanding-swiper .swiper-wrapper,
+.three-col-expanding-swiper .swiper-slide {
+  height: 100%;
+}
+
+/* Mobile: active (expanded) slide takes full width so only one card is visible */
+@media (max-width: 767px) {
+  .three-col-expanding-swiper .swiper-slide-active {
+    width: 100% !important;
+  }
+}
