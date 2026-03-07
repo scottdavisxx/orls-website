@@ -18,7 +18,6 @@ export const statisticsTwoCol = defineType({
         {
           type: 'object',
           fields: [
-            imageAndAltText,
             defineField({
               name: 'number',
               title: 'Number',
@@ -31,6 +30,7 @@ export const statisticsTwoCol = defineType({
               type: 'string',
               validation: (Rule) => Rule.required(),
             }),
+            imageAndAltText,
           ],
         },
       ],

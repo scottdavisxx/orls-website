@@ -25,7 +25,7 @@ function StatRow({
             alt={altText}
             width={64}
             height={64}
-            mode="cover"
+            mode="contain"
             className="w-full h-full object-contain"
           />
         </div>
