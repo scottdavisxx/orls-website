@@ -13,7 +13,7 @@ export default function ThreeColCtas({ block }: ThreeColCtasProps) {
 
   return (
     <div className="bg-white">
-      <div className="flex md:container">
+      <div className="flex 2xl:container">
         <div className="flex flex-col items-stretch w-full text-center md:flex-row">
           {cards.map((card, i) => (
             <Link
