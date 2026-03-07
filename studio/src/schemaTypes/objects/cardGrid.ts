@@ -1,5 +1,5 @@
 import {defineField, defineType} from 'sanity'
-import {title, imageAndAltText} from '../sharedFields'
+import {imageAndAltText, removePaddingTop} from '../sharedFields'
 import {ComponentIcon} from '@sanity/icons'
 
 export const cardGrid = defineType({
@@ -49,6 +49,7 @@ export const cardGrid = defineType({
         },
       ],
     }),
+    removePaddingTop,
   ],
   preview: {
     select: {heading: 'heading'},

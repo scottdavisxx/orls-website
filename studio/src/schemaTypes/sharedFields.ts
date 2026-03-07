@@ -154,3 +154,15 @@ export const ctaButtons = defineField({
   type: 'array',
   of: [{type: 'object', fields: ctaFields}],
 })
+
+export const removePaddingTop = defineField({
+  name: 'removePaddingTop',
+  title: 'Remove Padding Top?',
+  type: 'boolean',
+})
+
+export const removePaddingBottom = defineField({
+  name: 'removePaddingBottom',
+  title: 'Remove Padding Bottom?',
+  type: 'boolean',
+})

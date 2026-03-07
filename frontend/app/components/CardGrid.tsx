@@ -13,7 +13,7 @@ type CardGridProps = {
 }
 
 export default function CardGrid({ block }: CardGridProps) {
-  const heading = block?.heading ?? 'Courses and Pathways'
+  const heading = block?.heading ?? ''
   const cards = block?.cards ?? []
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -21,7 +21,7 @@ export default function CardGrid({ block }: CardGridProps) {
   const next = () => setActiveIndex((i) => (i + 1) % cards.length)
 
   return (
-    <div className="py-12 md:py-16">
+    <div className={`${block?.removePaddingTop ? 'pt-0' : 'py-12 md:py-16'} ${block?.removePaddingBottom ? 'pb-0' : 'pb-12 md:pb-16'}`}>
       <div className="max-w-7xl mx-auto px-6">
         {heading && (
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12">
@@ -33,9 +33,8 @@ export default function CardGrid({ block }: CardGridProps) {
           {cards.map((card, i) => (
             <div
               key={i}
-              className={`relative overflow-visible rounded-3xl group min-h-[500px] w-full ${
-                card.fullWidth ? 'md:col-span-2 lg:col-span-2' : ''
-              }`}
+              className={`relative overflow-visible rounded-3xl group min-h-[500px] w-full ${card.fullWidth ? 'md:col-span-2 lg:col-span-2' : ''
+                }`}
             >
               {card.imageAndAltText?.image?.asset?._ref && (
                 <Image
