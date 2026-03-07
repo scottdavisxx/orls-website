@@ -28,7 +28,7 @@ export default function FourColStatistics({ block }: FourColStatisticsProps) {
               </div>
             ))}
           </div>
-          <div className="flex flex-col gap-4 order-first md:order-last md:w-1/4">
+          <div className="flex flex-col gap-4 order-first md:order-last md:w-4/12">
             {sideTitle && <h3 className="text-4xl font-bold md:text-5xl">{sideTitle}</h3>}
             {sideBlurb && <p className="text-2xl">{sideBlurb}</p>}
           </div>
