@@ -159,6 +159,7 @@ export type CardGrid = {
 export type CtaWithCard = {
   _type: 'ctaWithCard'
   title: string
+  emphasizedText?: string
   blurb?: Array<{
     children?: Array<{
       marks?: Array<string>
@@ -1287,6 +1288,7 @@ export type GetPageQueryResult = {
         _key: string
         _type: 'ctaWithCard'
         title: string
+        emphasizedText?: string
         blurb?: Array<{
           children?: Array<{
             marks?: Array<string>

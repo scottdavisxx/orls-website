@@ -1,3 +1,4 @@
+import React from 'react'
 import Image from '@/app/components/SanityImage'
 import Cta from './ui/Cta'
 import OrlsIcon from './icons/orls-icon'
@@ -11,8 +12,27 @@ type CtaWithCardProps = {
   pageType: string
 }
 
+function renderTitleWithEmphasis(title: string | undefined, emphasizedText: string | undefined) {
+  if (!title) return null
+  if (!emphasizedText?.trim()) return title
+  const parts = title.split(emphasizedText)
+  if (parts.length === 1) return title
+  return parts.reduce<React.ReactNode[]>((acc, part, i) => {
+    acc.push(part)
+    if (i < parts.length - 1) {
+      acc.push(
+        <span key={i} className="text-medium-blue font-bold">
+          {emphasizedText}
+        </span>
+      )
+    }
+    return acc
+  }, [])
+}
+
 export default function CtaWithCard({ block }: CtaWithCardProps) {
   const title = block?.title
+  const emphasizedText = block?.emphasizedText
   const blurb = block?.blurb
   const cta = block?.cta
   const image = block?.imageAndAltText?.image
@@ -45,8 +65,8 @@ export default function CtaWithCard({ block }: CtaWithCardProps) {
           )}
           <div className="flex flex-col gap-4 py-8 relative z-10 px-4 items-center
         md:pl-120 md:pr-20 md:py-8 md:items-start">
-            <h2 className="text-4xl font-bold text-dark-blue leading-tight
-          md:text-7xl">{title}</h2>
+            <h2 className="text-4xl font-bold text-black leading-tight
+          md:text-7xl">{renderTitleWithEmphasis(title, emphasizedText)}</h2>
             {Array.isArray(blurb) ? (
               <div className="text-lg prose max-w-none">
                 <PortableText value={blurb as PortableTextBlock[]} />

@@ -9,6 +9,12 @@ export const ctaWithCard = defineType({
   icon: DocumentIcon,
   fields: [
     title,
+    defineField({
+      name: 'emphasizedText',
+      title: 'Emphasized Text',
+      type: 'string',
+      description: 'Text from the title to highlight in dark blue (e.g. "1961"). Leave empty for no emphasis.',
+    }),
     blurb,
     imageAndAltText,
     cta,
