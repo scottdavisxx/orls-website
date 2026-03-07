@@ -28,7 +28,7 @@ export type LeadershipBlock = {_type: 'leadership'; _key: string; title?: string
 export type IntroBladeBlock = {_type: 'introBlade'; _key: string; titles?: Array<{title?: string}>; blurb?: string; ctas?: Array<{buttonText?: string; link?: string}>; bgImage?: string | {asset?: {_ref: string}}}
 export type CtaWithMediaCardBlock = {_type: 'ctaWithMediaCard'; _key: string; title?: string; blurb?: PortableTextBlock[]; imageAndAltText?: ImageAndAltText; cta?: {href?: string; buttonText?: string; newTab?: boolean}; video?: string}
 export type CtaWithCardBlock = {_type: 'ctaWithCard'; _key: string; title?: string; blurb?: PortableTextBlock[]; imageAndAltText?: ImageAndAltText; imageSrc?: string; cta?: {href?: string; buttonText?: string; newTab?: boolean}; bgImage?: {asset?: {_ref: string}} | string; icon?: boolean}
-export type CardGridBlock = {_type: 'cardGrid'; _key: string; heading?: string; cards?: Array<{title?: string; description?: string; imageAndAltText?: ImageAndAltText; href?: string; fullWidth?: boolean}>}
+export type CardGridBlock = {_type: 'cardGrid'; _key: string; heading?: string; cards?: Array<{title?: string; description?: string; imageAndAltText?: ImageAndAltText; href?: string; fullWidth?: boolean}>; removePaddingTop?: boolean}
 export type CalendarBlock = {_type: 'calendar'; _key: string; title?: string; iframeUrl?: string}
 
 export type PageBuilderSection =

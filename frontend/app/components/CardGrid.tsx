@@ -21,7 +21,7 @@ export default function CardGrid({ block }: CardGridProps) {
   const next = () => setActiveIndex((i) => (i + 1) % cards.length)
 
   return (
-    <div className={`${block?.removePaddingTop ? 'pt-0' : 'py-12 md:py-16'} ${block?.removePaddingBottom ? 'pb-0' : 'pb-12 md:pb-16'}`}>
+    <div className={`${block?.removePaddingTop ? 'pt-0' : 'pt-12 md:pt-16'} pb-12 md:pb-16`}>
       <div className="max-w-7xl mx-auto px-6">
         {heading && (
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12">

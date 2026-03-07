@@ -153,6 +153,7 @@ export type CardGrid = {
     fullWidth?: boolean
     _key: string
   }>
+  removePaddingTop?: boolean
 }
 
 export type CtaWithCard = {
@@ -1279,6 +1280,7 @@ export type GetPageQueryResult = {
           fullWidth?: boolean
           _key: string
         }>
+        removePaddingTop?: boolean
       }
     | {
         _key: string
