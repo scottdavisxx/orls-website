@@ -3,10 +3,10 @@
 import { useState } from 'react'
 import Image from '@/app/components/SanityImage'
 import Cta from './ui/Cta'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { CardGrid } from '@/sanity.types'
 
 type CardGridProps = {
-  block: ExtractPageBuilderType<'cardGrid'>
+  block: CardGrid
   index: number
   pageId: string
   pageType: string

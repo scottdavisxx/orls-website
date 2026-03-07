@@ -1,10 +1,10 @@
 import Cta from './ui/Cta'
 import OrlsIcon from './icons/orls-icon'
 import Image from 'next/image'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { TwoColBulletsWithCTAs } from '@/sanity.types'
 
 type TwoColBulletsWithCTAsProps = {
-  block: ExtractPageBuilderType<'twoColBulletsWithCTAs'>
+  block: TwoColBulletsWithCTAs
   index: number
   pageId: string
   pageType: string

@@ -1,9 +1,9 @@
 import Image from '@/app/components/SanityImage'
 import Cta from './ui/Cta'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { ThreeColCardsTall } from '@/sanity.types'
 
 type ThreeColCardsTallProps = {
-  block: ExtractPageBuilderType<'threeColCardsTall'>
+  block: ThreeColCardsTall
   index: number
   pageId: string
   pageType: string

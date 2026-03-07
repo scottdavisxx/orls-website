@@ -1,9 +1,9 @@
 import OrlsIcon from './icons/orls-icon'
-import type { PageBuilderSection } from '@/sanity/lib/types'
+import type { TextWithLogo as TextWithLogoBlock } from '@/sanity.types'
 import { PortableText, type PortableTextBlock } from 'next-sanity'
 
 type TextWithLogoProps = {
-  block: Extract<PageBuilderSection, { _type: 'textWithLogo' }>
+  block: TextWithLogoBlock
   index: number
   pageId: string
   pageType: string

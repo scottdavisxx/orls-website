@@ -1,9 +1,9 @@
 import Image from '@/app/components/SanityImage'
 import { PortableText, type PortableTextBlock } from 'next-sanity'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { ImageWithText } from '@/sanity.types'
 
 type ImageWithTextProps = {
-  block: ExtractPageBuilderType<'imageWithText'>
+  block: ImageWithText
   index: number
   pageId: string
   pageType: string

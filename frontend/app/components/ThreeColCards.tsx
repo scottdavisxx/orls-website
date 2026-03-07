@@ -1,9 +1,9 @@
 import Image from '@/app/components/SanityImage'
 import Link from 'next/link'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { ThreeColCards } from '@/sanity.types'
 
 type ThreeColCardsProps = {
-  block: ExtractPageBuilderType<'threeColCards'>
+  block: ThreeColCards
   index: number
   pageId: string
   pageType: string

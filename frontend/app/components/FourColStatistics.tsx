@@ -1,7 +1,7 @@
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { FourColStatistics } from '@/sanity.types'
 
 type FourColStatisticsProps = {
-  block: ExtractPageBuilderType<'fourColStatistics'>
+  block: FourColStatistics
   index: number
   pageId: string
   pageType: string

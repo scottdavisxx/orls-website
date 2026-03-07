@@ -1,10 +1,10 @@
 import { PortableText, PortableTextBlock } from 'next-sanity'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { OneColInfo } from '@/sanity.types'
 import Image from '@/app/components/SanityImage'
 import OrlsIcon from '@/app/components/icons/orls-icon'
 
 type OneColInfoProps = {
-  block: ExtractPageBuilderType<'oneColInfo'>
+  block: OneColInfo
   index: number
   pageId: string
   pageType: string

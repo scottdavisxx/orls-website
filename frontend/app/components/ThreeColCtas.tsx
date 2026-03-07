@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { ThreeColCtas } from '@/sanity.types'
 
 type ThreeColCtasProps = {
-  block: ExtractPageBuilderType<'threeColCtas'>
+  block: ThreeColCtas
   index: number
   pageId: string
   pageType: string

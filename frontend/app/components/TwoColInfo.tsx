@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { TwoColInfo } from '@/sanity.types'
 
 type TwoColInfoProps = {
-  block: ExtractPageBuilderType<'twoColInfo'>
+  block: TwoColInfo
   index: number
   pageId: string
   pageType: string

@@ -3,10 +3,10 @@ import Image from '@/app/components/SanityImage'
 import Cta from './ui/Cta'
 import OrlsIcon from './icons/orls-icon'
 import { PortableText, type PortableTextBlock } from 'next-sanity'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { CtaWithCard } from '@/sanity.types'
 
 type CtaWithCardProps = {
-  block: ExtractPageBuilderType<'ctaWithCard'>
+  block: CtaWithCard
   index: number
   pageId: string
   pageType: string

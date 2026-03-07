@@ -1,8 +1,8 @@
 import Image from '@/app/components/SanityImage'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { Leadership } from '@/sanity.types'
 
 type LeadershipProps = {
-  block: ExtractPageBuilderType<'leadership'>
+  block: Leadership
   index: number
   pageId: string
   pageType: string

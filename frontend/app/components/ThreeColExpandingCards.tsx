@@ -35,11 +35,11 @@ export interface CardItem {
   collapsed: CollapsedCard
 }
 
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { ThreeColExpandingCards } from '@/sanity.types'
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
 
 type ThreeColExpandingCardsProps = {
-  block: ExtractPageBuilderType<'threeColExpandingCards'>
+  block: ThreeColExpandingCards
   index: number
   pageId: string
   pageType: string
@@ -49,8 +49,8 @@ type ThreeColExpandingCardsProps = {
 function CollapsedCardInner({ card }: { card: CollapsedCard }) {
   const bgImage = card.bgImage as SanityImageSource | string | undefined
   const icon = card.icon as SanityImageSource | string | undefined
-  const hasBg = typeof bgImage === 'object' && bgImage?.asset?._ref
-  const hasIcon = typeof icon === 'object' && icon?.asset?._ref
+  const hasBg = typeof bgImage === 'object' && (bgImage as { asset?: { _ref?: string } })?.asset?._ref
+  const hasIcon = typeof icon === 'object' && (icon as { asset?: { _ref?: string } })?.asset?._ref
   const textColor = hasBg ? 'text-white' : 'text-dark-blue'
 
   return (
@@ -163,8 +163,8 @@ export default function ThreeColExpandingCards({ block }: ThreeColExpandingCards
                     const exp = item.expanded
                     const expBg = exp?.bgImage as SanityImageSource | string | undefined
                     const expIcon = exp?.icon as SanityImageSource | string | undefined
-                    const hasBg = typeof expBg === 'object' && expBg?.asset?._ref
-                    const hasIcon = typeof expIcon === 'object' && expIcon?.asset?._ref
+                    const hasBg = typeof expBg === 'object' && (expBg as { asset?: { _ref?: string } })?.asset?._ref
+                    const hasIcon = typeof expIcon === 'object' && (expIcon as { asset?: { _ref?: string } })?.asset?._ref
                     const hasText = !!(
                       exp?.name ||
                       exp?.tagline ||

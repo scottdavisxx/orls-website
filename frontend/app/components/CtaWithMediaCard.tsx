@@ -6,10 +6,10 @@ import NextImage from 'next/image'
 import CtaWithIcon from './ui/CtaWithIcon'
 import VideoOverlay from './ui/VideoOverlay'
 import { PortableText, type PortableTextBlock } from 'next-sanity'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { CtaWithMediaCard } from '@/sanity.types'
 
 type CtaWithMediaCardProps = {
-  block: ExtractPageBuilderType<'ctaWithMediaCard'>
+  block: CtaWithMediaCard
   index: number
   pageId: string
   pageType: string

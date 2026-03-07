@@ -3,10 +3,10 @@
 import { useState } from 'react'
 import Image from '@/app/components/SanityImage'
 
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { ThreeColToggle } from '@/sanity.types'
 
 type ThreeColToggleProps = {
-  block: ExtractPageBuilderType<'threeColToggle'>
+  block: ThreeColToggle
   index: number
   pageId: string
   pageType: string

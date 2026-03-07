@@ -1,8 +1,8 @@
 import Image from '@/app/components/SanityImage'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { StatisticsTwoCol } from '@/sanity.types'
 
 type StatisticsTwoColProps = {
-  block: ExtractPageBuilderType<'statisticsTwoCol'>
+  block: StatisticsTwoCol
   index: number
   pageId: string
   pageType: string
@@ -11,7 +11,7 @@ type StatisticsTwoColProps = {
 function StatRow({
   stat,
 }: {
-  stat: NonNullable<ExtractPageBuilderType<'statisticsTwoCol'>['stats']>[number]
+  stat: NonNullable<StatisticsTwoCol['stats']>[number]
 }) {
   const imageRef = stat?.imageAndAltText?.image?.asset?._ref
   const altText = stat?.imageAndAltText?.altText ?? ''

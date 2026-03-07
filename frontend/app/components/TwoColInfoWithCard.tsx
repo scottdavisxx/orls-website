@@ -1,10 +1,10 @@
 import Image from '@/app/components/SanityImage'
 import NextImage from 'next/image'
 import { PortableText, type PortableTextBlock } from 'next-sanity'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { TwoColInfoWithCard } from '@/sanity.types'
 
 type TwoColInfoWithCardProps = {
-  block: ExtractPageBuilderType<'twoColInfoWithCard'>
+  block: TwoColInfoWithCard
   index: number
   pageId: string
   pageType: string

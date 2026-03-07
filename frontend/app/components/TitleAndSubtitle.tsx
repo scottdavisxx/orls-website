@@ -1,7 +1,7 @@
-import type { PageBuilderSection } from '@/sanity/lib/types'
+import type { TitleAndSubtitle as TitleAndSubtitleBlock } from '@/sanity.types'
 
 type TitleAndSubtitleProps = {
-  block: Extract<PageBuilderSection, { _type: 'titleAndSubtitle' }>
+  block: TitleAndSubtitleBlock
   index: number
   pageId: string
   pageType: string

@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import { PortableText, PortableTextBlock } from 'next-sanity'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { NumberedList } from '@/sanity.types'
 
 type NumberedListProps = {
-  block: ExtractPageBuilderType<'numberedList'>
+  block: NumberedList
   index: number
   pageId: string
   pageType: string

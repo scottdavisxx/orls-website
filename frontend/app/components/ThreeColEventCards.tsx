@@ -6,12 +6,12 @@ import type { Swiper as SwiperType } from 'swiper'
 import Image from '@/app/components/SanityImage'
 import Link from 'next/link'
 import NextImage from 'next/image'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { ThreeColEventCards } from '@/sanity.types'
 
 import 'swiper/css'
 
 type ThreeColEventCardsProps = {
-  block: ExtractPageBuilderType<'threeColEventCards'>
+  block: ThreeColEventCards
   index: number
   pageId: string
   pageType: string

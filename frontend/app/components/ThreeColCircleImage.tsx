@@ -1,8 +1,8 @@
 import Image from '@/app/components/SanityImage'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { ThreeColCircleImage } from '@/sanity.types'
 
 type ThreeColCircleImageProps = {
-  block: ExtractPageBuilderType<'threeColCircleImage'>
+  block: ThreeColCircleImage
   index: number
   pageId: string
   pageType: string

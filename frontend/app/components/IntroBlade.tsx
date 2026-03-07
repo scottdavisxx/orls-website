@@ -1,10 +1,10 @@
 import Image from '@/app/components/SanityImage'
 import NextImage from 'next/image'
 import Cta from './ui/Cta'
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { IntroBlade } from '@/sanity.types'
 
 type IntroBladeProps = {
-  block: ExtractPageBuilderType<'introBlade'>
+  block: IntroBlade
   index: number
   pageId: string
   pageType: string

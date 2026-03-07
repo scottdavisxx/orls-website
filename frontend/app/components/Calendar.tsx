@@ -1,7 +1,7 @@
-import type { ExtractPageBuilderType } from '@/sanity/lib/types'
+import type { Calendar } from '@/sanity.types'
 
 type CalendarProps = {
-  block: ExtractPageBuilderType<'calendar'>
+  block: Calendar
   index: number
   pageId: string
   pageType: string
