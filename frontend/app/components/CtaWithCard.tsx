@@ -75,7 +75,7 @@ export default function CtaWithCard({ block }: CtaWithCardProps) {
               <p className="text-lg whitespace-pre-line">{blurb}</p>
             )}
             {cta?.href && cta?.buttonText && (
-              <Cta className="md:mb-6 md:mt-4" href={cta.href} buttonText={cta.buttonText} newTab={cta.newTab} />
+              <Cta className="md:mb-6 md:mt-4" dark href={cta.href} buttonText={cta.buttonText} newTab={cta.newTab} />
             )}
           </div>
         </div>
