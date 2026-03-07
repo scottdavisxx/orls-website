@@ -181,6 +181,7 @@ export type CtaWithCard = {
     _key: string
   }>
   imageAndAltText?: ImageAndAltText
+  overlapImage?: boolean
   cta?: Cta
   bgImage?: {
     asset?: SanityImageAssetReference
@@ -1337,6 +1338,7 @@ export type GetPageQueryResult = {
           _key: string
         }>
         imageAndAltText?: ImageAndAltText
+        overlapImage?: boolean
         cta?: Cta
         bgImage?: {
           asset?: SanityImageAssetReference

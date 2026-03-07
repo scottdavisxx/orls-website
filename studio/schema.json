@@ -1104,6 +1104,13 @@
           },
           "optional": true
         },
+        "overlapImage": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
         "cta": {
           "type": "objectAttribute",
           "value": {

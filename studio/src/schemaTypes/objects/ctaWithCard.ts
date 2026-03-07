@@ -19,6 +19,12 @@ export const ctaWithCard = defineType({
     textColor,
     blurb,
     imageAndAltText,
+    defineField({
+      name: 'overlapImage',
+      title: 'Overlap Image',
+      type: 'boolean',
+      initialValue: false,
+    }),
     cta,
     defineField({
       name: 'bgImage',

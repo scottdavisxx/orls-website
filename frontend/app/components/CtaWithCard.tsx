@@ -46,9 +46,14 @@ export default function CtaWithCard({ block }: CtaWithCardProps) {
     <div className="bg-white py-4
     md:py-16">
       <div className="container flex items-center justify-center py-8 px-2 relative">
+        {/* Image Container */}
         {hasSanityImage && (
           <div className="border-2 border-dark-blue rounded-4xl absolute left-0 bg-white z-10 hidden md:block">
-            <Image id={(image as { asset: { _ref: string } }).asset._ref} alt={altText} width={415} height={537} className="p-6 relative z-10" />
+            <Image
+              id={(image as { asset: { _ref: string } }).asset._ref}
+              alt={altText}
+              width={415}
+              height={537} className="p-6 relative z-10" />
           </div>
         )}
         {/* Content */}
@@ -57,7 +62,7 @@ export default function CtaWithCard({ block }: CtaWithCardProps) {
           {hasBgImage && (
             <Image id={(bgImage as { asset: { _ref: string } }).asset._ref} alt="" width={1920} height={1080} mode="cover" className="absolute top-0 left-0 w-full h-full object-cover rounded-4xl opacity-10" />
           )}
-          {/* Icon */}
+          {/* ORLS Logo */}
           {icon && (
             <div className="absolute top-1/2 -translate-y-1/2
           md:right-12 ">
