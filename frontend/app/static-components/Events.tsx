@@ -8,8 +8,12 @@ import OnBoarding from '@/app/components/Onboarding'
 import Avatar from '@/app/components/Avatar'
 import {dataAttr} from '@/sanity/lib/utils'
 
+/** Author shape when expanded from event query (person ref). */
+type EventAuthor = { firstName?: string; lastName?: string; picture?: unknown } | null
+
 const Event = ({event}: {event: AllEventsQueryResult[number]}) => {
   const {_id, title, slug, excerpt, date, author} = event
+  const authorPerson = author as EventAuthor
 
   return (
     <article
@@ -26,9 +30,18 @@ const Event = ({event}: {event: AllEventsQueryResult[number]}) => {
         <p className="line-clamp-3 text-sm leading-6 text-gray-600 max-w-[70ch]">{excerpt}</p>
       </div>
       <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
-        {author && author.firstName && author.lastName && (
+        {authorPerson && authorPerson.firstName && authorPerson.lastName && (
           <div className="flex items-center">
-            <Avatar person={author} small={true} />
+            <Avatar
+              person={
+                authorPerson as {
+                  firstName: string | null
+                  lastName: string | null
+                  picture?: { asset?: { _ref: string }; hotspot?: { x: number; y: number }; crop?: { top: number; bottom: number; left: number; right: number }; alt?: string }
+                }
+              }
+              small={true}
+            />
           </div>
         )}
         <time className="text-gray-500 text-xs font-mono" dateTime={date}>

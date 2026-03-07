@@ -89,18 +89,18 @@ export const event = defineType({
         },
       ],
     }),
-    // defineField({
-    //   name: 'date',
-    //   title: 'Date',
-    //   type: 'datetime',
-    //   initialValue: () => new Date().toISOString(),
-    // }),
-    // defineField({
-    //   name: 'author',
-    //   title: 'Author',
-    //   type: 'reference',
-    //   to: [{type: 'person'}],
-    // }),
+    defineField({
+      name: 'date',
+      title: 'Date',
+      type: 'datetime',
+      initialValue: () => new Date().toISOString(),
+    }),
+    defineField({
+      name: 'author',
+      title: 'Author',
+      type: 'reference',
+      to: [{type: 'person'}],
+    }),
   ],
   // List preview configuration. https://www.sanity.io/docs/previews-list-views
   preview: {

@@ -90,7 +90,7 @@ export const moreEventsQuery = defineQuery(`
 
 export const eventQuery = defineQuery(`
   *[_type == "event" && slug.current == $slug] [0] {
-    content[]{
+    description[]{
     ...,
     markDefs[]{
       ...,

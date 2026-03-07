@@ -44,10 +44,11 @@ export async function generateMetadata(props: Props, parent: ResolvingMetadata):
   const previousImages = (await parent).openGraph?.images || []
   const ogImage = resolveOpenGraphImage(event?.coverImage)
 
+  const author = event?.author as { firstName?: string; lastName?: string } | null | undefined
   return {
     authors:
-      event?.author?.firstName && event?.author?.lastName
-        ? [{ name: `${event.author.firstName} ${event.author.lastName}` }]
+      author?.firstName && author?.lastName
+        ? [{ name: `${author.firstName} ${author.lastName}` }]
         : [],
     title: event?.title,
     description: event?.excerpt,
@@ -65,6 +66,8 @@ export default async function EventPage(props: Props) {
     return notFound()
   }
 
+  const author = event.author as { firstName?: string; lastName?: string; picture?: unknown } | null | undefined
+
   return (
     <>
       <div className="">
@@ -75,8 +78,17 @@ export default async function EventPage(props: Props) {
                 <h1 className="text-4xl text-gray-900 sm:text-5xl lg:text-7xl">{event.title}</h1>
               </div>
               <div className="max-w-3xl flex gap-4 items-center">
-                {event.author && event.author.firstName && event.author.lastName && (
-                  <Avatar person={event.author} date={event.date} />
+                {author && author.firstName && author.lastName && (
+                  <Avatar
+                    person={
+                      author as {
+                        firstName: string | null
+                        lastName: string | null
+                        picture?: { asset?: { _ref: string }; hotspot?: { x: number; y: number }; crop?: { top: number; bottom: number; left: number; right: number }; alt?: string }
+                      }
+                    }
+                    date={event.date}
+                  />
                 )}
               </div>
             </div>
@@ -95,10 +107,10 @@ export default async function EventPage(props: Props) {
                   />
                 )}
               </div>
-              {event.content?.length && (
+              {event.description?.length && (
                 <PortableText
                   className="max-w-2xl prose-headings:font-medium prose-headings:tracking-tight"
-                  value={event.content as PortableTextBlock[]}
+                  value={event.description as PortableTextBlock[]}
                 />
               )}
             </article>
