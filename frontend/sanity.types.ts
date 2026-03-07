@@ -421,6 +421,7 @@ export type ThreeColToggle = {
     imageAndAltText?: ImageAndAltText
     _key: string
   }>
+  removePaddingTop?: boolean
 }
 
 export type TwoColBulletsWithCTAs = {
@@ -1627,6 +1628,7 @@ export type GetPageQueryResult = {
           imageAndAltText?: ImageAndAltText
           _key: string
         }>
+        removePaddingTop?: boolean
       }
     | {
         _key: string

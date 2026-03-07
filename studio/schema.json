@@ -2808,6 +2808,13 @@
             }
           },
           "optional": true
+        },
+        "removePaddingTop": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
         }
       }
     }

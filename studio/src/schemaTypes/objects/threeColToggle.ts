@@ -1,5 +1,5 @@
 import {defineField, defineType} from 'sanity'
-import {title, imageAndAltText} from '../sharedFields'
+import {title, imageAndAltText, removePaddingTop} from '../sharedFields'
 import {ComponentIcon} from '@sanity/icons'
 
 export const threeColToggle = defineType({
@@ -27,6 +27,7 @@ export const threeColToggle = defineType({
         },
       ],
     }),
+    removePaddingTop,
   ],
   preview: {
     prepare() {

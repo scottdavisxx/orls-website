@@ -20,7 +20,8 @@ export default function ThreeColToggle({ block }: ThreeColToggleProps) {
   const next = () => setActiveIndex((i) => (i + 1) % cards.length)
 
   return (
-    <section className="relative px-6 py-12 md:px-16 md:py-16 lg:px-[86px] lg:py-[37px]">
+    <section className={`relative px-6 py-12 md:px-16 md:py-16 lg:px-[86px] lg:py-[37px]
+    ${block?.removePaddingTop ? 'pt-0' : 'pt-12 md:pt-16'}`}>
       <div className=" relative max-w-[1400px] mx-auto max-[769px]:hidden min-[769px]:flex flex-row gap-4 lg:gap-6 items-stretch">
         {cards.map((card, index) => {
           const isActive = index === activeIndex
