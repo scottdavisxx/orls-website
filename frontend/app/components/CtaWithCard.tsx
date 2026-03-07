@@ -70,7 +70,7 @@ export default function CtaWithCard({ block }: CtaWithCardProps) {
               {renderTitleWithEmphasis(title, emphasizedText)}
             </h2>
             {Array.isArray(blurb) ? (
-              <div className="text-lg prose max-w-none">
+              <div className="text-lg prose max-w-none leading-5">
                 <PortableText value={blurb as PortableTextBlock[]} />
               </div>
             ) : (
