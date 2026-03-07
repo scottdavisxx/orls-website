@@ -32,7 +32,7 @@ export default function ImageWithText({ block }: ImageWithTextProps) {
         <h2 className="text-2xl font-bold mb-6
         md:text-[4.375rem]">{title}</h2>
         {Array.isArray(blurb) ? (
-          <div className="text-[1.25rem] prose prose-lg max-w-none text-balance">
+          <div className="text-xl prose prose-lg max-w-none text-balance">
             <PortableText value={blurb as PortableTextBlock[]} />
           </div>
         ) : (
