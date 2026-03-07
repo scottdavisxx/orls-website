@@ -41,6 +41,7 @@ export default function CtaWithCard({ block }: CtaWithCardProps) {
   const icon = block?.icon
   const hasSanityImage = (image as { asset?: { _ref?: string } } | undefined)?.asset?._ref
   const hasBgImage = (bgImage as { asset?: { _ref?: string } } | undefined)?.asset?._ref
+  const textColor = block?.textColor || 'black'
   return (
     <div className="bg-white py-4
     md:py-16">
@@ -65,8 +66,9 @@ export default function CtaWithCard({ block }: CtaWithCardProps) {
           )}
           <div className="flex flex-col gap-4 py-8 relative z-10 px-4 items-center
         md:pl-120 md:pr-20 md:py-8 md:items-start">
-            <h2 className="text-4xl font-bold text-black leading-tight
-          md:text-7xl">{renderTitleWithEmphasis(title, emphasizedText)}</h2>
+            <h2 className={`text-4xl font-bold leading-tight md:text-7xl ${textColor === 'dark-blue' ? 'text-dark-blue' : textColor === 'medium-blue' ? 'text-medium-blue' : 'text-black'}`}>
+              {renderTitleWithEmphasis(title, emphasizedText)}
+            </h2>
             {Array.isArray(blurb) ? (
               <div className="text-lg prose max-w-none">
                 <PortableText value={blurb as PortableTextBlock[]} />

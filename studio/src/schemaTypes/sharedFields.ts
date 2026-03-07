@@ -166,3 +166,12 @@ export const removePaddingBottom = defineField({
   title: 'Remove Padding Bottom?',
   type: 'boolean',
 })
+
+export const textColor = defineField({
+  name: 'textColor',
+  title: 'Text Color',
+  type: 'string',
+  options: {
+    list: ['black', 'dark-blue', 'medium-blue'],
+  },
+})

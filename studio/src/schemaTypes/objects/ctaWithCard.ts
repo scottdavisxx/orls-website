@@ -1,5 +1,5 @@
 import {defineField, defineType} from 'sanity'
-import {title, blurb, imageAndAltText, cta} from '../sharedFields'
+import {title, blurb, imageAndAltText, cta, textColor} from '../sharedFields'
 import {DocumentIcon} from '@sanity/icons'
 
 export const ctaWithCard = defineType({
@@ -13,8 +13,10 @@ export const ctaWithCard = defineType({
       name: 'emphasizedText',
       title: 'Emphasized Text',
       type: 'string',
-      description: 'Text from the title to highlight in dark blue (e.g. "1961"). Leave empty for no emphasis.',
+      description:
+        'Text from the title to highlight in dark blue (e.g. "1961"). Leave empty for no emphasis.',
     }),
+    textColor,
     blurb,
     imageAndAltText,
     cta,
