@@ -47,7 +47,7 @@ export default function CardGrid({ block }: CardGridProps) {
                 />
               )}
 
-              <div className="absolute inset-0 bg-black/44 group-hover:bg-black/64 transition-all duration-300 rounded-3xl z-20" />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/64 transition-all duration-300 rounded-3xl z-20" />
 
               <div className="absolute bottom-0 left-0 right-0 z-30 flex flex-col p-8 text-white">
                 <h3 className="text-2xl font-semibold mb-2">{card.title}</h3>
@@ -56,7 +56,13 @@ export default function CardGrid({ block }: CardGridProps) {
                 </p>
 
                 {card.cta?.href && (
-                  <Cta href={card.cta.href} buttonText={card.cta.buttonText || 'Learn More'} buttonColor="brand-white" font="small" newTab={card.cta.newTab} />
+                  <Cta
+                    href={card.cta.href}
+                    buttonText={card.cta.buttonText || 'Learn More'}
+                    buttonColor="brand-white"
+                    font="small"
+                    newTab={card.cta.newTab}
+                    className="md:text-base" />
                 )}
               </div>
 
