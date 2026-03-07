@@ -15,7 +15,7 @@ export default function Calendar({ block }: CalendarProps) {
   const iframeUrl = block?.iframeUrl || DEFAULT_CALENDAR_URL
 
   return (
-    <div className="bg-dark-blue py-8 md:py-12 lg:py-16">
+    <div id="calendar" className="bg-dark-blue py-8 md:py-12 lg:py-16">
       <div className="container">
         <div className="flex flex-col gap-8 md:gap-12 lg:gap-14">
           {title && <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold text-white text-center">{title}</h2>}
