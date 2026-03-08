@@ -33,9 +33,11 @@
   --color-whisper-blue: #e3e8f2;
 
   --default-transition-duration: 250ms;
+
+  --text-4xl: 1.875rem; /* 30px */
 }
 
-.crossSize svg, 
+.crossSize svg,
 .crossSize {
   @media (max-width: 1024px) {
     width: 400px !important;
