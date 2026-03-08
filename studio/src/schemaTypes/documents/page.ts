@@ -64,6 +64,7 @@ export const page = defineType({
         { type: 'threeColExpandingCards' },
         { type: 'threeColEventCards' },
         { type: 'threeColCtas' },
+        { type: 'threeColWithIcons' },
         { type: 'threeColCircleImage' },
         { type: 'threeColCards' },
         { type: 'clubCards' },

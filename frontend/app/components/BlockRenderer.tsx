@@ -12,6 +12,7 @@ import ThreeColToggle from '@/app/components/ThreeColToggle'
 import ThreeColExpandingCards from '@/app/components/ThreeColExpandingCards'
 import ThreeColEventCards from '@/app/components/ThreeColEventCards'
 import ThreeColCtas from '@/app/components/ThreeColCtas'
+import ThreeColWithIcons from '@/app/components/ThreeColWithIcons'
 import ThreeColCircleImage from '@/app/components/ThreeColCircleImage'
 import ThreeColCards from '@/app/components/ThreeColCards'
 import ClubCards from '@/app/components/ClubCards'
@@ -55,6 +56,7 @@ const Blocks = {
   threeColExpandingCards: ThreeColExpandingCards,
   threeColEventCards: ThreeColEventCards,
   threeColCtas: ThreeColCtas,
+  threeColWithIcons: ThreeColWithIcons,
   threeColCircleImage: ThreeColCircleImage,
   threeColCards: ThreeColCards,
   clubCards: ClubCards,

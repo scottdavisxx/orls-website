@@ -482,6 +482,18 @@ export type ThreeColCtas = {
   }>
 }
 
+/** Manually added for threeColWithIcons block; regenerate with typegen after running extract-types in studio */
+export type ThreeColWithIcons = {
+  _type: 'threeColWithIcons'
+  title?: string
+  subtitle?: string
+  items?: Array<{
+    imageAndAltText?: ImageAndAltText
+    title: string
+    _key: string
+  }>
+}
+
 export type ThreeColEventCards = {
   _type: 'threeColEventCards'
   heading?: string
@@ -951,6 +963,9 @@ export type Page = {
       } & ThreeColCtas)
     | ({
         _key: string
+      } & ThreeColWithIcons)
+    | ({
+        _key: string
       } & ThreeColCircleImage)
     | ({
         _key: string
@@ -1274,6 +1289,7 @@ export type AllSanitySchemaTypes =
   | ThreeColCards
   | ThreeColCircleImage
   | ThreeColCtas
+  | ThreeColWithIcons
   | ThreeColEventCards
   | ThreeColExpandingCards
   | ThreeColToggle

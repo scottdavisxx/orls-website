@@ -20,6 +20,7 @@ import {threeColToggle} from './objects/threeColToggle'
 import {threeColExpandingCards} from './objects/threeColExpandingCards'
 import {threeColEventCards} from './objects/threeColEventCards'
 import {threeColCtas} from './objects/threeColCtas'
+import {threeColWithIcons} from './objects/threeColWithIcons'
 import {threeColCircleImage} from './objects/threeColCircleImage'
 import {threeColCards} from './objects/threeColCards'
 import {clubCards} from './objects/clubCards'
@@ -59,6 +60,7 @@ export const schemaTypes = [
   threeColExpandingCards,
   threeColEventCards,
   threeColCtas,
+  threeColWithIcons,
   threeColCircleImage,
   threeColCards,
   clubCards,
