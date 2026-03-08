@@ -26,12 +26,11 @@ export default function Subnav({ block }: SubnavProps = {}) {
 
   return (
     <div className="bg-white hidden lg:block relative z-10">
-      <nav className="flex justify-between items-center container">
+      <nav className="flex justify-between items-center 2xl:container">
         {items.map((item) => (
           <Link
-            className={`text-center py-8 w-1/6 text-dark-blue uppercase font-bold hover:bg-dark-blue ${
-              pathName === item.href ? 'bg-dark-blue text-white cursor-default' : 'hover:text-white'
-            }`}
+            className={`text-center py-8 w-1/6 text-dark-blue uppercase font-bold hover:bg-dark-blue ${pathName === item.href ? 'bg-dark-blue text-white cursor-default' : 'hover:text-white'
+              }`}
             href={item.href}
             key={item.href}
           >
