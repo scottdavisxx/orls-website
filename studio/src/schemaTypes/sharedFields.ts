@@ -141,6 +141,17 @@ const ctaFields = [
   }),
 ]
 
+export const ctaWithDescription = defineField({
+  name: 'ctaWithDescription',
+  title: 'CTA with Description',
+  type: 'object',
+  fields: [...ctaFields, defineField({
+    name: 'description',
+    title: 'Description',
+    type: 'string',
+  })],
+})
+
 export const cta = defineField({
   name: 'cta',
   title: 'CTA',
@@ -175,6 +186,7 @@ export const textColor = defineField({
     list: ['black', 'dark-blue', 'medium-blue'],
   },
 })
+
 export const bgColor = defineField({
   name: 'bgColor',
   title: 'Background Color',
@@ -183,3 +195,11 @@ export const bgColor = defineField({
     list: ['white', 'dark-blue'],
   },
 })
+
+export const emphasizedText = defineField({
+  name: 'emphasizedText',
+  title: 'Emphasized Text',
+  type: 'string',
+  description:
+    'Text from the title to highlight in dark blue (e.g. "1961"). Leave empty for no emphasis.',
+}),
