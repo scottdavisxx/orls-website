@@ -3246,12 +3246,46 @@
             "value": "twoColInfoWithImage"
           }
         },
+        "variant": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "with-borders"
+              },
+              {
+                "type": "string",
+                "value": "without-borders"
+              }
+            ]
+          },
+          "optional": true
+        },
+        "bgColor": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "white"
+              },
+              {
+                "type": "string",
+                "value": "dark-blue"
+              }
+            ]
+          },
+          "optional": true
+        },
         "title": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "blurb": {
           "type": "objectAttribute",

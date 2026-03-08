@@ -175,3 +175,11 @@ export const textColor = defineField({
     list: ['black', 'dark-blue', 'medium-blue'],
   },
 })
+export const bgColor = defineField({
+  name: 'bgColor',
+  title: 'Background Color',
+  type: 'string',
+  options: {
+    list: ['white', 'dark-blue'],
+  },
+})

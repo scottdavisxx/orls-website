@@ -477,7 +477,9 @@ export type TwoColInfoWithCard = {
 
 export type TwoColInfoWithImage = {
   _type: 'twoColInfoWithImage'
-  title: string
+  variant?: 'with-borders' | 'without-borders'
+  bgColor?: 'white' | 'dark-blue'
+  title?: string
   blurb?: Array<{
     children?: Array<{
       marks?: Array<string>
@@ -1710,7 +1712,9 @@ export type GetPageQueryResult = {
     | {
         _key: string
         _type: 'twoColInfoWithImage'
-        title: string
+        variant?: 'with-borders' | 'without-borders'
+        bgColor?: 'dark-blue' | 'white'
+        title?: string
         blurb?: Array<{
           children?: Array<{
             marks?: Array<string>

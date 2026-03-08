@@ -1,5 +1,5 @@
 import {defineField, defineType} from 'sanity'
-import {title, blurb, imageAndAltText} from '../sharedFields'
+import {blurb, imageAndAltText, bgColor} from '../sharedFields'
 import {DocumentIcon} from '@sanity/icons'
 
 export const twoColInfoWithImage = defineType({
@@ -8,7 +8,24 @@ export const twoColInfoWithImage = defineType({
   type: 'object',
   icon: DocumentIcon,
   fields: [
-    title,
+    defineField({
+      name: 'variant',
+      title: 'Variant',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'With Borders', value: 'with-borders'},
+          {title: 'Without Borders', value: 'without-borders'},
+        ],
+        layout: 'radio',
+      },
+    }),
+    bgColor,
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
     blurb,
     imageAndAltText,
     defineField({
