@@ -76,7 +76,7 @@ export default function CtaWithCard({ block }: CtaWithCardProps) {
           {icon && (
             <div className="absolute top-1/2 -translate-y-1/2
           md:right-12 ">
-              <OrlsIcon color="whisper-blue" width={419} height={419} />
+              <OrlsIcon color="whisper-blue" width={overlapImage ? 314 : 419} height={overlapImage ? 314 : 419} />
             </div>
           )}
           <div className={`flex flex-col gap-4 py-8 relative z-10 px-4 items-center
