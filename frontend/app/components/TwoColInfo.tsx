@@ -30,7 +30,7 @@ export default function TwoColInfo({ block }: TwoColInfoProps) {
         </div>
 
         <div className="relative flex flex-col lg:flex-row lg:items-end gap-6 lg:gap-16">
-          <div className="lg:w-[30%] flex-shrink-0">
+          <div className="lg:w-[30%] shrink-0">
             <h2 className="font-bold text-4xl md:text-5xl lg:text-7xl text-white leading-tight">
               {title}
             </h2>
