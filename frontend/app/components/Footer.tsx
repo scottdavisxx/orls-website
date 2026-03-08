@@ -4,12 +4,12 @@ import Link from "next/link"
 export default function Footer() {
   return (
     <footer className="font-serif bg-dark-blue py-4
-    md:py-16">
+    lg:py-16">
       <div className="container flex flex-col items-center justify-between gap-6 bg-dark-blue text-white py-4 px-6 pb-10
-    md:flex-row md:px-24 md:mb-0 md:pb-0">
+    lg:flex-row lg:px-24 lg:mb-0 lg:pb-0">
         <Image src="/logo-cropped.png" alt="Logo" width={424} height={239} />
         <div className="flex flex-col justify-between gap-8
-       md:flex-row md:w-8/12
+       lg:flex-row lg:w-8/12
        2xl:w-[63%]">
           <div className="flex flex-col justify-between items-stretch">
             <h3 className="text-2xl font-bold">Contact Us</h3>

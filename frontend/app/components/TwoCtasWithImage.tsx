@@ -20,11 +20,11 @@ export default function TwoCtasWithImage() {
           alt="Two Ctas With Image"
           width={439}
           height={633}
-          className="absolute bottom-0 hidden md:block md:left-16"
+          className="absolute bottom-0 hidden lg:block lg:left-16"
         />
         {/* Content */}
         <div className="flex flex-col justify-between gap-6 z-10 py-4
-        md:w-[60%] md:px-10 md:py-12">
+        lg:w-[60%] md:px-10 md:py-12">
           <h2 className="text-4xl  font-bold leading-tight text-balance
           md:text-7xl">Start Your Admissions Journey</h2>
           <p className="text-xl">Choosing a school is a big decision and it is personal. At Our Redeemer, strong academics, strong character, and deep faith in a joyful community are partnered with families to form students who think well, live faithfully, and lead with integrity.</p>
