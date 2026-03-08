@@ -44,7 +44,7 @@ export default function TwoCtasWithImage({ block }: TwoCtasWithImageProps) {
 
   return (
     <div className="bg-white py-4 
-    md:pb-16 md:pt-26">
+    md:pb-16 md:pt-30">
       <div className="container flex items-center justify-end border border-black rounded-2xl overflow-visible relative">
         {/* BG Image */}
         {hasBgImage && (
