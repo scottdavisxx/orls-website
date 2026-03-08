@@ -158,7 +158,7 @@ export default function ThreeColExpandingCards({ block }: ThreeColExpandingCards
                 <div className={`relative z-30 flex flex-col p-8 min-h-0`}>
                   <div className={`flex flex-1 flex-col justify-between min-h-0 ${hasIcon ? 'max-w-[55%]' : ''}`}>
                     <div className={textColor}>
-                      {hasBlurb && exp?.blurb && <CustomPortableText value={exp.blurb as PortableTextBlock[]} preserveNewlines className={`text-sm lg:text-2xl leading-snug prose-p:mt-1.5 prose-p:mb-1.5 prose-headings:mt-3 prose-headings:mb-1.5 prose-p:first:mt-0 prose-headings:first:mt-0 ${textColor}`} />}
+                      {hasBlurb && exp?.blurb && <CustomPortableText value={exp.blurb as PortableTextBlock[]} preserveNewlines className={`text-sm lg:text-2xl leading-snug prose-p:leading-snug prose-p:mt-0 prose-p:mb-0 prose-headings:mt-0 prose-headings:mb-0 ${textColor}`} />}
                     </div>
                     {expCta && (
                       <div className="mt-3">
@@ -259,7 +259,7 @@ export default function ThreeColExpandingCards({ block }: ThreeColExpandingCards
               <div className={`relative z-30 flex flex-col p-6 ${hasBg ? 'justify-end' : 'justify-start'}`}>
                 {hasBlurb && exp?.blurb && (
                   <div className={textColor}>
-                    <CustomPortableText value={exp.blurb as PortableTextBlock[]} preserveNewlines className={`text-sm leading-snug prose-p:mt-1.5 prose-p:mb-1.5 prose-headings:mt-3 prose-headings:mb-1.5 prose-p:first:mt-0 prose-headings:first:mt-0 ${textColor}`} />
+                    <CustomPortableText value={exp.blurb as PortableTextBlock[]} preserveNewlines className={`text-sm leading-snug prose-p:leading-snug prose-p:mt-0 prose-p:mb-0 prose-headings:mt-0 prose-headings:mb-0 ${textColor}`} />
                   </div>
                 )}
                 {!hasBg && hasIcon && (
