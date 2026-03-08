@@ -15,9 +15,11 @@ import Image from '@/app/components/SanityImage'
 export default function CustomPortableText({
   className,
   value,
+  preserveNewlines,
 }: {
   className?: string
   value: PortableTextBlock[]
+  preserveNewlines?: boolean
 }) {
   const components: PortableTextComponents = {
     types: {
@@ -102,7 +104,7 @@ export default function CustomPortableText({
   }
 
   return (
-    <div className={`prose-a:text-brand prose dark:prose-invert ${className}`}>
+    <div className={`prose-a:text-brand prose dark:prose-invert ${preserveNewlines ? 'whitespace-pre-line' : ''} ${className ?? ''}`}>
       <PortableText components={components} value={value} />
     </div>
   )

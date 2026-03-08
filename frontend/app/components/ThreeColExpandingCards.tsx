@@ -135,11 +135,11 @@ export default function ThreeColExpandingCards({ block }: ThreeColExpandingCards
         )}
 
         {/* Desktop layout */}
-        <div className="relative hidden md:flex gap-14 mt-8 h-[500px]">
+        <div className="relative hidden md:flex gap-14 mt-8 min-h-[500px] items-stretch">
 
           {/* Expanded card */}
-          <div style={{ flex: '3 3 0%' }} className="relative h-full overflow-visible group isolate">
-            <div className={`absolute inset-0 rounded-2xl overflow-hidden isolate border-2 border-dark-blue ${!hasBg ? 'bg-white' : ''}`}>
+          <div style={{ flex: '3 3 0%' }} className="relative min-h-[500px] overflow-visible group isolate">
+            <div className={`relative min-h-[500px] rounded-2xl overflow-hidden isolate border-2 border-dark-blue ${!hasBg ? 'bg-white' : ''}`}>
               {hasBg && (
                 <>
                   <Image
@@ -155,13 +155,13 @@ export default function ThreeColExpandingCards({ block }: ThreeColExpandingCards
               )}
 
               {hasText && (
-                <div className={`absolute inset-0 z-30 flex flex-col p-8 min-h-0`}>
+                <div className={`relative z-30 flex flex-col p-8 min-h-0`}>
                   <div className={`flex flex-1 flex-col justify-between min-h-0 ${hasIcon ? 'max-w-[55%]' : ''}`}>
                     <div className={textColor}>
-                      {hasBlurb && exp?.blurb && <CustomPortableText value={exp.blurb as PortableTextBlock[]} className={`text-sm lg:text-2xl leading-snug ${textColor}`} />}
+                      {hasBlurb && exp?.blurb && <CustomPortableText value={exp.blurb as PortableTextBlock[]} preserveNewlines className={`text-sm lg:text-2xl leading-snug prose-p:mt-1.5 prose-p:mb-1.5 prose-headings:mt-3 prose-headings:mb-1.5 prose-p:first:mt-0 prose-headings:first:mt-0 ${textColor}`} />}
                     </div>
                     {expCta && (
-                      <div className="mt-5">
+                      <div className="mt-3">
                         {expCta.href ? (
                           <Link href={expCta.href}
                             target={expCta.newTab ? '_blank' : undefined}
@@ -196,13 +196,13 @@ export default function ThreeColExpandingCards({ block }: ThreeColExpandingCards
             </div>
 
             {/* Hover offset border — behind card via -z-10 in isolated stacking context */}
-            <div className="absolute top-0 left-0 w-full h-full border-2 border-dark-blue rounded-2xl group-hover:translate-x-4 group-hover:translate-y-4 transition-all duration-300 pointer-events-none -z-10" />
+            <div className="absolute top-0 left-0 w-full h-full min-h-[500px] border-2 border-dark-blue rounded-2xl group-hover:translate-x-4 group-hover:translate-y-4 transition-all duration-300 pointer-events-none -z-10" />
           </div>
 
           {/* Collapsed card — offset +1 */}
           <div
             style={{ flex: '1 1 0%' }}
-            className="relative h-full overflow-visible group cursor-pointer isolate"
+            className="relative min-h-[500px] h-full overflow-visible group cursor-pointer isolate"
             onClick={() => setActiveIndex((activeIndex + 1) % items.length)}
           >
             {collapsed1?.collapsed && <CollapsedCardInner card={collapsed1.collapsed as CollapsedCard} />}
@@ -212,7 +212,7 @@ export default function ThreeColExpandingCards({ block }: ThreeColExpandingCards
           {/* Collapsed card — offset +2 */}
           <div
             style={{ flex: '1 1 0%' }}
-            className="relative h-full overflow-visible group cursor-pointer isolate"
+            className="relative min-h-[500px] h-full overflow-visible group cursor-pointer isolate"
             onClick={() => setActiveIndex((activeIndex + 2) % items.length)}
           >
             {collapsed2?.collapsed && <CollapsedCardInner card={collapsed2.collapsed as CollapsedCard} />}
@@ -241,8 +241,8 @@ export default function ThreeColExpandingCards({ block }: ThreeColExpandingCards
 
         {/* Mobile layout — single full-width card, icon below text in flow */}
         <div className="relative flex md:hidden mt-8">
-          <div className="relative w-full h-[420px] overflow-visible group isolate">
-            <div className={`absolute inset-0 rounded-2xl overflow-hidden isolate border-2 border-dark-blue ${!hasBg ? 'bg-white' : ''}`}>
+          <div className="relative w-full min-h-[420px] overflow-visible group isolate">
+            <div className={`relative min-h-[420px] rounded-2xl overflow-hidden isolate border-2 border-dark-blue ${!hasBg ? 'bg-white' : ''}`}>
               {hasBg && (
                 <>
                   <Image
@@ -256,10 +256,10 @@ export default function ThreeColExpandingCards({ block }: ThreeColExpandingCards
                   <div className="absolute inset-0 bg-black/45 z-20" />
                 </>
               )}
-              <div className={`absolute inset-0 z-30 flex flex-col p-6 ${hasBg ? 'justify-end' : 'justify-start'}`}>
+              <div className={`relative z-30 flex flex-col p-6 ${hasBg ? 'justify-end' : 'justify-start'}`}>
                 {hasBlurb && exp?.blurb && (
                   <div className={textColor}>
-                    <CustomPortableText value={exp.blurb as PortableTextBlock[]} className={`text-sm leading-snug ${textColor}`} />
+                    <CustomPortableText value={exp.blurb as PortableTextBlock[]} preserveNewlines className={`text-sm leading-snug prose-p:mt-1.5 prose-p:mb-1.5 prose-headings:mt-3 prose-headings:mb-1.5 prose-p:first:mt-0 prose-headings:first:mt-0 ${textColor}`} />
                   </div>
                 )}
                 {!hasBg && hasIcon && (
@@ -276,18 +276,18 @@ export default function ThreeColExpandingCards({ block }: ThreeColExpandingCards
                 )}
                 {expCta && (
                   expCta.href ? (
-                    <Link href={expCta.href} target={expCta.newTab ? '_blank' : undefined} rel={expCta.newTab ? 'noopener noreferrer' : undefined} className={`inline-block mt-4 px-6 py-2.5 rounded-md font-semibold text-sm ${ctaStyle}`}>
+                    <Link href={expCta.href} target={expCta.newTab ? '_blank' : undefined} rel={expCta.newTab ? 'noopener noreferrer' : undefined} className={`inline-block mt-3 px-6 py-2.5 rounded-md font-semibold text-sm ${ctaStyle}`}>
                       {expCta.buttonText || 'Learn more'}
                     </Link>
                   ) : (
-                    <span className={`inline-block mt-4 px-6 py-2.5 rounded-md font-semibold text-sm ${ctaStyle}`}>
+                    <span className={`inline-block mt-3 px-6 py-2.5 rounded-md font-semibold text-sm ${ctaStyle}`}>
                       {expCta.buttonText}
                     </span>
                   )
                 )}
               </div>
             </div>
-            <div className="absolute top-0 left-0 w-full h-full border-2 border-dark-blue rounded-2xl group-hover:translate-x-4 group-hover:translate-y-4 transition-all duration-300 pointer-events-none -z-10" />
+            <div className="absolute top-0 left-0 w-full h-full min-h-[420px] border-2 border-dark-blue rounded-2xl group-hover:translate-x-4 group-hover:translate-y-4 transition-all duration-300 pointer-events-none -z-10" />
           </div>
         </div>
 
