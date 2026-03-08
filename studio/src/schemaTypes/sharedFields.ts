@@ -121,7 +121,7 @@ export const publishDate = defineField({
   validation: (Rule) => Rule.required().error('Event date is required'),
 })
 
-const ctaFields = [
+export const ctaFields = [
   defineField({
     name: 'href',
     title: 'Link URL',
@@ -138,6 +138,19 @@ const ctaFields = [
     name: 'newTab',
     title: 'Open in new Tab?',
     type: 'boolean',
+  }),
+  defineField({
+    name: 'buttonColor',
+    title: 'Button Color',
+    type: 'string',
+    options: {
+      list: [
+        { title: 'Brand Blue', value: 'brand-blue' },
+        { title: 'Brand White', value: 'brand-white' },
+        { title: 'Brand Black', value: 'brand-black' },
+      ],
+      layout: 'dropdown',
+    },
   }),
 ]
 

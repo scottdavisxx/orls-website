@@ -1,5 +1,6 @@
 import {defineField, defineType} from 'sanity'
 import {BlockContentIcon} from '@sanity/icons'
+import {cta} from '../sharedFields'
 
 export const introBlade = defineType({
   name: 'introBlade',
@@ -27,15 +28,7 @@ export const introBlade = defineType({
       name: 'ctas',
       title: 'CTAs',
       type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            {name: 'buttonText', title: 'Button Text', type: 'string', validation: (Rule: any) => Rule.required()},
-            {name: 'link', title: 'Link URL', type: 'string', validation: (Rule: any) => Rule.required()},
-          ],
-        },
-      ],
+      of: [cta],
     }),
     defineField({
       name: 'bgImage',

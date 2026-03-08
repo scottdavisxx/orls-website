@@ -41,9 +41,25 @@ export default function IntroBlade({ block }: IntroBladeProps) {
           <p className="text-2xl text-center">{blurb}</p>
         </div>
         <div className="relative flex flex-col md:flex-row px-6 py-8 gap-8 justify-center items-center z-10">
-          {ctas.map((cta, i) => (
-            <Cta key={i} href={cta.link || '#'} buttonText={cta.buttonText || ''} dark buttonColor="brand-black" />
-          ))}
+          {ctas.map((cta, i) => {
+            const item = cta as {
+              href?: string
+              link?: string
+              buttonText: string
+              newTab?: boolean
+              buttonColor?: 'brand-blue' | 'brand-white' | 'brand-black'
+            }
+            return (
+              <Cta
+                key={i}
+                href={item.href ?? item.link ?? '#'}
+                buttonText={item.buttonText || ''}
+                newTab={item.newTab}
+                buttonColor={item.buttonColor}
+                dark
+              />
+            )
+          })}
         </div>
       </div>
     </div>
