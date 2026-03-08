@@ -1215,6 +1215,13 @@
             "of": {
               "type": "object",
               "attributes": {
+                "description": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  },
+                  "optional": true
+                },
                 "href": {
                   "type": "objectAttribute",
                   "value": {
@@ -1233,13 +1240,6 @@
                   "type": "objectAttribute",
                   "value": {
                     "type": "boolean"
-                  },
-                  "optional": true
-                },
-                "description": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string"
                   },
                   "optional": true
                 },

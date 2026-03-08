@@ -186,10 +186,10 @@ export type TwoCtasWithImage = {
   }>
   imageAndAltText?: ImageAndAltText
   ctas?: Array<{
+    description?: string
     href: string
     buttonText: string
     newTab?: boolean
-    description?: string
     _type: 'ctaWithDescription'
     _key: string
   }>
@@ -1809,10 +1809,10 @@ export type GetPageQueryResult = {
         }>
         imageAndAltText?: ImageAndAltText
         ctas?: Array<{
+          description?: string
           href: string
           buttonText: string
           newTab?: boolean
-          description?: string
           _type: 'ctaWithDescription'
           _key: string
         }>

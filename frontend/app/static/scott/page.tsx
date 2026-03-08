@@ -1,4 +1,4 @@
-import TallTwoColTextWithCard from "@/app/static-components/tallTwoColTextWithCard";
+import TallTwoColTextWithCard from "@/app/static-components/TallTwoColTextWithCard";
 
 export default function ScottPage() {
   return (
