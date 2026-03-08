@@ -145,11 +145,14 @@ export const ctaWithDescription = defineField({
   name: 'ctaWithDescription',
   title: 'CTA with Description',
   type: 'object',
-  fields: [...ctaFields, defineField({
-    name: 'description',
-    title: 'Description',
-    type: 'string',
-  })],
+  fields: [
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    }),
+    ...ctaFields,
+  ],
 })
 
 export const cta = defineField({
@@ -202,4 +205,4 @@ export const emphasizedText = defineField({
   type: 'string',
   description:
     'Text from the title to highlight in dark blue (e.g. "1961"). Leave empty for no emphasis.',
-}),
+})

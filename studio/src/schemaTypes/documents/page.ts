@@ -75,6 +75,7 @@ export const page = defineType({
         { type: 'introBlade' },
         { type: 'ctaWithMediaCard' },
         { type: 'ctaWithCard' },
+        { type: 'twoCtasWithImage' },
         { type: 'cardGrid' },
         { type: 'calendar' },
       ],

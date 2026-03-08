@@ -161,6 +161,47 @@ export type CardGrid = {
   removePaddingTop?: boolean
 }
 
+export type TwoCtasWithImage = {
+  _type: 'twoCtasWithImage'
+  title: string
+  emphasizedText?: string
+  textColor?: 'black' | 'dark-blue' | 'medium-blue'
+  blurb?: Array<{
+    children?: Array<{
+      marks?: Array<string>
+      text?: string
+      _type: 'span'
+      _key: string
+    }>
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+    listItem?: 'bullet' | 'number'
+    markDefs?: Array<{
+      href?: string
+      _type: 'link'
+      _key: string
+    }>
+    level?: number
+    _type: 'block'
+    _key: string
+  }>
+  imageAndAltText?: ImageAndAltText
+  ctas?: Array<{
+    href: string
+    buttonText: string
+    newTab?: boolean
+    description?: string
+    _type: 'ctaWithDescription'
+    _key: string
+  }>
+  bgImage?: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+}
+
 export type CtaWithCard = {
   _type: 'ctaWithCard'
   title: string
@@ -892,6 +933,9 @@ export type Page = {
       } & CtaWithCard)
     | ({
         _key: string
+      } & TwoCtasWithImage)
+    | ({
+        _key: string
       } & CardGrid)
     | ({
         _key: string
@@ -1161,6 +1205,7 @@ export type AllSanitySchemaTypes =
   | ObjectCta
   | Calendar
   | CardGrid
+  | TwoCtasWithImage
   | CtaWithCard
   | CtaWithMediaCard
   | IntroBlade
@@ -1737,6 +1782,47 @@ export type GetPageQueryResult = {
         }>
         imageAndAltText?: ImageAndAltText
         card?: Card
+      }
+    | {
+        _key: string
+        _type: 'twoCtasWithImage'
+        title: string
+        emphasizedText?: string
+        textColor?: 'black' | 'dark-blue' | 'medium-blue'
+        blurb?: Array<{
+          children?: Array<{
+            marks?: Array<string>
+            text?: string
+            _type: 'span'
+            _key: string
+          }>
+          style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
+          listItem?: 'bullet' | 'number'
+          markDefs?: Array<{
+            href?: string
+            _type: 'link'
+            _key: string
+          }>
+          level?: number
+          _type: 'block'
+          _key: string
+        }>
+        imageAndAltText?: ImageAndAltText
+        ctas?: Array<{
+          href: string
+          buttonText: string
+          newTab?: boolean
+          description?: string
+          _type: 'ctaWithDescription'
+          _key: string
+        }>
+        bgImage?: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          _type: 'image'
+        }
       }
   > | null
 } | null

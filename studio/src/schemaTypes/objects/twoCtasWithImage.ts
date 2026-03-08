@@ -1,5 +1,5 @@
-import { defineField, defineType } from "sanity";
-import { ctaWithDescription, imageAndAltText, title, emphasizedText, textColor, blurb } from "../sharedFields";
+import { defineField, defineType } from 'sanity'
+import { ctaWithDescription, imageAndAltText, title, emphasizedText, textColor, blurb } from '../sharedFields'
 
 export const twoCtasWithImage = defineType({
   name: 'twoCtasWithImage',
@@ -33,5 +33,5 @@ export const twoCtasWithImage = defineType({
         media,
       }
     },
-  }
+  },
 })

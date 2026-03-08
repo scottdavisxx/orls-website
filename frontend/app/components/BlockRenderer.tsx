@@ -23,6 +23,7 @@ import Leadership from '@/app/components/Leadership'
 import IntroBlade from '@/app/components/IntroBlade'
 import CtaWithMediaCard from '@/app/components/CtaWithMediaCard'
 import CtaWithCard from '@/app/components/CtaWithCard'
+import TwoCtasWithImage from '@/app/components/TwoCtasWithImage'
 import CardGrid from '@/app/components/CardGrid'
 import Calendar from '@/app/components/Calendar'
 import { dataAttr } from '@/sanity/lib/utils'
@@ -64,6 +65,7 @@ const Blocks = {
   introBlade: IntroBlade,
   ctaWithMediaCard: CtaWithMediaCard,
   ctaWithCard: CtaWithCard,
+  twoCtasWithImage: TwoCtasWithImage,
   cardGrid: CardGrid,
   calendar: Calendar,
 } as BlocksType
