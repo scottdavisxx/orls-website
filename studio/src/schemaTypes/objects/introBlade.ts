@@ -38,12 +38,16 @@ export const introBlade = defineType({
     }),
   ],
   preview: {
-    select: {titles: 'titles'},
-    prepare({titles}) {
+    select: {
+      titles: 'titles',
+      media: 'bgImage',
+    },
+    prepare({titles, media}) {
       const first = titles?.[0]?.title
       return {
-        title: 'Intro Blade',
-        subtitle: first || 'No titles set',
+        title: first || 'Intro Blade',
+        subtitle: 'Intro Blade',
+        media,
       }
     },
   },

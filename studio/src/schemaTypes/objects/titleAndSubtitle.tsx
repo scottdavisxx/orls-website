@@ -9,11 +9,18 @@ export const titleAndSubtitle = defineType({
   icon: BlockContentIcon,
   fields: [titleOne, titleTwo],
   preview: {
-    select: {titleOne: 'titleOne'},
-    prepare({titleOne}) {
+    select: {title: 'titleOne'},
+    prepare({title}) {
       return {
-        title: 'Title and Subtitle',
-        subtitle: titleOne || 'No title set',
+        title: title || 'Title and Subtitle',
+        subtitle: 'Title and Subtitle',
+        media: (
+          <img
+            src="/static/titleAndSubtitle.png"
+            alt="Title and Subtitle"
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+          />
+        ),
       }
     },
   },

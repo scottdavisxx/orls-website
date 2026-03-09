@@ -59,11 +59,15 @@ export const threeColEventCards = defineType({
     }),
   ],
   preview: {
-    select: {heading: 'heading'},
-    prepare({heading}) {
+    select: {
+      heading: 'heading',
+      media: 'cards.0.imageAndAltText.image',
+    },
+    prepare({heading, media}) {
       return {
-        title: 'Three Column Event Cards',
-        subtitle: heading || 'No heading set',
+        title: heading || 'Three Column Event Cards',
+        subtitle: 'Three Column Event Cards',
+        media,
       }
     },
   },

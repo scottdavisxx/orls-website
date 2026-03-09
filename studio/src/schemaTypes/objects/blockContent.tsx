@@ -99,4 +99,19 @@ export const blockContent = defineType({
       },
     }),
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Block Content',
+        subtitle: 'Block Content',
+        media: (
+          <img
+            src="/static/blockContent.png"
+            alt="Block Content"
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+          />
+        ),
+      }
+    },
+  },
 })

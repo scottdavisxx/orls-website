@@ -78,4 +78,20 @@ export const link = defineType({
       initialValue: false,
     }),
   ],
+  preview: {
+    select: {linkType: 'linkType'},
+    prepare({linkType}) {
+      return {
+        title: linkType ? `Link (${linkType})` : 'Link',
+        subtitle: 'Link',
+        media: (
+          <img
+            src="/static/link.png"
+            alt="Link"
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+          />
+        ),
+      }
+    },
+  },
 })

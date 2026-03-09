@@ -24,8 +24,8 @@ export const ctaWithMediaCard = defineType({
     select: {title: 'title', media: 'imageAndAltText.image'},
     prepare({title, media}) {
       return {
-        title: 'CTA with Media Card',
-        subtitle: title || 'No title set',
+        title: title || 'CTA with Media Card',
+        subtitle: 'CTA with Media Card',
         media,
       }
     },

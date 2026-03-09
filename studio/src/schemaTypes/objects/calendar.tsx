@@ -23,8 +23,15 @@ export const calendar = defineType({
     select: {title: 'title'},
     prepare({title}) {
       return {
-        title: 'Calendar',
-        subtitle: title || 'No title set',
+        title: title || 'Calendar',
+        subtitle: 'Calendar',
+        media: (
+          <img
+            src="/static/calendar.png"
+            alt="Calendar"
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+          />
+        ),
       }
     },
   },

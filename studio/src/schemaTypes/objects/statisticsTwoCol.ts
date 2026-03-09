@@ -37,11 +37,15 @@ export const statisticsTwoCol = defineType({
     }),
   ],
   preview: {
-    select: {title: 'title'},
-    prepare({title}) {
+    select: {
+      title: 'title',
+      media: 'stats.0.imageAndAltText.image',
+    },
+    prepare({title, media}) {
       return {
-        title: 'Statistics Two Column',
-        subtitle: title || 'No title set',
+        title: title || 'Statistics Two Column',
+        subtitle: 'Statistics Two Column',
+        media,
       }
     },
   },

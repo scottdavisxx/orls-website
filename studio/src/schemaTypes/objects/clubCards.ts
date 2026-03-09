@@ -36,11 +36,15 @@ export const clubCards = defineType({
     }),
   ],
   preview: {
-    select: {title: 'title'},
-    prepare({title}) {
+    select: {
+      title: 'title',
+      media: 'cards.0.imageAndAltText.image',
+    },
+    prepare({title, media}) {
       return {
-        title: 'Club Cards',
-        subtitle: title || 'No title set',
+        title: title || 'Club Cards',
+        subtitle: 'Club Cards',
+        media,
       }
     },
   },

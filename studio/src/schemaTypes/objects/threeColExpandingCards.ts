@@ -83,11 +83,15 @@ export const threeColExpandingCards = defineType({
     }),
   ],
   preview: {
-    select: {heading: 'heading'},
-    prepare({heading}) {
+    select: {
+      heading: 'heading',
+      media: 'sectionBgImage',
+    },
+    prepare({heading, media}) {
       return {
-        title: 'Three Column Expanding Cards',
-        subtitle: heading || 'No heading set',
+        title: heading || 'Three Column Expanding Cards',
+        subtitle: 'Three Column Expanding Cards',
+        media,
       }
     },
   },

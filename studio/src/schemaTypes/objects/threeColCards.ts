@@ -25,10 +25,15 @@ export const threeColCards = defineType({
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      title: 'cards.0.title',
+      media: 'cards.0.imageAndAltText.image',
+    },
+    prepare({title, media}) {
       return {
-        title: 'Three Column Cards',
-        subtitle: 'Image cards with links',
+        title: title || 'Three Column Cards',
+        subtitle: 'Three Column Cards',
+        media,
       }
     },
   },

@@ -36,11 +36,15 @@ export const leadership = defineType({
     }),
   ],
   preview: {
-    select: {title: 'title'},
-    prepare({title}) {
+    select: {
+      title: 'title',
+      media: 'people.0.imageAndAltText.image',
+    },
+    prepare({title, media}) {
       return {
-        title: 'Leadership',
-        subtitle: title || 'No title set',
+        title: title || 'Leadership',
+        subtitle: 'Leadership',
+        media,
       }
     },
   },

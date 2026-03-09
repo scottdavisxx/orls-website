@@ -39,10 +39,18 @@ export const threeColCtas = defineType({
     }),
   ],
   preview: {
-    prepare() {
+    select: {title: 'cards.0.title'},
+    prepare({title}) {
       return {
-        title: 'Three Column CTAs',
-        subtitle: 'Inquire, Explore, Apply cards',
+        title: title || 'Three Column CTAs',
+        subtitle: 'Three Column CTAs',
+        media: (
+          <img
+            src="/static/threeColCtas.png"
+            alt="Three Column CTAs"
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+          />
+        ),
       }
     },
   },

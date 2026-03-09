@@ -48,11 +48,15 @@ export const cardGrid = defineType({
     removePaddingTop,
   ],
   preview: {
-    select: {heading: 'heading'},
-    prepare({heading}) {
+    select: {
+      heading: 'heading',
+      media: 'cards.0.imageAndAltText.image',
+    },
+    prepare({heading, media}) {
       return {
-        title: 'Card Grid',
-        subtitle: heading || 'No heading set',
+        title: heading || 'Card Grid',
+        subtitle: 'Card Grid',
+        media,
       }
     },
   },

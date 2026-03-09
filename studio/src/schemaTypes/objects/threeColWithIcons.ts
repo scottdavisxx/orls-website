@@ -37,11 +37,15 @@ export const threeColWithIcons = defineType({
     }),
   ],
   preview: {
-    select: { title: 'title' },
-    prepare({ title }) {
+    select: {
+      title: 'title',
+      media: 'items.0.imageAndAltText.image',
+    },
+    prepare({title, media}) {
       return {
-        title: 'Three Column with Icons',
-        subtitle: title || 'No title set',
+        title: title || 'Three Column with Icons',
+        subtitle: 'Three Column with Icons',
+        media,
       }
     },
   },

@@ -35,11 +35,15 @@ export const threeColCircleImage = defineType({
     }),
   ],
   preview: {
-    select: {title: 'title'},
-    prepare({title}) {
+    select: {
+      title: 'title',
+      media: 'columns.0.imageAndAltText.image',
+    },
+    prepare({title, media}) {
       return {
-        title: 'Three Column Circle Images',
-        subtitle: title || 'No title set',
+        title: title || 'Three Column Circle Images',
+        subtitle: 'Three Column Circle Images',
+        media,
       }
     },
   },

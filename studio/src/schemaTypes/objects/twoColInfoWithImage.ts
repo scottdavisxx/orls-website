@@ -57,8 +57,8 @@ export const twoColInfoWithImage = defineType({
     select: {title: 'title', media: 'imageAndAltText.image'},
     prepare({title, media}) {
       return {
-        title: 'Two Column Info with Image',
-        subtitle: title || 'No title set',
+        title: title || 'Two Column Info with Image',
+        subtitle: 'Two Column Info with Image',
         media,
       }
     },

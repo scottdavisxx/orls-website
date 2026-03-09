@@ -24,14 +24,18 @@ export const infoSection = defineType({
     }),
   ],
   preview: {
-    select: {
-      title: 'heading',
-      subtitle: 'subheading',
-    },
+    select: {title: 'heading'},
     prepare({title}) {
       return {
-        title: title || 'Untitled Info Section',
+        title: title || 'Info Section',
         subtitle: 'Info Section',
+        media: (
+          <img
+            src="/static/infoSection.png"
+            alt="Info Section"
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+          />
+        ),
       }
     },
   },

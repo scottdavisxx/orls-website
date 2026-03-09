@@ -17,4 +17,19 @@ export const navigation = defineType({
       },
     }),
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Navigation',
+        subtitle: 'Navigation',
+        media: (
+          <img
+            src="/static/navigation.png"
+            alt="Navigation"
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+          />
+        ),
+      }
+    },
+  },
 })

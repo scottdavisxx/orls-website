@@ -50,11 +50,12 @@ export const twoColInfoWithCard = defineType({
     }),
   ],
   preview: {
-    select: {heading: 'heading'},
-    prepare({heading}) {
+    select: {heading: 'heading', media: 'imageAndAltText.image'},
+    prepare({heading, media}) {
       return {
-        title: 'Two Column Info with Card',
-        subtitle: heading || 'No heading set',
+        title: heading || 'Two Column Info with Card',
+        subtitle: 'Two Column Info with Card',
+        media,
       }
     },
   },

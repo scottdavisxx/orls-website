@@ -43,8 +43,15 @@ export const numberedList = defineType({
     select: {title: 'title'},
     prepare({title}) {
       return {
-        title: 'Numbered List',
-        subtitle: title || 'No title set',
+        title: title || 'Numbered List',
+        subtitle: 'Numbered List',
+        media: (
+          <img
+            src="/static/numberedList.png"
+            alt="Numbered List"
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+          />
+        ),
       }
     },
   },

@@ -39,11 +39,12 @@ export const oneColInfo = defineType({
     }),
   ],
   preview: {
-    select: {title: 'title', variant: 'variant'},
-    prepare({title, variant}) {
+    select: {title: 'title', variant: 'variant', media: 'imageAndAltText.image'},
+    prepare({title, variant, media}) {
       return {
-        title: 'One Column Info',
-        subtitle: `${variant || 'text'}: ${title || 'No title'}`,
+        title: title || 'One Column Info',
+        subtitle: 'One Column Info',
+        media,
       }
     },
   },

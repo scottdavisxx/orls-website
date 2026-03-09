@@ -18,4 +18,19 @@ export const subnav = defineType({
       ],
     }),
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Subnav',
+        subtitle: 'Subnav',
+        media: (
+          <img
+            src="/static/subnav.png"
+            alt="Subnav"
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+          />
+        ),
+      }
+    },
+  },
 })

@@ -51,8 +51,8 @@ export const ctaWithCard = defineType({
     select: {title: 'title', media: 'imageAndAltText.image'},
     prepare({title, media}) {
       return {
-        title: 'CTA with Card',
-        subtitle: title || 'No title set',
+        title: title || 'CTA with Card',
+        subtitle: 'CTA with Card',
         media,
       }
     },

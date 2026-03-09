@@ -25,11 +25,11 @@ export const twoCtasWithImage = defineType({
     }),
   ],
   preview: {
-    select: { title: 'title', media: 'imageAndAltText.image' },
-    prepare({ title, media }) {
+    select: {title: 'title', media: 'imageAndAltText.image'},
+    prepare({title, media}) {
       return {
-        title: 'Two CTAs with Image',
-        subtitle: title || 'No title set',
+        title: title || 'Two CTAs with Image',
+        subtitle: 'Two CTAs with Image',
         media,
       }
     },

@@ -18,9 +18,9 @@ export const heroBanner = defineType({
     },
     prepare({titleOne, media}) {
       return {
-        title: 'Hero Banner',
-        subtitle: titleOne || 'No title set',
-        media: media,
+        title: titleOne || 'Hero Banner',
+        subtitle: 'Hero Banner',
+        media,
       }
     },
   },

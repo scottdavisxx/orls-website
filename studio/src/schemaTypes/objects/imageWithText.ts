@@ -12,8 +12,8 @@ export const imageWithText = defineType({
     select: {title: 'title', media: 'imageAndAltText.image'},
     prepare({title, media}) {
       return {
-        title: 'Image with Text',
-        subtitle: title || 'No title set',
+        title: title || 'Image with Text',
+        subtitle: 'Image with Text',
         media,
       }
     },

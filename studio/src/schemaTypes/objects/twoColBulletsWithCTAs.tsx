@@ -43,8 +43,15 @@ export const twoColBulletsWithCTAs = defineType({
     select: {title: 'title'},
     prepare({title}) {
       return {
-        title: 'Two Column Bullets with CTAs',
-        subtitle: title || 'No title set',
+        title: title || 'Two Column Bullets with CTAs',
+        subtitle: 'Two Column Bullets with CTAs',
+        media: (
+          <img
+            src="/static/twoColBulletsWithCTAs.png"
+            alt="Two Column Bullets with CTAs"
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+          />
+        ),
       }
     },
   },

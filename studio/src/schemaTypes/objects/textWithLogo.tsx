@@ -12,8 +12,15 @@ export const textWithLogo = defineType({
     select: {title: 'title'},
     prepare({title}) {
       return {
-        title: 'Text with Logo',
-        subtitle: title || 'No title set',
+        title: title || 'Text with Logo',
+        subtitle: 'Text with Logo',
+        media: (
+          <img
+            src="/static/textWithLogo.png"
+            alt="Text with Logo"
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+          />
+        ),
       }
     },
   },

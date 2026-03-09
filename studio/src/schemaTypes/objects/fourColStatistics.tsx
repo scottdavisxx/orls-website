@@ -45,11 +45,18 @@ export const fourColStatistics = defineType({
     }),
   ],
   preview: {
-    select: {sideTitle: 'sideTitle'},
-    prepare({sideTitle}) {
+    select: {title: 'sideTitle'},
+    prepare({title}) {
       return {
-        title: 'Four Column Statistics',
-        subtitle: sideTitle || 'No title set',
+        title: title || 'Four Column Statistics',
+        subtitle: 'Four Column Statistics',
+        media: (
+          <img
+            src="/static/fourColStatistics.png"
+            alt="Four Column Statistics"
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+          />
+        ),
       }
     },
   },

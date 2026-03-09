@@ -18,4 +18,20 @@ export default defineType({
     }),
   ],
   options: {collapsible: true},
+  preview: {
+    select: {title: 'buttonText'},
+    prepare({title}) {
+      return {
+        title: title || 'Button',
+        subtitle: 'Button',
+        media: (
+          <img
+            src="/static/button.png"
+            alt="Button"
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+          />
+        ),
+      }
+    },
+  },
 })

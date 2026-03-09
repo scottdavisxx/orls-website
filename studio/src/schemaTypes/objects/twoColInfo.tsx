@@ -47,8 +47,15 @@ export const twoColInfo = defineType({
     select: {title: 'title'},
     prepare({title}) {
       return {
-        title: 'Two Column Info',
-        subtitle: title || 'No title set',
+        title: title || 'Two Column Info (Tuition)',
+        subtitle: 'Two Column Info (Tuition)',
+        media: (
+          <img
+            src="/static/twoColInfo.png"
+            alt="Two Column Info (Tuition)"
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+          />
+        ),
       }
     },
   },

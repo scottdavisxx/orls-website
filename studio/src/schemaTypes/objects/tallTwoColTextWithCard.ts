@@ -94,4 +94,17 @@ export const tallTwoColTextWithCard = defineType({
       fieldset: 'ctaCard',
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'ctaCardImage.image',
+    },
+    prepare({title, media}) {
+      return {
+        title: title || 'Tall Two Column Text with Card',
+        subtitle: 'Tall Two Column Text with Card',
+        media,
+      }
+    },
+  },
 })
