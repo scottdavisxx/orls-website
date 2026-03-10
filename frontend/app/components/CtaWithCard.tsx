@@ -46,6 +46,7 @@ export default function CtaWithCard({ block }: CtaWithCardProps) {
   const bgColor = block?.bgColor || 'white'
   const imageWidth = block?.imageWidth || 415
   const imageHeight = block?.imageHeight || 665
+  const photoSide = block?.photoSide || 'left'
 
 
   return (
@@ -55,7 +56,9 @@ export default function CtaWithCard({ block }: CtaWithCardProps) {
         {/* Image Container */}
         {hasSanityImage && (
           <div
-            className={`border-2 border-dark-blue rounded-4xl absolute left-0 bg-white z-20 hidden md:block ${overlapImage ? 'overflow-visible min-w-[415px] md:min-h-[390px]' : ''}`}
+            className={`border-2 border-dark-blue rounded-4xl absolute bg-white z-20 hidden md:block 
+              ${photoSide === 'right' ? 'right-0' : 'left-0'}
+              ${overlapImage ? 'overflow-visible min-w-[415px] md:min-h-[390px]' : ''}`}
           >
             <div className={`relative w-full h-full ${overlapImage ? 'overflow-visible' : ''}`}>
               <Image
@@ -79,13 +82,14 @@ export default function CtaWithCard({ block }: CtaWithCardProps) {
           )}
           {/* ORLS Logo */}
           {icon && (
-            <div className="absolute top-1/2 -translate-y-1/2
-          md:right-12 ">
+            <div className={`absolute top-1/2 -translate-y-1/2
+          ${photoSide === 'right' ? 'md:right-1/2' : 'md:left-1/2'}`}>
               <OrlsIcon color="whisper-blue" width={overlapImage ? 314 : 419} height={overlapImage ? 314 : 419} />
             </div>
           )}
           <div className={`flex flex-col gap-6 py-8 relative z-10 px-4 items-center
-        md:pl-120 md:pr-20 md:items-start ${overlapImage ? 'md:py-6' : 'md:py-8'}`}>
+        md:items-start ${overlapImage ? 'md:py-6' : 'md:py-8'}
+        ${photoSide === 'right' ? 'md:pl-20 md:pr-120' : 'md:pl-120 md:pr-20'}`}>
             <h2 className={`text-4xl font-bold md:leading-16 
               ${textColor === 'dark-blue' ? 'text-dark-blue' : textColor === 'medium-blue' ? 'text-medium-blue' : 'text-black'}
               ${overlapImage ? 'md:text-6xl' : 'md:text-7xl'}`}>

@@ -252,6 +252,7 @@ export type CtaWithCard = {
   title: string
   emphasizedText?: string
   textColor?: 'black' | 'dark-blue' | 'medium-blue'
+  bgColor?: 'white' | 'dark-blue'
   blurb?: Array<{
     children?: Array<{
       marks?: Array<string>
@@ -273,7 +274,7 @@ export type CtaWithCard = {
   imageAndAltText?: ImageAndAltText
   imageWidth?: number
   imageHeight?: number
-  bgColor?: 'white' | 'dark-blue'
+  photoSide?: 'left' | 'right'
   overlapImage?: boolean
   ctas?: Array<{
     href: string
@@ -1447,6 +1448,7 @@ export type GetPageQueryResult = {
         title: string
         emphasizedText?: string
         textColor?: 'black' | 'dark-blue' | 'medium-blue'
+        bgColor?: 'dark-blue' | 'white'
         blurb?: Array<{
           children?: Array<{
             marks?: Array<string>
@@ -1468,7 +1470,7 @@ export type GetPageQueryResult = {
         imageAndAltText?: ImageAndAltText
         imageWidth?: number
         imageHeight?: number
-        bgColor?: 'dark-blue' | 'white'
+        photoSide?: 'left' | 'right'
         overlapImage?: boolean
         ctas?: Array<{
           href: string
