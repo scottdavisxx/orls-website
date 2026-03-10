@@ -1,4 +1,3 @@
-import {bgColor} from './../sharedFields'
 import {defineField, defineType} from 'sanity'
 import {
   title,
@@ -10,6 +9,7 @@ import {
   bgColor,
   imageWidth,
   imageHeight,
+  photoSide,
 } from '../sharedFields'
 import {DocumentIcon} from '@sanity/icons'
 
@@ -58,6 +58,10 @@ export const ctaWithCard = defineType({
     }),
     defineField({
       ...imageHeight,
+      fieldset: 'imageOptions',
+    }),
+    defineField({
+      ...photoSide,
       fieldset: 'imageOptions',
     }),
     defineField({

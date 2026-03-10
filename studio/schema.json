@@ -1766,6 +1766,23 @@
           },
           "optional": true
         },
+        "bgColor": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "white"
+              },
+              {
+                "type": "string",
+                "value": "dark-blue"
+              }
+            ]
+          },
+          "optional": true
+        },
         "blurb": {
           "type": "objectAttribute",
           "value": {
@@ -1967,18 +1984,18 @@
           },
           "optional": true
         },
-        "bgColor": {
+        "photoSide": {
           "type": "objectAttribute",
           "value": {
             "type": "union",
             "of": [
               {
                 "type": "string",
-                "value": "white"
+                "value": "left"
               },
               {
                 "type": "string",
-                "value": "dark-blue"
+                "value": "right"
               }
             ]
           },

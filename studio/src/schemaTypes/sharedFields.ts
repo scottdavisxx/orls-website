@@ -232,3 +232,17 @@ export const imageHeight = defineField({
   title: 'Image Height',
   type: 'number',
 })
+
+export const photoSide = defineField({
+  name: 'photoSide',
+  title: 'Photo Side',
+  type: 'string',
+  options: {
+    list: [
+      {title: 'Left', value: 'left'},
+      {title: 'Right', value: 'right'},
+    ],
+    layout: 'radio',
+  },
+  initialValue: 'right',
+})

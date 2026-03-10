@@ -1,5 +1,5 @@
 import {defineField, defineType} from 'sanity'
-import {title, subtitle, blurb, imageAndAltText} from '../sharedFields'
+import {title, subtitle, blurb, imageAndAltText, photoSide} from '../sharedFields'
 import {DocumentIcon} from '@sanity/icons'
 
 export const twoColInfoWithCard = defineType({
@@ -35,19 +35,7 @@ export const twoColInfoWithCard = defineType({
       },
       initialValue: 'white',
     }),
-    defineField({
-      name: 'photoSide',
-      title: 'Photo Side',
-      type: 'string',
-      options: {
-        list: [
-          {title: 'Left', value: 'left'},
-          {title: 'Right', value: 'right'},
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'right',
-    }),
+    photoSide,
   ],
   preview: {
     select: {heading: 'heading', media: 'imageAndAltText.image'},
