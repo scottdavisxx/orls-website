@@ -36,6 +36,7 @@ import {twoCtasWithImage} from './objects/twoCtasWithImage'
 import {tallTwoColTextWithCard} from './objects/tallTwoColTextWithCard'
 import {cardGrid} from './objects/cardGrid'
 import {calendar} from './objects/calendar'
+import {featuredEvents} from './objects/featuredEvents'
 
 export const schemaTypes = [
   settings,
@@ -76,4 +77,5 @@ export const schemaTypes = [
   tallTwoColTextWithCard,
   cardGrid,
   calendar,
+  featuredEvents,
 ]

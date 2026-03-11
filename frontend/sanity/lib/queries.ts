@@ -106,6 +106,26 @@ export const eventPagesSlugs = defineQuery(`
   {"slug": slug.current}
 `)
 
+/** Upcoming + featured events for the FeaturedEvents block: 3 events, featured first, then soonest. Excludes past (date < start of today). */
+export const featuredEventsQuery = defineQuery(`
+  *[_type == "event" && defined(slug.current) && date >= $now]
+  | order(featured desc, date asc)
+  [0...3] {
+    _id,
+    "title": coalesce(title, "Untitled"),
+    "slug": slug.current,
+    cardText,
+    coverImage,
+    cta {
+      href,
+      buttonText,
+      newTab,
+      buttonColor
+    },
+    date
+  }
+`)
+
 export const pagesSlugs = defineQuery(`
   *[_type == "page" && defined(slug.current)]
   {"slug": slug.current}

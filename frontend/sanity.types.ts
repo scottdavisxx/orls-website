@@ -146,6 +146,12 @@ export type ObjectCta = {
   href?: string
 }
 
+export type FeaturedEvents = {
+  _type: 'featuredEvents'
+  heading?: string
+  subheading?: string
+}
+
 export type Calendar = {
   _type: 'calendar'
   title?: string
@@ -858,6 +864,13 @@ export type Event = {
   dateText?: string
   time?: string
   place?: string
+  cardText?: string
+  cta?: {
+    href: string
+    buttonText: string
+    newTab?: boolean
+    buttonColor?: 'brand-blue' | 'brand-white' | 'brand-black' | 'brand-medium-blue'
+  }
   description?: BlockContent
   featured?: boolean
   coverImage?: {
@@ -1011,6 +1024,9 @@ export type Page = {
     | ({
         _key: string
       } & Calendar)
+    | ({
+        _key: string
+      } & FeaturedEvents)
   >
   metaTitle?: string
   metaDescription: string
@@ -1275,6 +1291,7 @@ export type AllSanitySchemaTypes =
   | CollapsedBgImage
   | CollapsedIcon
   | ObjectCta
+  | FeaturedEvents
   | Calendar
   | CardGrid
   | TallTwoColTextWithCard
@@ -1514,6 +1531,12 @@ export type GetPageQueryResult = {
         imageAndAltText?: CtaWithMediaCardImageAndAltText
         cta?: Cta
         video?: string
+      }
+    | {
+        _key: string
+        _type: 'featuredEvents'
+        heading?: string
+        subheading?: string
       }
     | {
         _key: string
@@ -2110,6 +2133,31 @@ export type EventPagesSlugsResult = Array<{
 }>
 
 // Source: sanity/lib/queries.ts
+// Variable: featuredEventsQuery
+// Query: *[_type == "event" && defined(slug.current) && date >= $now]  | order(featured desc, date asc)  [0...3] {    _id,    "title": coalesce(title, "Untitled"),    "slug": slug.current,    cardText,    coverImage,    cta {      href,      buttonText,      newTab,      buttonColor    },    date  }
+export type FeaturedEventsQueryResult = Array<{
+  _id: string
+  title: string
+  slug: string
+  cardText: string | null
+  coverImage: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  } | null
+  cta: {
+    href: string
+    buttonText: string
+    newTab: boolean | null
+    buttonColor: 'brand-black' | 'brand-blue' | 'brand-medium-blue' | 'brand-white' | null
+  } | null
+  date: string | null
+}>
+
+// Source: sanity/lib/queries.ts
 // Variable: pagesSlugs
 // Query: *[_type == "page" && defined(slug.current)]  {"slug": slug.current}
 export type PagesSlugsResult = Array<{
@@ -2127,6 +2175,7 @@ declare module '@sanity/client' {
     '\n  *[_type == "event" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': MoreEventsQueryResult
     '\n  *[_type == "event" && slug.current == $slug] [0] {\n    description[]{\n    ...,\n    markDefs[]{\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "event": event->slug.current\n  }\n\n    }\n  },\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': EventQueryResult
     '\n  *[_type == "event" && defined(slug.current)]\n  {"slug": slug.current}\n': EventPagesSlugsResult
+    '\n  *[_type == "event" && defined(slug.current) && date >= $now]\n  | order(featured desc, date asc)\n  [0...3] {\n    _id,\n    "title": coalesce(title, "Untitled"),\n    "slug": slug.current,\n    cardText,\n    coverImage,\n    cta {\n      href,\n      buttonText,\n      newTab,\n      buttonColor\n    },\n    date\n  }\n': FeaturedEventsQueryResult
     '\n  *[_type == "page" && defined(slug.current)]\n  {"slug": slug.current}\n': PagesSlugsResult
   }
 }

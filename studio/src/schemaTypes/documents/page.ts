@@ -80,6 +80,7 @@ export const page = defineType({
         { type: 'tallTwoColTextWithCard' },
         { type: 'cardGrid' },
         { type: 'calendar' },
+        { type: 'featuredEvents' },
       ],
       options: {
         insertMenu: {
