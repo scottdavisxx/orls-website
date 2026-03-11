@@ -1,7 +1,7 @@
 'use client'
 
 import FeaturedEvents, { FeaturedEvent } from '@/app/components/FeaturedEvents'
-import type { PageBuilderSection } from '@/sanity.lib/types'
+import type { PageBuilderSection } from '@/sanity/lib/types'
 
 type BlockProps = {
   index: number

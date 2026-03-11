@@ -81,6 +81,7 @@ export const event = defineType({
       initialValue: false,
       description:
         'If the event is featured, it will be displayed in first in the event carousels.',
+      fieldset: 'eventCardInfo',
     }),
     defineField({
       name: 'coverImage',
@@ -115,12 +116,6 @@ export const event = defineType({
       title: 'Date',
       type: 'datetime',
       initialValue: () => new Date().toISOString(),
-    }),
-    defineField({
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: [{type: 'person'}],
     }),
   ],
   // List preview configuration. https://www.sanity.io/docs/previews-list-views

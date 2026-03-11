@@ -1405,7 +1405,7 @@ export type SettingsQueryResult = {
 
 // Source: sanity/lib/queries.ts
 // Variable: getPageQuery
-// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    _type,    name,    slug,    heading,    subheading,    metaTitle,    metaDescription,    ogImage,    ogDescription,    robots,    "pageBuilder": pageBuilder[]{      ...,      _type == "callToAction" => {        ...,        button {          ...,            link {      ...,        _type == "link" => {    "page": page->slug.current,    "event": event->slug.current  }      }        }      },      _type == "infoSection" => {        content[]{          ...,          markDefs[]{            ...,              _type == "link" => {    "page": page->slug.current,    "event": event->slug.current  }          }        }      },      _type == "heroBanner" => {        titleOne,        titleTwo,        cta,        imageAndAltText      },    },  }
+// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    _type,    name,    slug,    heading,    subheading,    metaTitle,    metaDescription,    ogImage,    ogDescription,    robots,    "pageBuilder": pageBuilder[]{      ...,      _type == "callToAction" => {        ...,        button {          ...,            link {      ...,        _type == "link" => {    "page": page->slug.current,    "event": event->slug.current  }      }        }      },      _type == "infoSection" => {        content[]{          ...,          markDefs[]{            ...,              _type == "link" => {    "page": page->slug.current,    "event": event->slug.current  }          }        }      },      _type == "heroBanner" => {        titleOne,        titleTwo,        cta,        imageAndAltText      },      _type == "featuredEvents" => {        ...,        "events": *[_type == "event" && defined(slug.current) && date >= now()]          | order(featured desc, date asc)[0...3]{            _id,            "title": coalesce(title, "Untitled"),            "slug": slug.current,            cardText,            coverImage,            cta{              href,              buttonText,              newTab,              buttonColor            },            date          }      },    },  }
 export type GetPageQueryResult = {
   _id: string
   _type: 'page'
@@ -1537,6 +1537,27 @@ export type GetPageQueryResult = {
         _type: 'featuredEvents'
         heading?: string
         subheading?: string
+        events: Array<{
+          _id: string
+          title: string
+          slug: string
+          cardText: string | null
+          coverImage: {
+            asset?: SanityImageAssetReference
+            media?: unknown
+            hotspot?: SanityImageHotspot
+            crop?: SanityImageCrop
+            alt?: string
+            _type: 'image'
+          } | null
+          cta: {
+            href: string
+            buttonText: string
+            newTab: boolean | null
+            buttonColor: 'brand-black' | 'brand-blue' | 'brand-medium-blue' | 'brand-white' | null
+          } | null
+          date: string | null
+        }>
       }
     | {
         _key: string
@@ -2169,7 +2190,7 @@ import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
     '*[_type == "settings"][0]': SettingsQueryResult
-    '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _id,\n    _type,\n    name,\n    slug,\n    heading,\n    subheading,\n    metaTitle,\n    metaDescription,\n    ogImage,\n    ogDescription,\n    robots,\n    "pageBuilder": pageBuilder[]{\n      ...,\n      _type == "callToAction" => {\n        ...,\n        button {\n          ...,\n          \n  link {\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "event": event->slug.current\n  }\n\n      }\n\n        }\n      },\n      _type == "infoSection" => {\n        content[]{\n          ...,\n          markDefs[]{\n            ...,\n            \n  _type == "link" => {\n    "page": page->slug.current,\n    "event": event->slug.current\n  }\n\n          }\n        }\n      },\n      _type == "heroBanner" => {\n        titleOne,\n        titleTwo,\n        cta,\n        imageAndAltText\n      },\n    },\n  }\n': GetPageQueryResult
+    '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _id,\n    _type,\n    name,\n    slug,\n    heading,\n    subheading,\n    metaTitle,\n    metaDescription,\n    ogImage,\n    ogDescription,\n    robots,\n    "pageBuilder": pageBuilder[]{\n      ...,\n      _type == "callToAction" => {\n        ...,\n        button {\n          ...,\n          \n  link {\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "event": event->slug.current\n  }\n\n      }\n\n        }\n      },\n      _type == "infoSection" => {\n        content[]{\n          ...,\n          markDefs[]{\n            ...,\n            \n  _type == "link" => {\n    "page": page->slug.current,\n    "event": event->slug.current\n  }\n\n          }\n        }\n      },\n      _type == "heroBanner" => {\n        titleOne,\n        titleTwo,\n        cta,\n        imageAndAltText\n      },\n      _type == "featuredEvents" => {\n        ...,\n        "events": *[_type == "event" && defined(slug.current) && date >= now()]\n          | order(featured desc, date asc)[0...3]{\n            _id,\n            "title": coalesce(title, "Untitled"),\n            "slug": slug.current,\n            cardText,\n            coverImage,\n            cta{\n              href,\n              buttonText,\n              newTab,\n              buttonColor\n            },\n            date\n          }\n      },\n    },\n  }\n': GetPageQueryResult
     '\n  *[_type == "page" || _type == "event" && defined(slug.current)] | order(_type asc) {\n    "slug": slug.current,\n    _type,\n    _updatedAt,\n  }\n': SitemapDataResult
     '\n  *[_type == "event" && defined(slug.current)] | order(date desc, _updatedAt desc) {\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': AllEventsQueryResult
     '\n  *[_type == "event" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': MoreEventsQueryResult
