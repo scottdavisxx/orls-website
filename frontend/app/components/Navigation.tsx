@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import OrlsLogo, { LogoColor } from "./icons/orls-logo";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/24/solid";
+import { usePathname } from "next/navigation";
 
 const SCROLL_THRESHOLD = 250;
 
@@ -41,7 +42,7 @@ const navigationItems = [
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
-
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => setIsOpen(!isOpen);
@@ -74,7 +75,7 @@ export default function Navigation() {
             <Link
               key={item.href}
               href={item.href}
-              className={`${item.href === "/" ? "lg:hidden" : ""} hover:text-white`}
+              className={`${item.href === "/" ? "lg:hidden" : ""} hover:text-white ${pathname === item.href ? "text-yellow lg:text-white underline" : ""}`}
               onClick={() => setIsOpen(false)}
             >
               {item.label}
