@@ -329,6 +329,7 @@ export type CtaWithMediaCard = {
 
 export type IntroBlade = {
   _type: 'introBlade'
+  singleTitle?: string
   titles?: Array<{
     title: string
     _key: string
@@ -1597,6 +1598,7 @@ export type GetPageQueryResult = {
     | {
         _key: string
         _type: 'introBlade'
+        singleTitle?: string
         titles?: Array<{
           title: string
           _key: string

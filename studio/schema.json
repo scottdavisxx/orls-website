@@ -2416,6 +2416,13 @@
             "value": "introBlade"
           }
         },
+        "singleTitle": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "titles": {
           "type": "objectAttribute",
           "value": {
