@@ -15,6 +15,12 @@ export const cardGrid = defineType({
     }),
     subtitle,
     defineField({
+      name: 'darkOverlay',
+      title: 'Dark Overlay',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
       name: 'cards',
       title: 'Cards',
       type: 'array',

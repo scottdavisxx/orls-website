@@ -162,8 +162,9 @@ export type CardGrid = {
   _type: 'cardGrid'
   heading?: string
   subtitle?: string
+  darkOverlay?: boolean
   cards?: Array<{
-    title: string
+    title?: string
     description?: string
     imageAndAltText?: ImageAndAltText
     cta?: Cta
@@ -688,7 +689,6 @@ export type Subnav = {
     href: string
     buttonText: string
     newTab?: boolean
-    buttonColor?: 'brand-blue' | 'brand-white' | 'brand-black' | 'brand-medium-blue'
     _key: string
   }>
 }
@@ -789,6 +789,59 @@ export type Button = {
   link?: Link
 }
 
+export type Person = {
+  _id: string
+  _type: 'person'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  firstName: string
+  lastName: string
+  title?: string
+  role?: string
+  picture: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  blurb?: Array<{
+    children?: Array<{
+      marks?: Array<string>
+      text?: string
+      _type: 'span'
+      _key: string
+    }>
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+    listItem?: 'bullet' | 'number'
+    markDefs?: Array<{
+      href?: string
+      _type: 'link'
+      _key: string
+    }>
+    level?: number
+    _type: 'block'
+    _key: string
+  }>
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top: number
+  bottom: number
+  left: number
+  right: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x: number
+  y: number
+  height: number
+  width: number
+}
+
 export type Settings = {
   _id: string
   _type: 'settings'
@@ -829,29 +882,6 @@ export type Settings = {
   }
 }
 
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top: number
-  bottom: number
-  left: number
-  right: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x: number
-  y: number
-  height: number
-  width: number
-}
-
-export type PersonReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'person'
-}
-
 export type Event = {
   _id: string
   _type: 'event'
@@ -882,44 +912,6 @@ export type Event = {
     _type: 'image'
   }
   date?: string
-  author?: PersonReference
-}
-
-export type Person = {
-  _id: string
-  _type: 'person'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  firstName: string
-  lastName: string
-  title?: string
-  role?: string
-  picture: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  blurb?: Array<{
-    children?: Array<{
-      marks?: Array<string>
-      text?: string
-      _type: 'span'
-      _key: string
-    }>
-    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-    listItem?: 'bullet' | 'number'
-    markDefs?: Array<{
-      href?: string
-      _type: 'link'
-      _key: string
-    }>
-    level?: number
-    _type: 'block'
-    _key: string
-  }>
 }
 
 export type Slug = {
@@ -1328,12 +1320,11 @@ export type AllSanitySchemaTypes =
   | BlockContent
   | BlockContentTextOnly
   | Button
-  | Settings
+  | Person
   | SanityImageCrop
   | SanityImageHotspot
-  | PersonReference
+  | Settings
   | Event
-  | Person
   | Slug
   | Page
   | SanityAssistInstructionTask
@@ -1436,8 +1427,9 @@ export type GetPageQueryResult = {
         _type: 'cardGrid'
         heading?: string
         subtitle?: string
+        darkOverlay?: boolean
         cards?: Array<{
-          title: string
+          title?: string
           description?: string
           imageAndAltText?: ImageAndAltText
           cta?: Cta
@@ -1719,7 +1711,6 @@ export type GetPageQueryResult = {
           href: string
           buttonText: string
           newTab?: boolean
-          buttonColor?: 'brand-black' | 'brand-blue' | 'brand-medium-blue' | 'brand-white'
           _key: string
         }>
       }
@@ -2038,17 +2029,7 @@ export type AllEventsQueryResult = Array<{
     _type: 'image'
   } | null
   date: string
-  author: {
-    firstName: string
-    lastName: string
-    picture: {
-      asset?: SanityImageAssetReference
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      _type: 'image'
-    }
-  } | null
+  author: null
 }>
 
 // Source: sanity/lib/queries.ts
@@ -2069,17 +2050,7 @@ export type MoreEventsQueryResult = Array<{
     _type: 'image'
   } | null
   date: string
-  author: {
-    firstName: string
-    lastName: string
-    picture: {
-      asset?: SanityImageAssetReference
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      _type: 'image'
-    }
-  } | null
+  author: null
 }>
 
 // Source: sanity/lib/queries.ts
@@ -2133,17 +2104,7 @@ export type EventQueryResult = {
     _type: 'image'
   } | null
   date: string
-  author: {
-    firstName: string
-    lastName: string
-    picture: {
-      asset?: SanityImageAssetReference
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      _type: 'image'
-    }
-  } | null
+  author: null
 } | null
 
 // Source: sanity/lib/queries.ts
