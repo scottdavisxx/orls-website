@@ -65,7 +65,6 @@ export default function ClubsViewBlock({ block }: BlockProps) {
           }
         }`
 
-        // Direct fetch to Sanity API (Option 3)
         const url = `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}?query=${encodeURIComponent(query)}`
 
         const response = await fetch(url)
