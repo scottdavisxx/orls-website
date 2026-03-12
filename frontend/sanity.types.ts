@@ -864,8 +864,31 @@ export type Club = {
   _updatedAt: string
   _rev: string
   name: string
+  slug: Slug
   eyebrow?: string
   desc?: string
+  blurb?: Array<{
+    children?: Array<{
+      marks?: Array<string>
+      text?: string
+      _type: 'span'
+      _key: string
+    }>
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+    listItem?: 'bullet' | 'number'
+    markDefs?: Array<{
+      href?: string
+      _type: 'link'
+      _key: string
+    }>
+    level?: number
+    _type: 'block'
+    _key: string
+  }>
+  bannerImage?: {
+    image?: ImageAndAltTextImage
+    altText?: string
+  }
   imageAndAltText?: {
     image?: ImageAndAltTextImage
     altText?: string
@@ -880,46 +903,23 @@ export type Club = {
       _key: string
     } & SkosConceptReference
   >
-}
-
-export type Settings = {
-  _id: string
-  _type: 'settings'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title: string
-  description?: Array<{
-    children?: Array<{
-      marks?: Array<string>
-      text?: string
-      _type: 'span'
-      _key: string
-    }>
-    style?: 'normal'
-    listItem?: never
-    markDefs?: Array<{
-      linkType?: 'href' | 'page' | 'event'
-      href?: string
-      page?: PageReference
-      event?: EventReference
-      openInNewTab?: boolean
-      _type: 'link'
-      _key: string
-    }>
-    level?: number
-    _type: 'block'
-    _key: string
-  }>
+  metaTitle?: string
+  metaDescription: string
   ogImage?: {
     asset?: SanityImageAssetReference
     media?: unknown
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
-    alt?: string
-    metadataBase?: string
     _type: 'image'
   }
+  ogDescription?: string
+  robots?: 'index, follow' | 'noindex, follow' | 'index, nofollow' | 'noindex, nofollow'
+}
+
+export type Slug = {
+  _type: 'slug'
+  current: string
+  source?: string
 }
 
 export type Event = {
@@ -948,12 +948,6 @@ export type Event = {
     _type: 'image'
   }
   date?: string
-}
-
-export type Slug = {
-  _type: 'slug'
-  current: string
-  source?: string
 }
 
 export type Page = {
@@ -1070,6 +1064,26 @@ export type Page = {
   }
   ogDescription?: string
   robots?: 'index, follow' | 'noindex, follow' | 'index, nofollow' | 'noindex, nofollow'
+}
+
+export type Settings = {
+  _id: string
+  _type: 'settings'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  navigationItems?: Array<{
+    label: string
+    href: string
+    subnav?: Array<{
+      label: string
+      href: string
+      _type: 'subnavItem'
+      _key: string
+    }>
+    _type: 'navigationItem'
+    _key: string
+  }>
 }
 
 export type SkosConceptScheme = {
@@ -1417,10 +1431,10 @@ export type AllSanitySchemaTypes =
   | SanityImageHotspot
   | SkosConceptReference
   | Club
-  | Settings
-  | Event
   | Slug
+  | Event
   | Page
+  | Settings
   | SkosConceptScheme
   | SkosConcept
   | SanityAssistInstructionTask
@@ -1449,45 +1463,25 @@ export declare const internalGroqTypeReferenceTo: unique symbol
 
 // Source: sanity/lib/queries.ts
 // Variable: settingsQuery
-// Query: *[_type == "settings"][0]
+// Query: *[_type == "settings"]  | order(_updatedAt desc)[0]
 export type SettingsQueryResult = {
   _id: string
   _type: 'settings'
   _createdAt: string
   _updatedAt: string
   _rev: string
-  title: string
-  description?: Array<{
-    children?: Array<{
-      marks?: Array<string>
-      text?: string
-      _type: 'span'
+  navigationItems?: Array<{
+    label: string
+    href: string
+    subnav?: Array<{
+      label: string
+      href: string
+      _type: 'subnavItem'
       _key: string
     }>
-    style?: 'normal'
-    listItem?: never
-    markDefs?: Array<{
-      linkType?: 'event' | 'href' | 'page'
-      href?: string
-      page?: PageReference
-      event?: EventReference
-      openInNewTab?: boolean
-      _type: 'link'
-      _key: string
-    }>
-    level?: number
-    _type: 'block'
+    _type: 'navigationItem'
     _key: string
   }>
-  ogImage?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    alt?: string
-    metadataBase?: string
-    _type: 'image'
-  }
 } | null
 
 // Source: sanity/lib/queries.ts
@@ -2246,11 +2240,76 @@ export type PagesSlugsResult = Array<{
   slug: string
 }>
 
+// Source: sanity/lib/queries.ts
+// Variable: clubQuery
+// Query: *[_type == "club" && slug.current == $slug][0] {      _id,  name,  "slug": slug.current,  eyebrow,  desc,  blurb,  bannerImage {    asset,    alt,    hotspot,    crop  },  imageAndAltText,  clubType[]->{    _id,    prefLabel  },  enrichmentType[]->{    _id,    prefLabel  },  metaTitle,  metaDescription,  ogImage,  ogDescription,  robots  }
+export type ClubQueryResult = {
+  _id: string
+  name: string
+  slug: string
+  eyebrow: string | null
+  desc: string | null
+  blurb: Array<{
+    children?: Array<{
+      marks?: Array<string>
+      text?: string
+      _type: 'span'
+      _key: string
+    }>
+    style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
+    listItem?: 'bullet' | 'number'
+    markDefs?: Array<{
+      href?: string
+      _type: 'link'
+      _key: string
+    }>
+    level?: number
+    _type: 'block'
+    _key: string
+  }> | null
+  bannerImage: {
+    asset: null
+    alt: null
+    hotspot: null
+    crop: null
+  } | null
+  imageAndAltText: {
+    image?: ImageAndAltTextImage
+    altText?: string
+  } | null
+  clubType: Array<{
+    _id: string
+    prefLabel: string
+  }> | null
+  enrichmentType: Array<{
+    _id: string
+    prefLabel: string
+  }> | null
+  metaTitle: string | null
+  metaDescription: string
+  ogImage: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  } | null
+  ogDescription: string | null
+  robots: 'index, follow' | 'index, nofollow' | 'noindex, follow' | 'noindex, nofollow' | null
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: clubPagesSlugs
+// Query: *[_type == "club" && defined(slug.current)]  {"slug": slug.current}
+export type ClubPagesSlugsResult = Array<{
+  slug: string
+}>
+
 // Query TypeMap
 import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
-    '*[_type == "settings"][0]': SettingsQueryResult
+    '\n  *[_type == "settings"]\n  | order(_updatedAt desc)[0]\n': SettingsQueryResult
     '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _id,\n    _type,\n    name,\n    slug,\n    heading,\n    subheading,\n    metaTitle,\n    metaDescription,\n    ogImage,\n    ogDescription,\n    robots,\n    "pageBuilder": pageBuilder[]{\n      ...,\n      _type == "callToAction" => {\n        ...,\n        button {\n          ...,\n          \n  link {\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "event": event->slug.current\n  }\n\n      }\n\n        }\n      },\n      _type == "infoSection" => {\n        content[]{\n          ...,\n          markDefs[]{\n            ...,\n            \n  _type == "link" => {\n    "page": page->slug.current,\n    "event": event->slug.current\n  }\n\n          }\n        }\n      },\n      _type == "heroBanner" => {\n        titleOne,\n        titleTwo,\n        cta,\n        imageAndAltText\n      },\n      _type == "featuredEvents" => {\n        ...,\n        "events": *[_type == "event" && defined(slug.current) && date >= now()]\n          | order(featured desc, date asc)[0...3]{\n            _id,\n            "title": coalesce(title, "Untitled"),\n            "slug": slug.current,\n            cardText,\n            coverImage,\n            cta{\n              href,\n              buttonText,\n              newTab,\n              buttonColor\n            },\n            date\n          }\n      },\n    },\n  }\n': GetPageQueryResult
     '\n  *[_type == "page" || _type == "event" && defined(slug.current)] | order(_type asc) {\n    "slug": slug.current,\n    _type,\n    _updatedAt,\n  }\n': SitemapDataResult
     '\n  *[_type == "event" && defined(slug.current)] | order(date desc, _updatedAt desc) {\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': AllEventsQueryResult
@@ -2259,5 +2318,7 @@ declare module '@sanity/client' {
     '\n  *[_type == "event" && defined(slug.current)]\n  {"slug": slug.current}\n': EventPagesSlugsResult
     '\n  *[_type == "event" && defined(slug.current) && date >= $now]\n  | order(featured desc, date asc)\n  [0...3] {\n    _id,\n    "title": coalesce(title, "Untitled"),\n    "slug": slug.current,\n    cardText,\n    coverImage,\n    cta {\n      href,\n      buttonText,\n      newTab,\n      buttonColor\n    },\n    date\n  }\n': FeaturedEventsQueryResult
     '\n  *[_type == "page" && defined(slug.current)]\n  {"slug": slug.current}\n': PagesSlugsResult
+    '\n  *[_type == "club" && slug.current == $slug][0] {\n    \n  _id,\n  name,\n  "slug": slug.current,\n  eyebrow,\n  desc,\n  blurb,\n  bannerImage {\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  imageAndAltText,\n  clubType[]->{\n    _id,\n    prefLabel\n  },\n  enrichmentType[]->{\n    _id,\n    prefLabel\n  },\n  metaTitle,\n  metaDescription,\n  ogImage,\n  ogDescription,\n  robots\n\n  }\n': ClubQueryResult
+    '\n  *[_type == "club" && defined(slug.current)]\n  {"slug": slug.current}\n': ClubPagesSlugsResult
   }
 }

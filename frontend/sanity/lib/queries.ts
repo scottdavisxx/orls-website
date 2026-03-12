@@ -169,7 +169,14 @@ const clubFields = /* groq */ `
   eyebrow,
   desc,
   blurb,
-  bannerImage,
+  bannerImage {
+    image {
+      asset,
+      hotspot,
+      crop
+    },
+    altText
+  },
   imageAndAltText,
   clubType[]->{
     _id,

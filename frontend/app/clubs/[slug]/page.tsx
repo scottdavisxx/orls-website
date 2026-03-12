@@ -64,16 +64,16 @@ export default async function ClubPage(props: Props) {
     <>
       <div className="flex flex-col relative z-0 justify-end h-[650px]">
         <div className="absolute h-full w-full bg-black/30"></div>
-        {club?.bannerImage && (
+        {club?.bannerImage?.image && (
           <Image
-            id={club.bannerImage.asset?._ref || ''}
-            alt={club.bannerImage.alt || ''}
+            id={club.bannerImage.image.asset?._ref || ''}
+            alt={club.bannerImage.altText || ''}
             className="absolute w-full h-full object-cover object-center top-0 -z-10"
             width={1024}
             height={538}
             mode="cover"
-            hotspot={club.bannerImage.hotspot}
-            crop={club.bannerImage.crop}
+            hotspot={club.bannerImage.image.hotspot}
+            crop={club.bannerImage.image.crop}
           />
         )}
         <div className="container mb-24 flex flex-col gap-4 z-10">

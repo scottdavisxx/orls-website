@@ -109,6 +109,7 @@ export default function ClubsView({ clubs, taxonomyType, heading, subheading }: 
                       id={club.imageAndAltText.image.asset?._ref || ''}
                       alt={club.imageAndAltText.altText || club.name}
                       mode="cover"
+                      className="w-full h-full object-cover"
                     />
                   ) : (
                     <div className="w-full h-full bg-gray-200 flex items-center justify-center">
