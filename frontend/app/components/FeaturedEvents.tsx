@@ -11,7 +11,8 @@ export type FeaturedEvent = {
   slug: string;
   cardText?: string | null;
   coverImage?: { asset?: { _ref: string }; alt?: string } | null;
-  cta?: { href: string; buttonText: string; newTab?: boolean; buttonColor?: string } | null;
+  buttonText?: string | null;
+  href?: string | null;
   date?: string | null;
 };
 
@@ -67,17 +68,15 @@ export default function FeaturedEvents({ events = [] as FeaturedEvent[] }: { eve
               {active.cardText && (
                 <p className="text-xl">{active.cardText}</p>
               )}
-              {active.cta?.href && active.cta?.buttonText ? (
-                <div className="w-fit pointer-events-auto">
-                  <Cta
-                    href={active.cta.href}
-                    buttonText={active.cta.buttonText}
-                    newTab={active.cta.newTab}
-                    buttonColor="brand-white"
-                    className="uppercase md:px-24 md:py-4"
-                  />
-                </div>
-              ) : null}
+              <div className="w-fit pointer-events-auto">
+                <Cta
+                  href={active.href ?? `/events/${active.slug}`}
+                  buttonText={active.buttonText ?? 'View Event'}
+                  newTab={false}
+                  buttonColor="brand-white"
+                  className="uppercase md:px-24 md:py-4"
+                />
+              </div>
             </div>
             <div className="absolute top-0 left-0 w-full h-full border-2 border-black rounded-2xl group-hover:translate-x-4 group-hover:translate-y-4 transition-all duration-300 pointer-events-none" />
           </div>

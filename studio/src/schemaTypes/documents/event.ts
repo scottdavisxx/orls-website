@@ -65,8 +65,18 @@ export const event = defineType({
       fieldset: 'eventCardInfo',
     }),
     defineField({
-      ...cta,
+      name: 'buttonText',
+      title: 'Button Text',
+      type: 'string',
+      description: 'If empty will default to "View Event"',
       fieldset: 'eventCardInfo',
+    }),
+    defineField({
+      name: 'href',
+      title: 'Link URL',
+      type: 'string',
+      fieldset: 'eventCardInfo',
+      description: 'If empty will default to the event page URL',
     }),
     defineField({
       name: 'description',

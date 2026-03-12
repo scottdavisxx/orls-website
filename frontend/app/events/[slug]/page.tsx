@@ -4,7 +4,7 @@ import { type PortableTextBlock } from 'next-sanity'
 import { Suspense } from 'react'
 
 import Avatar from '@/app/components/tbd/Avatar'
-import { MoreEvents } from '@/app/components/Events'
+// import { MoreEvents } from '@/app/components/Events'
 import PortableText from '@/app/components/PortableText'
 import Image from '@/app/components/SanityImage'
 import { sanityFetch } from '@/sanity/lib/live'
@@ -78,18 +78,6 @@ export default async function EventPage(props: Props) {
                 <h1 className="text-4xl text-gray-900 sm:text-5xl lg:text-7xl">{event.title}</h1>
               </div>
               <div className="max-w-3xl flex gap-4 items-center">
-                {author && author.firstName && author.lastName && (
-                  <Avatar
-                    person={
-                      author as {
-                        firstName: string | null
-                        lastName: string | null
-                        picture?: { asset?: { _ref: string }; hotspot?: { x: number; y: number }; crop?: { top: number; bottom: number; left: number; right: number }; alt?: string }
-                      }
-                    }
-                    date={event.date}
-                  />
-                )}
               </div>
             </div>
             <article className="gap-6 grid max-w-4xl">
@@ -115,13 +103,6 @@ export default async function EventPage(props: Props) {
               )}
             </article>
           </div>
-        </div>
-      </div>
-      <div className="border-t border-gray-100 bg-gray-50">
-        <div className="container py-12 lg:py-24 grid gap-12">
-          <aside>
-            <Suspense>{await MoreEvents({ skip: event._id, limit: 2 })}</Suspense>
-          </aside>
         </div>
       </div>
     </>
