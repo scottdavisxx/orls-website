@@ -4,17 +4,17 @@ import type { Metadata } from 'next'
 // import { Inter, IBM_Plex_Mono } from 'next/font/google'
 import { Albert_Sans, Alegreya } from "next/font/google";
 import { draftMode } from 'next/headers'
-import { toPlainText } from 'next-sanity'
+// import { toPlainText } from 'next-sanity'
 import { VisualEditing } from 'next-sanity/visual-editing'
 import { Toaster } from 'sonner'
 import DraftModeToast from '@/app/components/DraftModeToast'
-import * as demo from '@/sanity/lib/demo'
+// import * as demo from '@/sanity/lib/demo'
 import { sanityFetch, SanityLive } from '@/sanity/lib/live'
 import { settingsQuery } from '@/sanity/lib/queries'
-import { resolveOpenGraphImage } from '@/sanity/lib/utils'
+// import { resolveOpenGraphImage } from '@/sanity/lib/utils'
 import { handleError } from '@/app/client-utils'
 import Footer from './components/Footer'
-import DevRouteNav from './components/tbd/DevRouteNav'
+// import DevRouteNav from './components/tbd/DevRouteNav'
 import Navigation from './components/Navigation'
 
 /**
@@ -27,25 +27,25 @@ export async function generateMetadata(): Promise<Metadata> {
     // Metadata should never contain stega
     stega: false,
   })
-  const title = settings?.title || demo.title
-  const description = settings?.description || demo.description
+  // const title = settings?.title || demo.title
+  // const description = settings?.description || demo.description
 
-  const ogImage = resolveOpenGraphImage(settings?.ogImage)
-  let metadataBase: URL | undefined = undefined
-  try {
-    metadataBase = settings?.ogImage?.metadataBase
-      ? new URL(settings.ogImage.metadataBase)
-      : undefined
-  } catch {
-    // ignore
-  }
+  // const ogImage = resolveOpenGraphImage(settings?.ogImage)
+  // let metadataBase: URL | undefined = undefined
+  // try {
+  //   metadataBase = settings?.ogImage?.metadataBase
+  //     ? new URL(settings.ogImage.metadataBase)
+  //     : undefined
+  // } catch {
+  //   // ignore
+  // }
   return {
-    metadataBase,
-    title: {
-      template: `%s | ${title}`,
-      default: title,
-    },
-    description: toPlainText(description),
+    // metadataBase,
+    // title: {
+    //   template: `%s | ${title}`,
+    //   default: title,
+    // },
+    // description: toPlainText(description),
     icons: {
       icon: [
         { url: '/icon-96.png', sizes: '96x96', type: 'image/png' },
@@ -54,9 +54,9 @@ export async function generateMetadata(): Promise<Metadata> {
       ],
       apple: '/apple-icon.png',
     },
-    openGraph: {
-      images: ogImage ? [ogImage] : [],
-    },
+    // openGraph: {
+    //   images: ogImage ? [ogImage] : [],
+    // },
   }
 }
 
