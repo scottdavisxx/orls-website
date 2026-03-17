@@ -43,12 +43,12 @@ export async function generateMetadata(props: Props, parent: ResolvingMetadata):
 
   return {
     title: club?.metaTitle || club?.name,
-    description: club?.metaDescription,
+    description: club?.metaDescription ?? undefined,
     openGraph: {
       images: ogImage ? [ogImage, ...previousImages] : previousImages,
-      description: club?.ogDescription,
+      description: club?.ogDescription ?? undefined,
     },
-    robots: club?.robots,
+    robots: club?.robots ?? undefined,
   } satisfies Metadata
 }
 
