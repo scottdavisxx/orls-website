@@ -1,5 +1,6 @@
 import Image from '@/app/components/SanityImage'
 import NextImage from 'next/image'
+import Link from 'next/link'
 import Cta from './ui/Cta'
 import type { IntroBlade } from '@/sanity.types'
 
@@ -35,11 +36,24 @@ export default function IntroBlade({ block }: IntroBladeProps) {
         md:px-6 md:py-8">
           {title && <h2 className="text-4xl font-bold w-full text-center 
           md:text-7xl md:-mb-10">{title}</h2>}
-          {titles.map((obj, i) => (
-            <h2 key={i} className="text-4xl max-md:text-3xl max-md:w-full font-bold w-full md:w-1/3 text-center">
-              {obj.title}
-            </h2>
-          ))}
+          {titles.map((obj, i) => {
+            const maybeHref = (obj as { title?: string; href?: string }).href
+            const titleText = (obj as { title?: string }).title ?? ''
+            return (
+              <h2
+                key={i}
+                className="text-4xl max-md:text-3xl max-md:w-full font-bold w-full md:w-1/3 text-center"
+              >
+                {maybeHref ? (
+                  <Link href={maybeHref} className="underline underline-offset-4">
+                    {titleText}
+                  </Link>
+                ) : (
+                  titleText
+                )}
+              </h2>
+            )
+          })}
         </div>
         <div className="relative flex px-6 max-sm:px-0 py-2 gap-2 justify-between items-center z-10
         md:py-8">

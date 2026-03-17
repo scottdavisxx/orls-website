@@ -27,6 +27,12 @@ export const introBlade = defineType({
               type: 'string',
               validation: (Rule: any) => Rule.required(),
             },
+            {
+              name: 'href',
+              title: 'Href',
+              type: 'string',
+              description: 'Optional link for this title (can be relative, e.g. /early-education)',
+            },
           ],
         },
       ],
