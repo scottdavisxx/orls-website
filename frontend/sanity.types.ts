@@ -2242,7 +2242,7 @@ export type PagesSlugsResult = Array<{
 
 // Source: sanity/lib/queries.ts
 // Variable: clubQuery
-// Query: *[_type == "club" && slug.current == $slug][0] {      _id,  name,  "slug": slug.current,  eyebrow,  desc,  blurb,  bannerImage {    asset,    alt,    hotspot,    crop  },  imageAndAltText,  clubType[]->{    _id,    prefLabel  },  enrichmentType[]->{    _id,    prefLabel  },  metaTitle,  metaDescription,  ogImage,  ogDescription,  robots  }
+// Query: *[_type == "club" && slug.current == $slug][0] {      _id,  name,  "slug": slug.current,  eyebrow,  desc,  blurb,  bannerImage {    image {      asset,      hotspot,      crop    },    altText  },  imageAndAltText,  clubType[]->{    _id,    prefLabel  },  enrichmentType[]->{    _id,    prefLabel  },  metaTitle,  metaDescription,  ogImage,  ogDescription,  robots  }
 export type ClubQueryResult = {
   _id: string
   name: string
@@ -2268,10 +2268,12 @@ export type ClubQueryResult = {
     _key: string
   }> | null
   bannerImage: {
-    asset: null
-    alt: null
-    hotspot: null
-    crop: null
+    image: {
+      asset: SanityImageAssetReference | null
+      hotspot: SanityImageHotspot | null
+      crop: SanityImageCrop | null
+    } | null
+    altText: string | null
   } | null
   imageAndAltText: {
     image?: ImageAndAltTextImage
@@ -2318,7 +2320,7 @@ declare module '@sanity/client' {
     '\n  *[_type == "event" && defined(slug.current)]\n  {"slug": slug.current}\n': EventPagesSlugsResult
     '\n  *[_type == "event" && defined(slug.current) && date >= $now]\n  | order(featured desc, date asc)\n  [0...3] {\n    _id,\n    "title": coalesce(title, "Untitled"),\n    "slug": slug.current,\n    cardText,\n    coverImage,\n    cta {\n      href,\n      buttonText,\n      newTab,\n      buttonColor\n    },\n    date\n  }\n': FeaturedEventsQueryResult
     '\n  *[_type == "page" && defined(slug.current)]\n  {"slug": slug.current}\n': PagesSlugsResult
-    '\n  *[_type == "club" && slug.current == $slug][0] {\n    \n  _id,\n  name,\n  "slug": slug.current,\n  eyebrow,\n  desc,\n  blurb,\n  bannerImage {\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  imageAndAltText,\n  clubType[]->{\n    _id,\n    prefLabel\n  },\n  enrichmentType[]->{\n    _id,\n    prefLabel\n  },\n  metaTitle,\n  metaDescription,\n  ogImage,\n  ogDescription,\n  robots\n\n  }\n': ClubQueryResult
+    '\n  *[_type == "club" && slug.current == $slug][0] {\n    \n  _id,\n  name,\n  "slug": slug.current,\n  eyebrow,\n  desc,\n  blurb,\n  bannerImage {\n    image {\n      asset,\n      hotspot,\n      crop\n    },\n    altText\n  },\n  imageAndAltText,\n  clubType[]->{\n    _id,\n    prefLabel\n  },\n  enrichmentType[]->{\n    _id,\n    prefLabel\n  },\n  metaTitle,\n  metaDescription,\n  ogImage,\n  ogDescription,\n  robots\n\n  }\n': ClubQueryResult
     '\n  *[_type == "club" && defined(slug.current)]\n  {"slug": slug.current}\n': ClubPagesSlugsResult
   }
 }

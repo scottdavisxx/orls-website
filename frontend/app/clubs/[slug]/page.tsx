@@ -72,8 +72,8 @@ export default async function ClubPage(props: Props) {
             width={1024}
             height={538}
             mode="cover"
-            hotspot={club.bannerImage.image.hotspot}
-            crop={club.bannerImage.image.crop}
+            hotspot={club.bannerImage.image.hotspot ?? undefined}
+            crop={club.bannerImage.image.crop ?? undefined}
           />
         )}
         <div className="container mb-24 flex flex-col gap-4 z-10">
