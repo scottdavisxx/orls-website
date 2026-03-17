@@ -21,6 +21,9 @@ type ClubsViewBlockType = {
 type Club = {
   _id: string
   name: string
+  slug?: {
+    current?: string
+  }
   eyebrow?: string
   desc?: string
   imageAndAltText?: {
@@ -52,6 +55,7 @@ export default function ClubsViewBlock({ block }: BlockProps) {
         const query = `*[_type == "club" && defined(${taxonomyField}) && count(${taxonomyField}) > 0] {
           _id,
           name,
+          slug,
           eyebrow,
           desc,
           imageAndAltText,
