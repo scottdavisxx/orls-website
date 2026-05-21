@@ -1,5 +1,5 @@
-import {CogIcon} from '@sanity/icons'
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import { CogIcon } from '@sanity/icons'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export const settings = defineType({
   name: 'settings',
@@ -10,7 +10,7 @@ export const settings = defineType({
     {
       name: 'navigation',
       title: 'Navigation',
-      options: {collapsible: true, collapsed: false},
+      options: { collapsible: true, collapsed: false },
     },
   ],
   fields: [
@@ -36,10 +36,11 @@ export const settings = defineType({
               title: 'Path',
               type: 'string',
               description: 'Internal path, e.g. /about or /student-life',
+              initialValue: '#',
               validation: (rule) =>
                 rule
                   .required()
-                  .regex(/^\/.*/, {name: 'leading-slash', invert: false})
+                  .regex(/^\/.*/, { name: 'leading-slash', invert: false })
                   .warning('Path should start with a /'),
             }),
             defineField({
@@ -66,7 +67,7 @@ export const settings = defineType({
                       validation: (rule) =>
                         rule
                           .required()
-                          .regex(/^\/.*/, {name: 'leading-slash', invert: false})
+                          .regex(/^\/.*/, { name: 'leading-slash', invert: false })
                           .warning('Path should start with a /'),
                     }),
                   ],
