@@ -12,6 +12,8 @@
  * ---------------------------------------------------------------------------------
  */
 
+export declare const internalGroqTypeReferenceTo: unique symbol
+
 // Source: ../studio/schema.json
 export type Cta = {
   href: string
@@ -339,6 +341,7 @@ export type IntroBlade = {
   singleTitle?: string
   titles?: Array<{
     title: string
+    href?: string
     _key: string
   }>
   blurb?: string
@@ -1459,8 +1462,6 @@ export type AllSanitySchemaTypes =
   | SanityImageAsset
   | Geopoint
 
-export declare const internalGroqTypeReferenceTo: unique symbol
-
 // Source: sanity/lib/queries.ts
 // Variable: settingsQuery
 // Query: *[_type == "settings"]  | order(_updatedAt desc)[0]
@@ -1692,6 +1693,7 @@ export type GetPageQueryResult = {
         singleTitle?: string
         titles?: Array<{
           title: string
+          href?: string
           _key: string
         }>
         blurb?: string
